@@ -63,7 +63,7 @@
 
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
-                        <span class="tpl-header-list-user-nick">欢迎您 {{session('user')->admin_name}}</span><span class="tpl-header-list-user-ico"> 
+                        <span class="tpl-header-list-user-nick">欢迎您 {{session('user')->admin_name}}</span><span class="tpl-header-list-user-ico">
                         @if(empty(session('user')->admin_face))
                         <img src="{{asset('admin/assets/img/user01.png')}}">
                         @else

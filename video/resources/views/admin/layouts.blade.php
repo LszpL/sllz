@@ -12,13 +12,10 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" href="{{asset('admin_temp/assets/i/favicon.png')}}">
     <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png')}}">
-    <meta name="apple-mobile-web-app-title" content="BalaBala" />
-    <link rel="stylesheet" href="{{asset('admin_temp/assets/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('admin_temp/assets/css/admin.css')}}">
+    <link rel="stylesheet" href="{{asset('admin_temp/assets/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('admin_temp/assets/css/app.css')}}" >
-    <script type="text/javascript"    src="{{asset('admin_temp/assets/js/echarts.min.js')}}"></script>
-    <script type="text/javascript"   src="{{asset('admin_temp/assets/js/bootstrap.min.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('admin_temp/assets/css/sweetalert.css')}}">
+    <link rel="stylesheet" href="{{asset('admin_temp/assets/css/sweetalert.css')}}" >
 </head>
 
 <body data-type="index"  >
@@ -334,11 +331,9 @@
 <script type="text/javascript" src="{{asset('admin_temp/assets/js/sweetalert-dev.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin_temp/assets/js/sweetalert.min.js')}}"></script>
 <script src="{{asset('admin_temp/assets/js/jquery.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('admin_temp/assets/css/amazeui.min.css')}}" />
-<link rel="stylesheet" href="{{asset('admin_temp/assets/css/amazeui.min.css')}}" />
-
+<script type="text/javascript"    src="{{asset('admin_temp/assets/js/echarts.min.js')}}"></script>
+<script type="text/javascript"   src="{{asset('admin_temp/assets/js/bootstrap.min.js')}}"></script>
 <link rel="stylesheet" href="{{asset('js-sdk/dist/qiniu.js')}}" >
-<link rel="stylesheet" href="{{asset('admin_temp/assets/css/sweetalert.css')}}" >
 {{--七牛插件引入--}}
 <script type="text/javascript" src="{{asset('admin_temp/assets/js/sweetalert.min.js')}}"></script>
 <script type="text/javascript" src="http://cdn.staticfile.org/plupload/2.1.9/i18n/ar.js"></script>

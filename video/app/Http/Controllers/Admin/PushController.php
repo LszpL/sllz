@@ -17,14 +17,18 @@ class PushController extends Controller
             $data = \DB::table('generalizes')->paginate(10);
         }
 
-        $tim = [];
         foreach($data as $k=>$v){
-           $data[$k]->position_name = \DB::table('positions')->where('position_id',$v->position_id)->first()->position_name;
-           $video = \DB::table('videos_data')->where('video_id',$v->video_id)->first();
-           $data[$k]->video_name = $video->video_name;
-           $data[$k]->video_comments = $video->video_comments;
-           $data[$k]->video_count = $video->video_count;
+            $data[$k]->position_name = \DB::table('positions')->where('position_id',$v->position_id)->first()->position_name;
+            $video = \DB::table('videos_data')->where('video_id',$v->video_id)->first();
+            $data[$k]->video_name = $video->video_name;
+            $data[$k]->video_comments = $video->video_comments;
+            $data[$k]->video_count = $video->video_count;
+//            echo $k ,'  ';
+//            var_dump($v);
+//            echo '<br>';
         }
+die;
+
         $position = \DB::table('positions')->get();
         return view('admin.position.push.index')->with(['title'=>'推广视频列表','data'=>$data,'position'=>$position,'request'=>$request->all()]);
     }
@@ -32,7 +36,6 @@ class PushController extends Controller
     public function add($id)
     {
         $data = \DB::table('positions')->get();
-//        dd($data);
         $video = \DB::table('videos_data')->where('video_id',$id)->first();
         return view('admin.position.push.add')->with(['title'=>'添加推广信息','data'=>$data,'video'=>$video]);
     }

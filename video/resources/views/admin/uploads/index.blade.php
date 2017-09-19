@@ -1,4 +1,4 @@
-@extends('admin.layouts');
+@extends('admin.layouts')
 @section('content')
     <div class="tpl-portlet-components">
         <div class="portlet-title">

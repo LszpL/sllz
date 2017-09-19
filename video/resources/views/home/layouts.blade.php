@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Demo</title>
     <link rel="shortcut icon" href="favicons/1.png')}}">
-
     <link rel="stylesheet" href="{{asset('home_temp/history/css/reset.css')}}">
     <link rel="stylesheet" href="{{asset('home_temp/history/css/common.css')}}">
     <link rel="stylesheet" href="{{asset('home_temp/history/css/index.css')}}">

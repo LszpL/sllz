@@ -107,7 +107,8 @@ class VideoController extends Controller
 	
 		if($res && $num ==$mun ){
 
-			return redirect('admin/video/index')->with(['info'=>'添加成功']);
+		    return redirect('admin/video/index')->with(['info'=>'添加成功']);
+
 		}else{
 			return back()->with(['info'=>'添加失败']);
 		}	
@@ -179,6 +180,36 @@ class VideoController extends Controller
 		
 		echo $news;
     }
+
+     public function pay(Request $request)
+    {
+    	$id=$request->input('id');
+		$res = \DB::table('videos_data')->where('video_id',$id)->update(['video_vip'=>'付费']);
+		if($res){
+			$news='视频收费';
+		}else{
+			$news='收费失败';
+		}
+		
+		echo $news;
+		
+
+    }
+
+    public function free(Request $request)
+    {
+    	$id=$request->input('id');
+		$res = \DB::table('videos_data')->where('video_id',$id)->update(['video_vip'=>'免费']);
+		if($res){
+			$news='视频免费';
+		}else{
+			$news='免费失败';
+		}
+		
+		echo $news;
+    }
+
+
 
     public function edit($id)
     {

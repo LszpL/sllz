@@ -16,16 +16,36 @@
     <link rel="stylesheet" href="{{asset('admin/assets/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('admin/assets/css/admin.css')}}">
     <link rel="stylesheet" href="{{asset('admin/assets/css/app.css')}}">
+
+    <script src="{{asset('admin/assets/js/echarts.min.js')}}"></script>
+
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/bootstrap.min.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/AdminLTE.min.css')}}"> -->
     <link rel="stylesheet" href="{{asset('admin/bower_components/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin_temp/assets/css/sweetalert.css')}}">
     <!-- <link rel="stylesheet" href="{{asset('admin_temp/assets/css/ch-ui.admin.css')}}"> -->
+
 </head>
 
 <body data-type="index">
 
 
+     <!-- 提示信息 -->
+    <div style="display:none;">
+        @if(session('info'))
+        <p id="session">{{session('info')}}</p>
+        @endif
+    </div> 
+    <!-- 验证信息 -->
+    @if (count($errors) > 0)
+        <div class="alert alert-danger" style="display:none;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class= "info" >{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
             <a href="javascript:;" class="tpl-logo">
@@ -154,13 +174,13 @@
                                 <a href="{{url('admin/type/add')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>分类添加</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                   
                                 </a>
 
                                 <a href="{{url('admin/type/index')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>分类列表</span>
-                                    <i class="tpl-left-nav-content tpl-badge-success">18</i>
+                                    
                                 </a>
                             </li>
                         </ul>
@@ -180,24 +200,14 @@
                                 <a href="{{url('admin/label/add')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>标签添加</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                    
                                 </a>
 
                                 <a href="{{url('admin/label/index')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>标签列表</span>
-                                    <i class="tpl-left-nav-content tpl-badge-success">18</i>
+                                    
                                 </a>
-                                <a href="form-news.html">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>消息列表</span>
-                                    <i class="tpl-left-nav-content tpl-badge-primary">5</i>
-                                </a>
-
-                                <a href="form-news-list.html">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>文字列表</span>
-
 
                                 </a>
                             </li>
@@ -235,18 +245,18 @@
                                 <a href="{{url('admin/video/add')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>视频添加</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                    
                                 </a>
 
                                 <a href="{{url('admin/video/index')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>视频列表</span>
-                                    <i class="tpl-left-nav-content tpl-badge-success">18</i>
+                                   
                                 </a>
                                 <a href="form-news.html">
                                     <i class="am-icon-angle-right"></i>
                                     <span>视频图表</span>
-                                    <i class="tpl-left-nav-content tpl-badge-primary">5</i>
+                                   
                                 </a>
 
                                 <a href="form-news-list.html">
@@ -402,6 +412,7 @@
 <script type="text/javascript" src="http://cdn.staticfile.org/plupload/2.1.9/i18n/ar.js"></script>
 
 <!-- <script type="text/javascript"   src="{{asset('admin_temp/assets/js/bootstrap.min.js')}}"></script> -->
+
     <script type="text/javascript">
         //验证信息
         var str = '';
@@ -431,6 +442,7 @@
    </script>  
 
     @yield('js')
+
 
 </body>
 

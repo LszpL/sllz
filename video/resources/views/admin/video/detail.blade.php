@@ -46,7 +46,9 @@
                                             <a href="javascript:;" class="tpl-table-images-content-i">
                                                 <div class="tpl-table-images-content-i-info">
                                                     <span class="ico" style="margin-left:130px; ">
-                                            <img src="" alt="">{{$first->video_time}}
+
+                                            <img src="/{{$first->video_img}}" alt="">{{$first->video_time}}
+
                                          </span>
 
                                                 </div>
@@ -260,7 +262,9 @@
                                                                                
                                                                                     <button  class="am-btn am-btn-default am-btn-xs am-text-secondary"  >
                                                                                         <span class="am-icon-pencil-square-o" ></span>
+
                                                                                         <a href="/admin/position/push/add/{{$first->video_id}}" >推广</a>
+
                                                                                      </button>
 
                                                                                     
@@ -271,16 +275,19 @@
                                                                     <td>
                                                                         <div class="am-btn-toolbar">
                                                                             <div class="am-btn-group am-btn-group-xs">
-                                                                               
-                                                                                    <button  class="am-btn am-btn-default am-btn-xs am-text-secondary"  >
-                                                                                        <span class="am-icon-pencil-square-o" ></span>
-                                                                                        <a href="JavaScript:;"  onclick=" ue({{$first->video_id}}) "> 免费</a>
-                                                                                     </button>
 
-                                                                                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>
-                                                                                    <a href="JavaScript:;"  onclick=" del({{$first->video_id}}) "> VIP</a> 
-                                                                                    </button>
-                                                                                  
+                                                                                @if($first->video_vip == '免费')
+                                                                                <button  class="am-btn am-btn-default am-btn-xs am-text-secondary"  >
+                                                                                    <span class="am-icon-pencil-square-o" ></span>
+                                                                                    <a href="JavaScript:;"  onclick=" pay({{$first->video_id}}) "> 已免费</a>
+                                                                                 </button>
+                                                                                @endif
+                                                                                @if($first->video_vip == '付费')    
+                                                                                <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>
+                                                                                <a href="JavaScript:;"  onclick=" free({{$first->video_id}}) "> 已付费</a> 
+                                                                                </button>
+                                                                                @endif
+
                                                                             </div>
                                                                         </div>
                                                                     </td>
@@ -385,6 +392,69 @@ function offline (id){
             
         }
 
+    function pay (id){
+
+
+            layer.confirm('您确定要收费此视频吗？', 
+                {
+                  btn: ['确认','取消'] //按钮
+                },
+
+                 function()
+                 {
+
+                   
+                    $.ajax({
+                        type:'post',
+                        data:{id:id,_token:'{{csrf_token()}}' },
+                        url:'/admin/video/pay',
+                        success:function(data){
+                        layer.msg(data); 
+                        location.href = location.href;  
+                        },
+                        dateType:'json'
+                    });  
+                 },
+                 function()
+                 {  
+                   layer.msg('取消操作');
+                 }
+            );
+
+            
+        }
+function free (id){
+
+
+
+            layer.confirm('您确定要免费此视频吗？', 
+                {
+                  btn: ['确认','取消'] //按钮
+                },
+
+                 function()
+                 {
+
+                   
+                    $.ajax({
+                        type:'post',
+                        data:{id:id,_token:'{{csrf_token()}}' },
+                        url:'/admin/video/free',
+                        success:function(data){
+                        layer.msg(data); 
+                        location.href = location.href;  
+                        },
+                        dateType:'json'
+                    });  
+                 },
+                 function()
+                 {  
+                   layer.msg('取消操作');
+                 }
+            );
+
+            
+        }    
 
 </script>
 

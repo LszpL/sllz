@@ -86,9 +86,11 @@
 @section('js')
 <script type="text/javascript">
 
+
 function edit(id){
             layer.prompt({title: '标签修改', formType: 0},function(val, index){
                 //console.log(val);
+
             $.ajax({
                 type:'post',
                 data:{id:id,name:val,_token:'{{csrf_token()}}','_method':'put' },
@@ -96,7 +98,9 @@ function edit(id){
                 url:'/admin/position/'+id,
                 success:function(data){
                    layer.msg(data,{icon: 6});
+
                  location.href = location.href;
+
                  
                 },
                 dateType:'json'

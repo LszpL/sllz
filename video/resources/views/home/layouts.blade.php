@@ -169,12 +169,11 @@
       </div>
     </div>
   </header>
+
   <!-- 头部 -->
 @section('content')
 
 @show
-
-
 
  <!--  尾部-->
    <footer id="footer">
@@ -257,8 +256,12 @@
   <script src="{{asset('home_temp/history/js/base.core.js')}}"></script>
   <script src="{{asset('home_temp/history/js/app_34cd10da.js')}}"></script>
 
+ @yield('js') 
 </body>
 </html>
+
+
+
 
  <!-- 尾部 -->
 

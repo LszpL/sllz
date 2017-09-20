@@ -191,5 +191,8 @@ Route::get('/home/user/myupload','Home\UploadController@myupload');
 // 前台
 Route::get('/home/user/comment','Home\UserController@comment');
 Route::get('/home/user/history','Home\UserController@history');
+Route::post('/home/user/history/delhistory','Home\UserController@delhistory');
+Route::get('/home/play/index','Home\PlayController@index');
+//Route::post('/test','Home\UserController@delhistory');
 
 

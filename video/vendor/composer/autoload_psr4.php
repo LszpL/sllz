@@ -32,6 +32,7 @@ return array(
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'Predis\\' => array($vendorDir . '/predis/predis/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Overtrue\\LaravelFilesystem\\Qiniu\\' => array($vendorDir . '/overtrue/laravel-filesystem-qiniu/src'),
     'Overtrue\\Flysystem\\Qiniu\\' => array($vendorDir . '/overtrue/flysystem-qiniu/src'),

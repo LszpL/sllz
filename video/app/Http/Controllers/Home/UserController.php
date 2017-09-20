@@ -52,10 +52,27 @@ class UserController extends Controller
 
     public function history()
     {
-        $data = \DB::table('watchs_history')->leftJoin('videos_data', 'watchs_history.videos_id', '=', 'videos_data.video_id')->where('users_id','1')->get();
+        $data = \DB::table('watchs_history')->leftJoin('videos_data', 'watchs_history.videos_id', '=', 'videos_data.video_id')->where('users_id','1')->paginate(10);
+//        dd($data);
         return view('home.user.history')->with(['title'=>'观看历史','data'=>$data]);
     }
 
+    public function delhistory(Request $request)
+    {
+        $id = $request->only('id');
+        $res = \DB::table('watchs_history')->where('watchs_id',$id)->delete();
+        if($res)
+        {
+            $data = [
+                'state'=>1
+            ];
+        }else{
+            $data = [
+                'state'=>0
+            ];
+        }
+        return $data;
+    }
 
 }
 

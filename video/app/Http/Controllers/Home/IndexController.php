@@ -47,7 +47,16 @@ class IndexController extends Controller
 		 $data_1=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('parent_id','0')->where('videos_data.created_at','>',$day_3)->orderBy('video_count','desc')->get();
 		 $data_2=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('parent_id','0')->orderBy('videos_data.created_at','desc')->get();
 		 //更多 视频显示数
-		 $a=4;
+		 
+		 // if(!isset($_GET['a'])){
+		 // 	$_GET['a']=2;
+		 // }elseif($_GET['a']=2){
+		 // 	$_GET['a']=4;
+		 // }elseif($_GET['a']=4){
+		 // 	$_GET['a']=2;
+		 // }
+		 
+
 		    // $data=[]; 
 
 	     //   foreach($res as $k=>$v){
@@ -94,9 +103,10 @@ class IndexController extends Controller
 
 	        // }
 	     	
-		return view('home.index.index',['title'=>'视频首页'])->with(['types'=>$types,'data_1'=>$data_1,'data_2'=>$data_2,'a'=>$a]);
+		return view('home.index.index',['title'=>'视频首页'])->with(['types'=>$types,'data_1'=>$data_1,'data_2'=>$data_2]);
 
 	} 
+
 
 	
 }

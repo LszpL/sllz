@@ -164,7 +164,8 @@ Route::post('phone','Home\LoginController@index');
 
 //前台首页
  Route::get('/home/index/index','home\IndexController@index');
-
+ // Route::get('/home/index/more','home\IndexController@more');
+ 
 
 
 

@@ -19,7 +19,7 @@
     <script src="{{asset('admin/assets/js/echarts.min.js')}}"></script>
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/bootstrap.min.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/AdminLTE.min.css')}}"> -->
-    
+    <link rel="stylesheet" href="{{asset('admin_temp/assets/css/sweetalert.css')}}">
     <link rel="stylesheet" href="{{asset('admin_temp/bower_components/font-awesome/css/font-awesome.min.css')}}">
    
 </head>

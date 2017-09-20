@@ -84,7 +84,7 @@ class PositionController extends Controller
     public function update(Request $request, $id)
     {
         $name =$request->input('name');
-    
+
         $sql = \DB::table('positions')->where('position_name',$name)->first();
         if ($sql) {
             $news='已存在';

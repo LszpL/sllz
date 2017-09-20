@@ -46,7 +46,9 @@
                                             <a href="javascript:;" class="tpl-table-images-content-i">
                                                 <div class="tpl-table-images-content-i-info">
                                                     <span class="ico" style="margin-left:130px; ">
+
                                             <img src="/{{$first->video_img}}" alt="">{{$first->video_time}}
+
                                          </span>
 
                                                 </div>
@@ -260,7 +262,9 @@
                                                                                
                                                                                     <button  class="am-btn am-btn-default am-btn-xs am-text-secondary"  >
                                                                                         <span class="am-icon-pencil-square-o" ></span>
+
                                                                                         <a href="/admin/position/push/add/{{$first->video_id}}" >推广</a>
+
                                                                                      </button>
 
                                                                                     
@@ -271,6 +275,7 @@
                                                                     <td>
                                                                         <div class="am-btn-toolbar">
                                                                             <div class="am-btn-group am-btn-group-xs">
+
                                                                                 @if($first->video_vip == '免费')
                                                                                 <button  class="am-btn am-btn-default am-btn-xs am-text-secondary"  >
                                                                                     <span class="am-icon-pencil-square-o" ></span>
@@ -282,6 +287,7 @@
                                                                                 <a href="JavaScript:;"  onclick=" free({{$first->video_id}}) "> 已付费</a> 
                                                                                 </button>
                                                                                 @endif
+
                                                                             </div>
                                                                         </div>
                                                                     </td>
@@ -385,6 +391,7 @@ function offline (id){
 
             
         }
+
     function pay (id){
 
 

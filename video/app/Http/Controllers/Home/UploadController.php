@@ -35,6 +35,8 @@ class UploadController extends Controller
     public function upload(Request $request){
 
 
+//        $data = $request->session()->all();
+//        dd($data);
         //表单验证
         $data = $request->except('_token');
         $rule = [

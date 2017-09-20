@@ -281,7 +281,9 @@
             <div class="more-wrap">
               <a href="#" class="dynamic"><i></i>392条新动态</a>
               
+
               <a href="{{url('/home/index/index')}}" class="more">更多<i></i></a>
+
             </div>
           </div>
           <ul class="pic-list__wrapper clearfix tab-cont__item tab-cont__cur">

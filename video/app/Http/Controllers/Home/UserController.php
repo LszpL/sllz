@@ -18,7 +18,11 @@ class UserController extends Controller
     public function message()
     {
 
-        return view('home.user.message');
+        $message=\DB::table('users_message')->get();
+
+
+        return view('home.user.message',compact('message'));
+
 
     }
 
@@ -48,6 +52,7 @@ class UserController extends Controller
 
     public function history()
     {
+
         return view('home.user.history')->with('title','观看历史');
     }
 

@@ -84,8 +84,10 @@ Route::post('video/index','VideoController@index');
 Route::get('video/detail/{id}','VideoController@detail');
 Route::post('video/online','VideoController@online');
 Route::post('video/offline','VideoController@offline');
+
 Route::post('video/pay','VideoController@pay');
 Route::post('video/free','VideoController@free');
+
 Route::get('video/edit/{id}','VideoController@edit');
 Route::post('video/update/{id}','VideoController@update');
 Route::get('video/delete/{id}','VideoController@delete');
@@ -157,8 +159,12 @@ Route::post('home/dologin','Home\LoginController@dologin');
 
 Route::get('home/zhuce','Home\LoginController@zhuce');
 
+
+Route::post('home/dozhuce','Home\LoginController@dozhuce');
+
 //注册手机验证码
 Route::post('phone','Home\LoginController@index');
+
 
 
 
@@ -186,4 +192,5 @@ Route::get('/home/user/myupload','Home\UploadController@myupload');
 // 前台
 Route::get('/home/user/comment','Home\UserController@comment');
 Route::get('/home/user/history','Home\UserController@history');
+
 

@@ -106,7 +106,9 @@ class VideoController extends Controller
 		}
 	
 		if($res && $num ==$mun ){
+
 		    return redirect('admin/video/index')->with(['info'=>'添加成功']);
+
 		}else{
 			return back()->with(['info'=>'添加失败']);
 		}	
@@ -178,6 +180,7 @@ class VideoController extends Controller
 		
 		echo $news;
     }
+
      public function pay(Request $request)
     {
     	$id=$request->input('id');
@@ -205,6 +208,9 @@ class VideoController extends Controller
 		
 		echo $news;
     }
+
+
+
     public function edit($id)
     {
 

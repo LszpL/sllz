@@ -38,7 +38,7 @@ var FancyForm=function(){
 </script>
 
 <!-- 头部 -->
-  <header id="header">
+  <header id="header" style="z-index: 0;">
     <div id="page_top">
       <div class="bg-wrap">
         <div class="bg"></div>
@@ -107,10 +107,6 @@ var FancyForm=function(){
                       <div class="title">热门直播:</div>
                       <div class="cont">
                         <a href="#">
-                          <img src="{{asset('home_temp/images/cont/live-box__img1.jpg')}}" alt="#">
-                          <i>LIVE</i>
-                          <p>热爱电竞の三三</p>
-                        </a>
                         <a href="#">
                           <img src="{{asset('home_temp/images/cont/live-box__img2.jpg')}}" alt="#">
                           <i>LIVE</i>
@@ -126,11 +122,7 @@ var FancyForm=function(){
                           <i>LIVE</i>
                           <p>一只小鹿噜噜噜</p>
                         </a>
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/live-box__img5.jpg')}}" alt="#">
-                          <i>LIVE</i>
-                          <p>污叶妹屮</p>
-                        </a>
+
                         <a href="#">
                           <img src="{{asset('home_temp/images/cont/live-box__img6.jpg')}}" alt="#">
                           <i>LIVE</i>
@@ -175,20 +167,20 @@ var FancyForm=function(){
   </header>
   <!-- 头部 -->
   <div class="container" >
-    <div class="register-box" style="position:absolute;top:-726px;right:266px;">
+    <div class="register-box" style="position:absolute;top:-726px;right:290px;">
       <div class="reg-slogan">
         用户注册</div>
       <div class="reg-form" id="js-form-mobile">
-      <form action="{{url('/home/dologin')}}" method="post">
+      <form action="{{url('/home/dozhuce')}}" method="post" >
       <!-- 提示信息 -->
-        <div >
+        <div style="display: none">
             @if(session('info'))
             <p id="session">{{session('info')}}</p>
             @endif
         </div>
         <!-- 验证信息 -->
         @if (count($errors) > 0)
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" style="display: none">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li class= "info" >{{ $error }}</li>
@@ -199,6 +191,7 @@ var FancyForm=function(){
       {{csrf_field()}}
         <br>
         <br>
+
         <div class="cell" >
           <label for="js-mobile_ipt">请输入手机号码</label>
           <input type="text" name="login_name" id="js-mobile_ipt" class="text"  value="{{old('login_name')}}" onclick="layer.tips('请输入11位手机号码','.text',{tips:[2,'#92afed'],time:5000});" />
@@ -214,7 +207,7 @@ var FancyForm=function(){
         <!-- !短信验证码 -->
         <div class="cell vcode">
           <label for="js-mobile_vcode_ipt" >输入手机验证码</label>
-          <input type="text" name="code" id="js-mobile_vcode_ipt" class="text cd" maxlength="6" onclick="layer.tips('请输入手机验证码','.cd',{tips:[4,'#92afed'],time:5000});" />
+          <input type="text" name="code" id="js-mobile_vcode_ipt" class="text cd" maxlength="6"  onclick="layer.tips('请输入手机验证码','.cd',{tips:[4,'#92afed'],time:5000});" />
              <!--        <a onclick="javascript:re_captcha();">  
             <img src="{{ URL('/code/captcha/1') }}" id="127ddf0de5a04167a9e427d883690ff6" >  
             </a> -->
@@ -284,21 +277,36 @@ $(document).ready(function() {
   FancyForm.setup();
 });
 function phone(){
+  var pwd = $('#js-mobile_pwd_ipt').val();
+  var repwd = $('#js-mail_ipt').val();
   // alert(111);
   var phone = $('#js-mobile_ipt').val();
-  $.post("{{url('/phone')}}",{'_token':"{{csrf_token()}}",'phone':phone},function(data){
-    layer.alert('验证码发送成功');
+  var reg = /^1[35678]\d{9}$/;
+  var res =reg.test(phone);
+  if(res){
+  $.post("{{url('/phone')}}",{'_token':"{{csrf_token()}}",'phone':phone,'pwd':pwd,'repwd':repwd},function(data){
+    layer.msg(data);
   });
+  }else{
+    layer.msg('手机号码不存在');
+  }
 }
 
 
+//验证信息
+var str = '';
+        if(typeof($('.info').html()) == 'string' && $('.info').html() !== null    ){
+               $('.info').each(function(i,n){
+                 str += $(n).html()+'<br>'; 
+                 layer.msg(str, {time:3000});   
+            });
+        }
 
-
-function re_captcha() {  
-    $url = "{{ URL('/code/captcha') }}";
-    $url = $url + "/" + Math.random();
-        document.getElementById('127ddf0de5a04167a9e427d883690ff6').src = $url;
-    }
+        //提示信息
+         if(typeof($('#session').html()) == 'string' &&  $('#session').html()  )
+      {
+            layer.msg($('#session').html(), {time:3000});
+      }
 
 </script>
 

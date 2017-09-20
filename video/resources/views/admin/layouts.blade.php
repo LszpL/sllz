@@ -20,7 +20,8 @@
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/bootstrap.min.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/AdminLTE.min.css')}}"> -->
     <link rel="stylesheet" href="{{asset('admin/bower_components/font-awesome/css/font-awesome.min.css')}}">
-	    <link rel="stylesheet" href="{{asset('admin_temp/assets/css/sweetalert.css')}}">
+    <link rel="stylesheet" href="{{asset('admin_temp/assets/css/sweetalert.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('admin_temp/assets/css/ch-ui.admin.css')}}"> -->
 </head>
 
 <body data-type="index">
@@ -72,7 +73,7 @@
                         </span>
                     </a>
                     <ul class="am-dropdown-content">
-                        <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
+                        <!-- <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li> -->
                         <li><a href="{{url('/admin/admin/mima')}}"><span class="am-icon-cog"></span> 修改密码</a></li>
                         <li><a href="{{url('/admin/logout')}}"><span class="am-icon-power-off"></span> 退出</a></li>
                     </ul>
@@ -393,19 +394,15 @@
     <script src="{{asset('admin/assets/js/iscroll.js')}}"></script>
     <script src="{{asset('admin/assets/js/app.js')}}"></script>
     <script src="{{asset('admin/layer/layer.js')}}"></script>
-	<script src="{{asset('admin_temp/assets/js/sweetalert-dev.js')}}"></script>
-	<script src="{{asset('admin_temp/assets/js/sweetalert.min.js')}}"></script>
-	<script src="{{asset('/layer/layer.js')}}"></script>
-	<script type="text/javascript" src="{{asset('admin_temp/assets/layer/layer.js')}}"></script>
-	<script type="text/javascript" src="{{asset('admin_temp/assets/js/sweetalert-dev.js')}}"></script>
-	<script type="text/javascript" src="{{asset('admin_temp/assets/js/sweetalert.min.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('js-sdk/dist/qiniu.js')}}" >
+    <script src="{{asset('admin_temp/assets/js/sweetalert-dev.js')}}"></script>
+    <script src="{{asset('admin_temp/assets/js/sweetalert.min.js')}}"></script>
+     <link rel="stylesheet" href="{{asset('js-sdk/dist/qiniu.js')}}" >
 {{--七牛插件引入--}}
 <script type="text/javascript" src="{{asset('admin_temp/assets/js/sweetalert.min.js')}}"></script>
+
 <script type="text/javascript" src="http://cdn.staticfile.org/plupload/2.1.9/i18n/ar.js"></script>
-<script type="text/javascript"    src="{{asset('admin_temp/assets/js/echarts.min.js')}}"></script>
-<script type="text/javascript"   src="{{asset('admin_temp/assets/js/bootstrap.min.js')}}"></script>
-    
+
+<!-- <script type="text/javascript"   src="{{asset('admin_temp/assets/js/bootstrap.min.js')}}"></script> -->
     <script type="text/javascript">
         //验证信息
         var str = '';

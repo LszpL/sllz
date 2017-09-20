@@ -155,6 +155,8 @@ Route::post('home/dologin','Home\LoginController@dologin');
 
 Route::get('home/zhuce','Home\LoginController@zhuce');
 
+Route::post('home/dozhuce','Home\LoginController@dozhuce');
+
 //注册手机验证码
 Route::post('phone','Home\LoginController@index');
 

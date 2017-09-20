@@ -87,13 +87,65 @@ class LoginController extends Controller
     public function index(Request $request)
     {
     	// dd(111);
-    	$phone = $request->input('phone');
+        $phone = $request->input('phone');
+        $user = \DB::table('users_login')->where('login_name',$phone)->first();
+        if($user){
+            $data='用户名已存在';
+        }else{
+        if($request->input('pwd')!=$request->input('repwd')){
+            $data='两次密码不一致';    
+        }else{
+        $data='验证码发送成功';
     	$name="兄弟连";
-    	$num = rand(0000,9999);
+    	$num = rand(000000,999999);
+        
     	$a=['number'=>"$num"];
     	$content=json_encode($a);
     	$code='SMS_75835101';
-       $result=$this->sms->send("$phone","$name","$content","$code");
+        $result=$this->sms->send("$phone","$name","$content","$code");
+        session(['code'=>$num]);
+        }
+        }
+        return $data;
     }
 
+    public function dozhuce(Request $request){
+        // dd($request->all());
+        //表单验证
+        $this->validate($request,[
+            'login_name' => 'required|digits:11|regex:/^1[35678]\d{9}$/',
+            'login_pwd' => 'required|between:6,18',
+            're_pwd' => 'required|same:login_pwd',
+            'code' => 'required|between:6,6',
+            ],[
+            'login_name.required'=>'手机号不能为空',
+            'login_name.digits'=>'手机号必须为11位',
+            'login_name.regex'=>'手机号不合法',
+            'login_pwd.required'=>'密码不能为空',
+            'login_pwd.between'=>'密码必须在6-18位之间',
+            're_pwd.required'=>'确认密码不能为空',
+            're_pwd.same'=>'确认密码不一致',
+            'code.required'=>'验证码必须输入',
+            'code.between'=>'验证码必须是6位',
+            ]);
+
+        if(session('code') != $request->input('code')){
+            return back()->with(['info'=>'验证码错误'])->withInput();
+        }else{
+        $data=$request->except('_token','re_pwd','code');
+
+        //密码处理
+        $data['login_pwd']=encrypt($data['login_pwd']);
+        $time = date('Y-m-d H:i:s',time());
+        $data['login_time'] = $time;
+        $data['login_ip'] = $_SERVER['REMOTE_ADDR'];
+        $res = \DB::table('users_login')->insert($data);
+        if($res){
+            return redirect('/home/login')->with(['info'=>'注册成功']);
+        }else{
+            return back()->with(['info'=>'注册失败']);
+        }
+        }
+
+    }
 }

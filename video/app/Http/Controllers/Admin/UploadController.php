@@ -92,7 +92,6 @@ class UploadController extends Controller
             foreach ($data as $key => $value) {
                 $num = substr_count($value->path, ',');
                 $data[$key]->type_name = str_repeat('|| - ', $num) . $value->type_name;
-
             }
             return view('admin.uploads.add', ['title' => '用户视频添加'], compact('data')
             );

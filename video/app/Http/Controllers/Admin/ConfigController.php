@@ -16,6 +16,7 @@ class ConfigController extends Controller
     //显示列表
     public function index()
     {
+
         $conf = Config::orderBy('conf_order')->get();
         foreach ($conf as $k=>$v){
             switch( $v->field_type){

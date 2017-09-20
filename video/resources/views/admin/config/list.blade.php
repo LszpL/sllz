@@ -38,32 +38,32 @@
                                 </ul>
                             </div>
 
-                            <div class="result_wrap">
+                            {{--<div class="result_wrap">--}}
                                 <!--面包屑导航 开始-->
 
                                 <!--面包屑导航 结束-->
 
                                 <!--结果页快捷搜索框 开始-->
-                                <div class="search_wrap">
+                                {{--<div class="search_wrap">--}}
                                 <form action="{{url('admin/user')}}" method="get">
-                                <table class="search_tab">
-                                <tr>
-                                <th width="120">选择网站配置:</th>
-                                <td>
-                                <select onchange="javascript:location.href=this.value;">
-                                <option value="">全部</option>
-                                <option value="http://www.baidu.com">百度</option>
-                                <option value="http://www.sina.com">新浪</option>
-                                </select>
-                                </td>
-                                <th width="70">关键字:</th>
-                                <td><input type="text" name="keywords" value="" placeholder="关键字"></td>
-                                <td><input type="submit"  value="查询"></td>
-                                </tr>
-                                </table>
+                                {{--<table class="search_tab">--}}
+                                {{--<tr>--}}
+                                {{--<th width="120">选择网站配置:</th>--}}
+                                {{--<td>--}}
+                                {{--<select onchange="javascript:location.href=this.value;">--}}
+                                {{--<option value="">全部</option>--}}
+                                {{--<option value="http://www.baidu.com">百度</option>--}}
+                                {{--<option value="http://www.sina.com">新浪</option>--}}
+                                {{--</select>--}}
+                                {{--</td>--}}
+                                {{--<th width="70">关键字:</th>--}}
+                                {{--<td><input type="text" name="keywords" value="" placeholder="关键字"></td>--}}
+                                {{--<td><input type="submit"  value="查询"></td>--}}
+                                {{--</tr>--}}
+                                {{--</table>--}}
                                 </form>
-                                </div>
-                                <!--结果页快捷搜索框 结束-->
+                                {{--</div>--}}
+                                {{--<!--结果页快捷搜索框 结束-->--}}
 
                                 <!--搜索结果页面 列表 开始-->
                                 <form action="{{url('admin/config/changecontent')}}" method="post">
@@ -71,9 +71,9 @@
                                 <div class="result_wrap">
                                 <!--快捷导航 开始-->
                                 <div class="result_content">
-                                <div class="short_wrap">
-                                <a href="#"><i class="fa fa-plus"></i>{{config('web.keywords')}}</a>
-                                </div>
+                                {{--<div class="short_wrap">--}}
+                                {{--<a href="#"><i class="fa fa-plus"></i>{{config('web.keywords')}}</a>--}}
+                                {{--</div>--}}
                                 </div>
                                 <!--快捷导航 结束-->
                                 </div>
@@ -102,7 +102,7 @@
                                 <td>
                                 <input type="hidden" name="conf_id[]" value="{{$v->conf_id}}">
                                 {{--不解析成字符实体--}}
-                                <a href="#">{!! $v->_content !!}</a>
+                                <a href="#">{!! $v->_content  !!} </a>
                                 </td>
                                 <td>
                                 <a href="{{url('admin/config/'.$v->conf_id.'/edit')}}">修改</a>

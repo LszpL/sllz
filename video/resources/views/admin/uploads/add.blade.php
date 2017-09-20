@@ -48,10 +48,10 @@
                                 {{csrf_field()}}
                                 <div class="am-form-group">
                                     <label for="user-weibo" class="am-u-sm-3 am-form-label">上传视频</label>
-                                    <div class="am-u-sm-9">
+                                    <div class="am-u-sm-9"  >
                                         {{--<input type="file" id="user-weibo" name="file_name">--}}
                                         {{--<input type="text" size="50" name="art_thumb" id="art_thumb">--}}
-                                        <input id="file_name" name="file_name" type="file" multiple="true">
+                                        <input   class="am-form-label"   class="am-u-sm-3 am-form-label" id="file_name" name="file_name" type="file" multiple="true">
                                         {{--<p><img id="img1" alt="上传后显示图片"  style="max-width:350px ;max-height:100px;" /></p>--}}
                                     </div>
                                 </div>
@@ -70,6 +70,7 @@
                                             <option value="0">根类</option>
 
                                             @foreach( $data as $item)
+
                                                 <option value="{{$item->type_id}}" >{{$item->type_name}}</option>
 
                                             @endforeach

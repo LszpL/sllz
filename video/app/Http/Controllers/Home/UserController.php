@@ -17,8 +17,10 @@ class UserController extends Controller
 
     public function message()
     {
+        $message=\DB::table('users_message')->get();
 
-        return view('home.user.message');
+
+        return view('home.user.message',compact('message'));
 
     }
 

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
   <meta charset="UTF-8">
   <title>Demo</title>
   <link rel="shortcut icon" href="favicons/1.png')}}">
-
   <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
@@ -174,9 +172,6 @@
 @section('content')
 
 @show
-
-
-<<<<<<< HEAD
  <!--  尾部-->
    <footer id="footer">
     <div class="page-width">
@@ -247,10 +242,10 @@
     <div class="sideBar-line"></div>
     <a href="#" class="sideBar-toTop" id="backTop"></a>
   </div>
-
   
   <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
   <script src="{{asset('home_temp/js/script.js')}}"></script>
+
 
 </body>
 </html>

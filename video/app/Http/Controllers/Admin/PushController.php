@@ -23,11 +23,7 @@ class PushController extends Controller
             $data[$k]->video_name = $video->video_name;
             $data[$k]->video_comments = $video->video_comments;
             $data[$k]->video_count = $video->video_count;
-//            echo $k ,'  ';
-//            var_dump($v);
-//            echo '<br>';
         }
-die;
 
         $position = \DB::table('positions')->get();
         return view('admin.position.push.index')->with(['title'=>'推广视频列表','data'=>$data,'position'=>$position,'request'=>$request->all()]);

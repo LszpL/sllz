@@ -10,7 +10,10 @@ class IndexController extends Controller
     //
 	public function index(){
 
+
 		//查询分类
+
+
 		$type = \DB::table('videos_type')->select('*',\DB::raw("concat(path,',',type_id) AS sort_path"))->orderBy('sort_path')->get();
 
 
@@ -26,6 +29,7 @@ class IndexController extends Controller
 	       	
        	];	
        }
+
 		$r=array();	
 		foreach($arr as $v){
 
@@ -39,6 +43,7 @@ class IndexController extends Controller
 			}
 		$types=[];	
 		$types=$r[0];
+
 		//三天前
 		$day_3=date('Y-m-d H:i:s',strtotime('-3day'));
 	
@@ -48,6 +53,7 @@ class IndexController extends Controller
 		 //更多 视频显示数
 		 $a=4;
 		    // $data=[]; 
+
 
 
 		
@@ -62,6 +68,7 @@ class IndexController extends Controller
 		
 		       }
 		  }
+
 //		  die;
 //		echo'<pre>';
 //		print_r($types);
@@ -114,6 +121,16 @@ class IndexController extends Controller
 	        // }
 	     	
 		return view('home.index.index',['title'=>'视频首页'])->with(['types'=>$types,'data_1'=>$data_1,'data_2'=>$data_2,'a'=>$a]);
+
+		  die;      
+		echo'<pre>'; 
+		print_r($types);
+		echo '</pre>'; 
+		
+
+
+		return view('home.index.index',['title'=>'视频首页'])->with(['types'=>$types]);
+
 
 	} 
 

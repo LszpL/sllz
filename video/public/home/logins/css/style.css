@@ -56,7 +56,11 @@ button.button{height:40px;padding:0 35px;line-height:normal;}
 .banner-control a.right:hover{background-position:-30px -30px;}
 .container{position:relative;top:600px;z-index:2;width:980px;height:0;margin:auto;}
 
+<<<<<<< HEAD
 .register-box{position:absolute;top:-500px;right:0;width:396px;height:415px;background:white;border-radius:3px;background:rgba(255, 255, 255, 0.95);}
+=======
+.register-box{position:absolute;top:-500px;right:0;width:396px;height:370px;background:white;border-radius:3px;background:rgba(255, 255, 255, 0.95);}
+>>>>>>> 2931ab0b91a12f0eccb51218af5043a8520c5322
 .reg-tab{position:relative;width:396px;height:57px;zoom:1;overflow:hidden;border-radius:3px 3px 0 0;}
 .reg-tab span{float:left;width:198px;height:57px;margin-left:-1px;line-height:57px;text-align:center;font-size:24px;color:#444;border-left:1px solid #d2d3d4;background:url(../images/bg_tab_x.png?v=201406241538) repeat-x 0 0;cursor:pointer;}
 .reg-tab span:first-child{border-top-left-radius:3px;}

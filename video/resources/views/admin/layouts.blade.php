@@ -17,14 +17,17 @@
     <link rel="stylesheet" href="{{asset('admin/assets/css/admin.css')}}">
     <link rel="stylesheet" href="{{asset('admin/assets/css/app.css')}}">
     <script src="{{asset('admin/assets/js/echarts.min.js')}}"></script>
+
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/bootstrap.min.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/AdminLTE.min.css')}}"> -->
     <link rel="stylesheet" href="{{asset('admin/bower_components/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin_temp/assets/css/sweetalert.css')}}">
     <!-- <link rel="stylesheet" href="{{asset('admin_temp/assets/css/ch-ui.admin.css')}}"> -->
+
 </head>
 
 <body data-type="index">
+
 
      <!-- 提示信息 -->
     <div style="display:none;">
@@ -408,6 +411,7 @@
 <script type="text/javascript" src="http://cdn.staticfile.org/plupload/2.1.9/i18n/ar.js"></script>
 
 <!-- <script type="text/javascript"   src="{{asset('admin_temp/assets/js/bootstrap.min.js')}}"></script> -->
+
     <script type="text/javascript">
         //验证信息
         var str = '';
@@ -437,6 +441,7 @@
    </script>  
 
     @yield('js')
+
 
 </body>
 

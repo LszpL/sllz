@@ -281,7 +281,7 @@
             <div class="more-wrap">
               <a href="#" class="dynamic"><i></i>392条新动态</a>
               
-              <a href="{{url('/home/index/more')}}" class="more">更多<i></i></a>
+              <a href="{{url('/home/index/index?a=')}}{{$_GTE['a']}}" class="more">更多<i></i></a>
             </div>
           </div>
           <ul class="pic-list__wrapper clearfix tab-cont__item tab-cont__cur">
@@ -289,7 +289,7 @@
              <div style="display:none;"> {{$i=0}}</div>
            @foreach($data_1 as $kk=>$vv)
               
-              @if($i<$a && $vv->type_id==$k)
+              @if($i<4 && $vv->type_id==$k)
              <div style="display:none;"> {{$i++}}</div>
             <li class="item">
               <a href="#" class="img-link">

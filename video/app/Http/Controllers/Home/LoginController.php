@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use Gregwar\Captcha\CaptchaBuilder; 
 use Gregwar\Captcha\PhraseBuilder;
 
+
 use iscms\Alisms\SendsmsPusher as Sms; //aliyun
+
+
 
 class LoginController extends Controller
 {
@@ -148,4 +151,5 @@ class LoginController extends Controller
         }
 
     }
+
 }

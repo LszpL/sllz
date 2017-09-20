@@ -3,9 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{{$title}}</title>
+
 <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
+
 <link href="{{asset('home/logins/css/style.css')}}" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="{{asset('home/logins/js/jquery-1.7.2.js')}}"></script>
@@ -13,6 +15,7 @@
 
 </head>
 <body>
+
 <!-- 头部 -->
   <header id="header" style="z-index: 0;height: 42px;">
     <div id="page_top">
@@ -150,6 +153,7 @@
 
   </header>
   <!-- 头部 -->
+
 <div class="wrap">
   <div class="banner-show" id="js_ban_content">
     <div class="cell bns-01">
@@ -158,6 +162,7 @@
     </div>
     <div class="cell bns-02" style="display:none;">
       <div class="con">
+
 
         <i></i></a> </div>
     </div>
@@ -171,6 +176,7 @@
     <a href="javascript:;" class="left">左</a>
     <a href="javascript:;" class="right">右</a>
   </div> -->
+
 <script type="text/javascript">
 ;(function(){
   
@@ -269,14 +275,18 @@ var FancyForm=function(){
       <div class="reg-form" id="js-form-mobile">
       <form action="{{url('/home/dologin')}}" method="post">
       <!-- 提示信息 -->
+
         <div style="display: none;">
+
             @if(session('info'))
             <p id="session">{{session('info')}}</p>
             @endif
         </div>
         <!-- 验证信息 -->
         @if (count($errors) > 0)
+
             <div class="alert alert-danger" style="display: none;">
+
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li class= "info" >{{ $error }}</li>
@@ -312,12 +322,15 @@ var FancyForm=function(){
           </div>
           <button type="submit" id="js-mobile_btn"  class="button btn-green">
           立即登录</button>
+
           <a href="{{url('/home/zhuce')}}"><button type="button" class="button btn-white" style="position: absolute;bottom:77px;right: 35px;">
+
           立即注册</button></a>
         </form>
       </div>
   </div>
 </div>
+
 
 <footer id="footer" style="position:absolute;top: 601px;">
     <div class="page-width">
@@ -366,6 +379,7 @@ var FancyForm=function(){
     </div>
   </footer>
 
+
 <script type="text/javascript">
 $(document).ready(function() {
   FancyForm.setup();
@@ -389,6 +403,7 @@ var str = '';
       {
             layer.msg($('#session').html());
       }
+
 </script>
 
 </body>

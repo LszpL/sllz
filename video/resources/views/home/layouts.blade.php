@@ -5,9 +5,9 @@
   <title>Demo</title>
   <link rel="shortcut icon" href="favicons/1.png')}}">
 
-  <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
-  <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
-  <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
+  <link rel="stylesheet" href="{{asset('home_temp/history/css/reset.css')}}">
+  <link rel="stylesheet" href="{{asset('home_temp/history/css/common.css')}}">
+  <link rel="stylesheet" href="{{asset('home_temp/history/css/index.css')}}">
 </head>
 <body>
   <!-- 头部 -->
@@ -247,9 +247,15 @@
     <a href="#" class="sideBar-toTop" id="backTop"></a>
   </div>
 
-  
+
   <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-  <script src="{{asset('home_temp/js/script.js')}}"></script>
+  <script src="{{asset('home_temp/history/js/script.js')}}"></script>
+  <script src="{{asset('home_temp/history/js/vendor_34cd10da.js')}}"></script>
+  <script src="{{asset('home_temp/history/js/nav.js')}}"></script>
+  <script src="{{asset('home_temp/history/js/jquery.min.js')}}"></script>
+  <script src="{{asset('home_temp/history/js/footer.js')}}"></script>
+  <script src="{{asset('home_temp/history/js/base.core.js')}}"></script>
+  <script src="{{asset('home_temp/history/js/app_34cd10da.js')}}"></script>
 
 </body>
 </html>

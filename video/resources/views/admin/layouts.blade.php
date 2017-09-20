@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="{{asset('admin/assets/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('admin/assets/css/admin.css')}}">
     <link rel="stylesheet" href="{{asset('admin/assets/css/app.css')}}">
-    <script src="{{asset('admin/assets/js/echarts.min.js')}}"></script>
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/bootstrap.min.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/AdminLTE.min.css')}}"> -->
     <link rel="stylesheet" href="{{asset('admin/bower_components/font-awesome/css/font-awesome.min.css')}}">
@@ -388,7 +387,7 @@
     @yield('content')
     </div>
 
-
+    <script src="{{asset('admin/assets/js/echarts.min.js')}}"></script>
     <script src="{{asset('admin/assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('admin/assets/js/amazeui.min.js')}}"></script>
     <script src="{{asset('admin/assets/js/iscroll.js')}}"></script>

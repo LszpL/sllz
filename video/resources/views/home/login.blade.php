@@ -17,7 +17,7 @@
 <body>
 
 <!-- 头部 -->
-  <header id="header" style="z-index: 0;height: 42px;">
+<!--   <header id="header" style="z-index: 0;height: 42px;"> -->
     <div id="page_top">
       <div class="bg-wrap">
         <div class="bg"></div>
@@ -151,7 +151,7 @@
       </div>
     </div>
 
-  </header>
+  <!-- </header> -->
   <!-- 头部 -->
 
 <div class="wrap">
@@ -271,65 +271,64 @@ var FancyForm=function(){
   <div class="container">
     <div class="register-box">
       <div class="reg-slogan">
-        用户登录</div>
-      <div class="reg-form" id="js-form-mobile">
-      <form action="{{url('/home/dologin')}}" method="post">
-      <!-- 提示信息 -->
+        用户登录
+      </div>
+        <div class="reg-form" id="js-form-mobile">
+        <form action="{{url('/home/dologin')}}" method="post">
+        <!-- 提示信息 -->
 
-        <div style="display: none;">
+          <div style="display: none;">
 
-            @if(session('info'))
-            <p id="session">{{session('info')}}</p>
-            @endif
-        </div>
-        <!-- 验证信息 -->
-        @if (count($errors) > 0)
+              @if(session('info'))
+              <p id="session">{{session('info')}}</p>
+              @endif
+          </div>
+          <!-- 验证信息 -->
+          @if (count($errors) > 0)
 
-            <div class="alert alert-danger" style="display: none;">
+              <div class="alert alert-danger" style="display: none;">
 
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li class= "info" >{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-      {{csrf_field()}}
-        <br>
-        <br>
-        <div class="cell">
-          <label for="js-mobile_ipt">请输入你的登录名</label>
-          <input type="text" name="login_name" id="js-mobile_ipt" class="text"  value="{{old('login_name')}}" onclick="layer.tips('请输入11位手机号码','.text',{tips:[1,'#92afed'],time:3000});" />
-        </div>
-        <br>
-        <div class="cell">
-          <label for="js-mobile_pwd_ipt">请输入密码</label>
-          <input type="password" name="login_pwd" id="js-mobile_pwd_ipt" class="text pd" value="" onclick="layer.tips('密码长度应在6-18个字符之间','.pd',{tips:[1,'#92afed'],time:3000});" />
-          <!-- <input type="text" name="passwd" id="js-mobile_pwd_ipt_txt" class="text" maxlength="20" style="display:none;" /> -->
-          <!-- <b class="icon-form ifm-view js-view-pwd" title="查看密码" style="display: none">
-          查看密码</b> --> 
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li class= "info" >{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+        {{csrf_field()}}
+          <br>
+          <br>
+          <div class="cell">
+            <label for="js-mobile_ipt">请输入你的登录名</label>
+            <input type="text" name="login_name" id="js-mobile_ipt" class="text"  value="{{old('login_name')}}" onclick="layer.tips('请输入11位手机号码','.text',{tips:[1,'#92afed'],time:3000});" />
           </div>
           <br>
-        <!-- !短信验证码 -->
-        <div class="cell vcode">
-          <label for="js-mobile_vcode_ipt">输入验证码</label>
-          <input type="text" name="code" id="js-mobile_vcode_ipt" class="text cd" maxlength="6" onclick="layer.tips('请输入4位验证码','.cd',{tips:[1,'#92afed'],time:3000});" />
-                    <a onclick="javascript:re_captcha();">  
-            <img src="{{ URL('/code/captcha/1') }}" id="127ddf0de5a04167a9e427d883690ff6" >  
-            </a>
-          <!-- <a href="javascript:;" id="js-get_mobile_vcode" class="button btn-disabled">
-          免费获取验证码</a> -->
+          <div class="cell">
+            <label for="js-mobile_pwd_ipt">请输入密码</label>
+            <input type="password" name="login_pwd" id="js-mobile_pwd_ipt" class="text pd" value="" onclick="layer.tips('密码长度应在6-18个字符之间','.pd',{tips:[1,'#92afed'],time:3000});" />
+            <!-- <input type="text" name="passwd" id="js-mobile_pwd_ipt_txt" class="text" maxlength="20" style="display:none;" /> -->
+            <!-- <b class="icon-form ifm-view js-view-pwd" title="查看密码" style="display: none">
+            查看密码</b> --> 
           </div>
-          <button type="submit" id="js-mobile_btn"  class="button btn-green">
-          立即登录</button>
+            <br>
+          <!-- !短信验证码 -->
+          <div class="cell vcode">
+            <label for="js-mobile_vcode_ipt">输入验证码</label>
+            <input type="text" name="code" id="js-mobile_vcode_ipt" class="text cd" maxlength="6" onclick="layer.tips('请输入4位验证码','.cd',{tips:[1,'#92afed'],time:3000});" />
+                      <a onclick="javascript:re_captcha();">  
+              <img src="{{ URL('/code/captcha/1') }}" id="127ddf0de5a04167a9e427d883690ff6" >  
+              </a>
+          </div>
+            <button type="submit" id="js-mobile_btn"  class="button btn-green">
+            立即登录</button>
 
-          <a href="{{url('/home/zhuce')}}"><button type="button" class="button btn-white" style="position: absolute;bottom:77px;right: 35px;">
+            <a href="{{url('/home/zhuce')}}"><button type="button" class="button btn-white" style="position: absolute;bottom:77px;right: 35px;">
 
-          立即注册</button></a>
+            立即注册</button></a>
         </form>
-      </div>
+        </div>
+    </div>
   </div>
-</div>
 
 
 <footer id="footer" style="position:absolute;top: 601px;">

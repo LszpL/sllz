@@ -41,7 +41,7 @@ var FancyForm=function(){
 
 
 <!-- 头部 -->
-  <header id="header" style="z-index: 0;">
+  <header id="header" style="z-index: 0;background: transparent;">
     <div id="page_top">
       <div class="bg-wrap">
         <div class="bg"></div>

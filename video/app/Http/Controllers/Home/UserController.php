@@ -48,6 +48,7 @@ class UserController extends Controller
 
     public function history()
     {
+
         return view('home.user.history')->with('title','观看历史');
     }
 

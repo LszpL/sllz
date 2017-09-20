@@ -25,7 +25,7 @@ class IndexController extends Controller
 	       	
        	];	
        }
-		dd($arr);
+//		dd($arr);
 		$r=array();	
 		foreach($arr as $v){
 
@@ -52,10 +52,10 @@ class IndexController extends Controller
 		
 		       }
 		  }
-		  die;      
-		echo'<pre>'; 
-		print_r($types);
-		echo '</pre>'; 
+//		  die;
+//		echo'<pre>';
+//		print_r($types);
+//		echo '</pre>';
 		
 
 

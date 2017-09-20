@@ -17,7 +17,6 @@ class PushController extends Controller
             $data = \DB::table('generalizes')->paginate(10);
         }
 
-        $tim = [];
         foreach($data as $k=>$v){
            $data[$k]->position_name = \DB::table('positions')->where('position_id',$v->position_id)->first()->position_name;
            $video = \DB::table('videos_data')->where('video_id',$v->video_id)->first();

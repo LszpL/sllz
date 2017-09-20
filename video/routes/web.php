@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -185,4 +184,5 @@ Route::get('/home/user/myupload','Home\UploadController@myupload');
 // 前台
 Route::get('/home/user/comment','Home\UserController@comment');
 Route::get('/home/user/history','Home\UserController@history');
+
 

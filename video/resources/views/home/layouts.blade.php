@@ -169,11 +169,11 @@
       </div>
     </div>
   </header>
+
   <!-- 头部 -->
 @section('content')
 
 @show
-
 
 
  <!--  尾部-->
@@ -250,9 +250,11 @@
   
   <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
   <script src="{{asset('home_temp/js/script.js')}}"></script>
-
+ @yield('js') 
 </body>
 </html>
 
- <!-- 尾部 -->
 
+
+
+ <!-- 尾部 -->

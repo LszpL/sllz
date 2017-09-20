@@ -47,7 +47,7 @@
                            		</div>
 	
                                 <div class="am-form-group">
-                                    <label for="user-name" class="am-u-sm-3 am-form-label">视频 / 分类</label>
+                                    <label for="user-name" class="am-u-sm-3 am-form-label" style="margin-right: 0px;">视频 / 分类</label>
                                     <div class="am-u-sm-9" >
                                         <select data-am-selected="{btnSize: 'sm'}" name="type_id"  >
                                           <option value="0" disabled >全部</option>	

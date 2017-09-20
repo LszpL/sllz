@@ -83,6 +83,8 @@ Route::post('video/index','VideoController@index');
 Route::get('video/detail/{id}','VideoController@detail');
 Route::post('video/online','VideoController@online');
 Route::post('video/offline','VideoController@offline');
+Route::post('video/pay','VideoController@pay');
+Route::post('video/free','VideoController@free');
 Route::get('video/edit/{id}','VideoController@edit');
 Route::post('video/update/{id}','VideoController@update');
 Route::get('video/delete/{id}','VideoController@delete');

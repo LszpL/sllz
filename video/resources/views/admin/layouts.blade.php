@@ -26,7 +26,22 @@
 
 <body data-type="index">
 
-
+     <!-- 提示信息 -->
+    <div style="display:none;">
+        @if(session('info'))
+        <p id="session">{{session('info')}}</p>
+        @endif
+    </div> 
+    <!-- 验证信息 -->
+    @if (count($errors) > 0)
+        <div class="alert alert-danger" style="display:none;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class= "info" >{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
             <a href="javascript:;" class="tpl-logo">
@@ -155,13 +170,13 @@
                                 <a href="{{url('admin/type/add')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>分类添加</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                   
                                 </a>
 
                                 <a href="{{url('admin/type/index')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>分类列表</span>
-                                    <i class="tpl-left-nav-content tpl-badge-success">18</i>
+                                    
                                 </a>
                             </li>
                         </ul>
@@ -181,24 +196,14 @@
                                 <a href="{{url('admin/label/add')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>标签添加</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                    
                                 </a>
 
                                 <a href="{{url('admin/label/index')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>标签列表</span>
-                                    <i class="tpl-left-nav-content tpl-badge-success">18</i>
+                                    
                                 </a>
-                                <a href="form-news.html">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>消息列表</span>
-                                    <i class="tpl-left-nav-content tpl-badge-primary">5</i>
-                                </a>
-
-                                <a href="form-news-list.html">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>文字列表</span>
-
 
                                 </a>
                             </li>
@@ -236,18 +241,18 @@
                                 <a href="{{url('admin/video/add')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>视频添加</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                    
                                 </a>
 
                                 <a href="{{url('admin/video/index')}}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>视频列表</span>
-                                    <i class="tpl-left-nav-content tpl-badge-success">18</i>
+                                   
                                 </a>
                                 <a href="form-news.html">
                                     <i class="am-icon-angle-right"></i>
                                     <span>视频图表</span>
-                                    <i class="tpl-left-nav-content tpl-badge-primary">5</i>
+                                   
                                 </a>
 
                                 <a href="form-news-list.html">

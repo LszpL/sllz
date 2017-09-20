@@ -31,17 +31,18 @@
                     <div class="time-label lastthreemonthlabel" style="display: none;"> 1个月前 </div>
                 </div>
                 <ul class="history-list" id="history_list">
+                    @foreach($data as $item)
                     <li class="history-record todayitem">
                         <div class="l-info">
                             <div class="lastplay-time">
                                 <i class="history-red-round"></i>
-                                <span class="lastplay-t">07:19</span>
+                                <span class="lastplay-t">{{$item->last_time}}</span>
                             </div>
                         </div>
                         <div class="r-info clearfix">
                             <div class="cover-contain">
                                 <a class="preview">
-                                    <img src="//i2.hdslb.com/bfs/archive/489925b5ab5464ee22316902ea6b56d54ba7c0c2.jpg@160w_100h.webp">
+                                    <img src="{{url('$item->video_img')}}">
                                 </a>
                                 <div class="info"> </div>
                                 <div class="progress-c">
@@ -49,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="r-txt">
-                                <a class="title">台湾17岁甜美女生街头提供“免费热吻” 称为传递性别平权</a>
+                                <a class="title">{{$item->video_name}}</a>
                                 <p class="subtitle">  <span></span>  </p>
                                 <div class="w-info">
                                     <div class="time-wrap">
@@ -58,79 +59,8 @@
                                     </div>
                                     <a>
                                         <i class="userpic" style="background-image: url(&quot;//i2.hdslb.com/bfs/face/627ec7bbae0b4b8453fdde408f1c5b503717a140.jpg@20w_20h.webp&quot;);"></i>
-                                        <span class="username">观察者网</span>
+                                        <span class="username">{{$item->admin_name}}</span>
                                     </a>
-                                    <span class="name">日常</span>
-                                </div>
-                                <i class="history-delete"></i>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="history-record">
-                        <div class="l-info">
-                            <div class="lastplay-time">
-                                <i class="history-red-round"></i>
-                                <span class="lastplay-t">07:15</span>
-                            </div>
-                        </div>
-                        <div class="r-info clearfix">
-                            <div class="cover-contain">
-                                <a class="preview">
-                                    <img src="//i1.hdslb.com/bfs/archive/c5651170e64f6e83e8cdf62c3947ec1c5f0e450c.jpg@160w_100h.webp">
-                                </a>
-                                <div class="info"></div>
-                                <div class="progress-c">
-                                    <div class="progress radius-set" style="width: 160px;">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="r-txt">
-                                <a class="title">#119【谷阿莫】5分鐘看完電影《神奇四俠2015》</a>
-                                <p class="subtitle">  <span></span>  </p>
-                                <div class="w-info">
-                                    <div class="time-wrap">
-                                        <i class="device-i phone"></i>
-                                        <span class="pro-txt">已看完</span>
-                                    </div>
-                                    <a>
-                                        <i class="userpic" style="background-image: url(&quot;//i0.hdslb.com/bfs/face/392d4b820b068a88246ddcf15b72f57b70f91942.jpg@20w_20h.webp&quot;);"></i>
-                                        <span class="username">汤姆・克鲁斯</span>
-                                    </a>
-                                    <span class="name">电影相关</span>
-                                </div>
-                                <i class="history-delete"></i>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="history-record">
-                        <div class="l-info">
-                            <div class="lastplay-time">
-                                <i class="history-red-round"></i>
-                                <span class="lastplay-t">2017-09-03</span>
-                            </div>
-                        </div>
-                        <div class="r-info clearfix">
-                            <div class="cover-contain">
-                                <a class="preview"><img src="//i2.hdslb.com/bfs/archive/09045c1f6817fd0ffb543cbe3ce87a84d37063bf.jpg@160w_100h.webp"></a>
-                                <div class="info"></div>
-                                <div class="progress-c">
-                                    <div class="progress" style="width: 44.977px;"></div>
-                                </div>
-                            </div>
-                            <div class="r-txt">
-                                <a class="title">我的30天锻炼记录第29天</a>
-                                <p class="subtitle">  <span></span>  </p>
-                                <div class="w-info">
-                                    <div class="time-wrap">
-                                        <i class="device-i phone"></i>
-                                        <span class="pro-txt">看到&nbsp;&nbsp;01:01</span>
-                                    </div>
-                                    <a>
-                                        <i class="userpic" style="background-image: url(&quot;//i0.hdslb.com/bfs/face/eee5a24d7bb3a89818f4f6110006cc57d3ca9976.jpg@20w_20h.webp&quot;);"></i>
-                                        <span class="username">EugeneGuo</span>
-                                    </a>
-                                    <span class="name">运动</span>
                                 </div>
                                 <i class="history-delete"></i>
                             </div>

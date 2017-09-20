@@ -260,7 +260,7 @@
                                                                                
                                                                                     <button  class="am-btn am-btn-default am-btn-xs am-text-secondary"  >
                                                                                         <span class="am-icon-pencil-square-o" ></span>
-                                                                                        <a href="/admin/video/detail/{{$first->video_id}}" >推广</a>
+                                                                                        <a href="/admin/position/push/add/{{$first->video_id}}" >推广</a>
                                                                                      </button>
 
                                                                                     

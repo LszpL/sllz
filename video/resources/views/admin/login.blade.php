@@ -61,7 +61,7 @@
 					</div>
 					<div class="am-form-group">
 						
-						<input type="text" class="code" name="code" placeholder="输入验证码" style="width:381px;" />
+						<input type="text" class="code" name="code" placeholder="输入验证码" style="width:484px;" />
 						<!-- <span><i class="fa fa-check-square-o"></i></span> -->
 						<!-- <img src="#" alt=""> -->
 					</div>

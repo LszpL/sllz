@@ -57,8 +57,8 @@ var FancyForm=function(){
               <li class="item"><a href="#">画友</a></li>
               <li class="item">
                 <a href="#">游戏中心</a>
-                <div class="game-center header-hover">
-                  <div class="c clearfix">
+                <!-- <div class="game-center header-hover"> -->
+<!--                   <div class="c clearfix">
                     <div class="fl">
                       <div class="imgbox">
                         <a href="#">
@@ -99,13 +99,13 @@ var FancyForm=function(){
                       </div>
                     </div>
                   </div>
-                  <div id="gameImg"></div>
-                </div>
+                  <div id="gameImg"></div> -->
+                <!-- </div> -->
               </li>
               <li class="item">
                 <a href="#">直播</a>
-                <div class="live-box header-hover">
-                  <div class="live-box__c">
+                <!-- <div class="live-box header-hover"> -->
+<!--                   <div class="live-box__c">
                     <div class="fl">
                       <div class="title">热门直播:</div>
                       <div class="cont">
@@ -136,8 +136,8 @@ var FancyForm=function(){
                     <div class="fl">
                       <div class="title">热门直播:</div>
                     </div>
-                  </div>
-                </div>
+                  </div> -->
+                <!-- </div> -->
               </li>
               <li class="item"><a href="#">周边</a></li>
               <li class="item">
@@ -150,9 +150,9 @@ var FancyForm=function(){
           </div>
           <div class="header-top__user">
             <div class="login-box">
-              <a href="#">登录</a>
+              <a href="{{url('/home/login')}}">登录</a>
               <span></span>
-              <a href="#">注册</a>
+              <a href="{{url('/home/zhuce')}}">注册</a>
             </div>
             <div class="user-post">
               <a href="#" class="link">投 稿</a>
@@ -218,13 +218,15 @@ var FancyForm=function(){
              <!--        <a onclick="javascript:re_captcha();">  
             <img src="{{ URL('/code/captcha/1') }}" id="127ddf0de5a04167a9e427d883690ff6" >  
             </a> -->
-          <a href="javascript:;" onclick="phone()" id="js-get_mobile_vcode" class="button btn-disabled">
+          <button type="button" onclick="phone()" id="js-get_mobile_vcode"  class="button btn-disabled">
 
-          免费获取验证码</a>
+          获取验证码</button>
           </div>
           <button type="submit" id="js-mobile_btn"  class="button btn-white1" style="padding:0 146px;">
           注册</button>
+
         </form>
+        <a href="{{url('home/login')}}" style="position:absolute;bottom:27px;right: 33px;">已有账号,直接登录></a>
       </div>
   </div>
 </div>
@@ -295,9 +297,32 @@ function phone(){
   if(res){
   $.post("{{url('/phone')}}",{'_token':"{{csrf_token()}}",'phone':phone,'pwd':pwd,'repwd':repwd},function(data){
     layer.msg(data);
+    if(data=='验证码发送成功'){
+    function invokeSettime(obj){
+    var countdown=60;
+    settime(obj);
+    function settime(obj) {
+        if (countdown == 0) {
+            $(obj).attr("disabled",false);
+            $(obj).text("获取验证码");
+            countdown = 60;
+            return;
+        } else {
+            $(obj).attr("disabled",true);
+            $(obj).text( countdown + " s 重新发送");
+            countdown--;
+        }
+        setTimeout(function() {
+                    settime(obj) }
+                ,1000)
+    }
+  }
+  new invokeSettime("#js-get_mobile_vcode");
+  }
   });
   }else{
     layer.msg('手机号码不存在');
+
   }
 }
 

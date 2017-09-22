@@ -28,7 +28,7 @@ Route::get('/code/captcha/{tmp}', 'Admin\LoginController@captcha');
 Route::post('admin/dologin','Admin\LoginController@doLogin');
 
 // ====================中间件============================
-Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['Login']],function(){
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['Login','Auths']],function(){
 	//后台首页的路由
 Route::get('index','IndexController@index');
 
@@ -51,8 +51,6 @@ Route::post('user/sq/{id}','UserController@sq');
 Route::post('user/fh/{id}','UserController@fh');
 
 
-//后台首页	
- Route::post('index/session','IndexController@session');
 
 
  //分类模块
@@ -165,13 +163,24 @@ Route::post('home/dozhuce','Home\LoginController@dozhuce');
 //注册手机验证码
 Route::post('phone','Home\LoginController@index');
 
+//忘记密码
+Route::get('home/forget','Home\LoginController@forget');
+//忘记密码验证码
+Route::post('fphone','Home\LoginController@findex');
+
+Route::post('home/doforget','Home\LoginController@doforget');
+
 
 
 
 //前台首页
  Route::get('/home/index/index','home\IndexController@index');
 
+Route::get('/home/index/onelist/{name}/{id}','home\OneListController@onelist');
 
+Route::get('home/search','home\LoginController@search');
+
+// Route::get('xsearch','Home\LoginController@xsearch');
 
 
 //前台个人中心

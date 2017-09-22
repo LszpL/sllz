@@ -21,11 +21,7 @@
             <div class="tpl-block">
                 <div class="am-g">
                     <div class="am-u-sm-12 am-u-md-6" style="height: 33px;">
-                        @if(session('info'))
-                            <div id="alertError" class="am-u-sm-12 alert bg-success alert-danger alert-dismissible" style="padding:0;height: 100%;line-height: 33px;">
-                                {{ session('info') }}
-                            </div>
-                        @endif
+                        
                     </div>
 
                     <div class="am-u-sm-12 am-u-md-3">

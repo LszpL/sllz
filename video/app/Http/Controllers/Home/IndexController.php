@@ -10,10 +10,7 @@ class IndexController extends Controller
     //
 	public function index(){
 
-
 		//查询分类
-
-
 		$type = \DB::table('videos_type')->select('*',\DB::raw("concat(path,',',type_id) AS sort_path"))->orderBy('sort_path')->get();
 
 
@@ -29,7 +26,7 @@ class IndexController extends Controller
 	       	
        	];	
        }
-
+		
 		$r=array();	
 		foreach($arr as $v){
 
@@ -43,37 +40,67 @@ class IndexController extends Controller
 			}
 		$types=[];	
 		$types=$r[0];
+		// dd($types);
+		 //注册人数
+		$man =\DB::table('users_message')->count();
+		//一天前
+		$day_1=date('Y-m-d H:i:s',strtotime('-1day'));
+		//最新投稿
+		
+		$new_video=\DB::table('videos_data')->where('created_at',$day_1)->count();
 
 		//三天前
 		$day_3=date('Y-m-d H:i:s',strtotime('-3day'));
-	
 		//查询视频
-		 $data_1=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('parent_id','0')->where('videos_data.created_at','>',$day_3)->orderBy('video_count','desc')->get();
-		 $data_2=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('parent_id','0')->orderBy('videos_data.created_at','desc')->get();
-		 //更多 视频显示数
-		 $a=4;
-		    // $data=[]; 
-
-
-
-		
-		
+		//有新动态
+		$data_1=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('parent_id','0')->where('videos_data.created_at','>',$day_3)->orderBy('video_count','desc')->get();
+		//最新动态
+		$data_2=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('parent_id','0')->orderBy('videos_data.created_at','desc')->get();
 		 
-		  foreach($types as $key=>$item) {
-		    echo $item['value']['type_name'];
-		    foreach($item as $k=>$t)
-		    	echo $k ,'<br>';
-		      if($k == 'value') {
-		        echo 1;
-		
-		       }
-		  }
 
-//		  die;
-//		echo'<pre>';
-//		print_r($types);
-//		echo '</pre>';
+		 //排行
+		 
+		 //播放
+		$play_data=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('parent_id','0')->orderBy('video_count','desc')->get();
 		
+		//评论
+		$comment_data=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('parent_id','0')->orderBy('video_comments','desc')->get();
+
+		 // echo '<pre>';
+	  //    print_r($play_data);
+	  //    echo '</pre>';
+
+	  //    echo '<pre>';
+	  //    print_r($comment_data);
+	  //    echo '</pre>';
+	  //    die;
+		 //轮播图视频
+		$video_1=\DB::table('generalizes')->leftJoin('videos_data','generalizes.video_id','=','videos_data.video_id')->leftJoin('positions','generalizes.position_id','=','positions.position_id')->where('positions.position_name','轮播图位')->limit(4)->get();	
+		 //轮播图侧边位
+		$video_2=\DB::table('generalizes')
+		  ->leftJoin('videos_data','generalizes.video_id','=','videos_data.video_id')
+		  ->leftJoin('positions','generalizes.position_id','=','positions.position_id')
+		  ->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')
+		  ->where('positions.position_name','轮播图侧边位')->limit(6)->get();	
+		 //首页推广位
+		$video_3=\DB::table('generalizes')
+		  ->leftJoin('videos_data','generalizes.video_id','=','videos_data.video_id')
+		  ->leftJoin('positions','generalizes.position_id','=','positions.position_id')
+		  ->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')
+		  ->where('positions.position_name','首页推广位')->limit(6)->get();
+			
+		 //更多 视频显示数
+		 
+		 // if(!isset($_GET['a'])){
+		 // 	$_GET['a']=2;
+		 // }elseif($_GET['a']=2){
+		 // 	$_GET['a']=4;
+		 // }elseif($_GET['a']=4){
+		 // 	$_GET['a']=2;
+		 // }
+		 
+
+		    // $data=[]; 
 
 	     //   foreach($res as $k=>$v){
 	     //   	$data[$k]=
@@ -115,24 +142,15 @@ class IndexController extends Controller
  	       //             }
 	        	 	  
 
-
 	        // 	 }
 
 	        // }
 	     	
-		return view('home.index.index',['title'=>'视频首页'])->with(['types'=>$types,'data_1'=>$data_1,'data_2'=>$data_2,'a'=>$a]);
-
-		  die;      
-		echo'<pre>'; 
-		print_r($types);
-		echo '</pre>'; 
-		
-
-
-		return view('home.index.index',['title'=>'视频首页'])->with(['types'=>$types]);
-
+		return view('home.index.index',['title'=>'视频首页'])
+		->with(['title'=>'首页','types'=>$types,'data_1'=>$data_1,'data_2'=>$data_2,'video_1'=>$video_1,'video_2'=>$video_2,'video_3'=>$video_3,'man'=>$man,'new_video'=>$new_video,'play_data'=>$play_data,'comment_data'=>$comment_data]);
 
 	} 
+
 
 	
 }

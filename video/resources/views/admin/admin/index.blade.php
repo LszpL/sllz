@@ -19,22 +19,7 @@
                      列表
                     </div>
                 </div>
-                <!-- 提示信息 -->
-                                <div style="display:none;">
-                                    @if(session('info'))
-                                    <p id="session">{{session('info')}}</p>
-                                    @endif
-                                </div> 
-                                <!-- 验证信息 -->
-                                @if (count($errors) > 0)
-                                    <div class="alert alert-danger" style="display:none;">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li class= "info" >{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
+
                 <div class="tpl-block">
                     <div class="am-g">
                         <div class="am-u-sm-12 am-u-md-6">
@@ -103,7 +88,7 @@
                                                     <div class="am-btn-group am-btn-group-xs">
                                                     	<a href="{{url('/admin/admin/edit')}}/{{$v->admin_id}}?page={{$request['page']}}">
                                                         <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>编辑</button></a>
-                                                        @if($v->admin_name!=session('user')->admin_name)
+                                                        @if($v->admin_name!=session('admin')->admin_name)
                                                         <!-- <a href="{{url('/admin/admin/delete')}}/{{$v->admin_id}}" onclick="return confirm('确定要删除吗?')"> -->
                                                         <a href="javascript:;" onclick="del({{$v->admin_id}})">
                                                         <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>删除</button></a>

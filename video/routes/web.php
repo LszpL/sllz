@@ -172,7 +172,6 @@ Route::post('home/doforget','Home\LoginController@doforget');
 
 
 
-
 //前台首页
 
 
@@ -190,18 +189,22 @@ Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@lab
 
 
 
-//前台个人中心
+//前台用户个人中心
 //前台个人首页
 Route::get('/home/user/home','Home\UserController@home');
 //首页个人信息
 Route::get('/home/user/message','Home\UserController@message');
+//首页个人信息更新
+Route::post('/home/user/domessage','Home\UserController@domessage');
 //首页上传
 Route::get('/home/user/add','Home\UserController@add');
 Route::post('/home/user/video','Home\UploadController@video');
 Route::post('/home/user/upload','Home\UploadController@upload');
 Route::get('/home/user/myupload','Home\UploadController@myupload');
-//Route::get('/home/user/face','Home');
-
+//用户首页头像
+Route::get('/home/user/face','Home\UserController@face');
+Route::post('/home/user/myface','Home\UserController@myface');
+Route::post('/home/user/imgs','Home\UserController@imgs');
 
 
 // 前台

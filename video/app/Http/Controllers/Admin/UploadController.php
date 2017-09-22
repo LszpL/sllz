@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class UploadController extends Controller
 {
     public function index(Request $request){
-
-        $users = \DB::table('users_upload')->where('users_name','like','%'.$request->input('keywords').'%')->paginate($request->input('num',8));
+        $users = \DB::table('users_upload')->where('user_name','like','%'.$request->input('keywords').'%')->paginate($request->input('num',8));
         //显示分页并且保持分页
         return view('admin.uploads.index',['title'=>'上传列表','request'=>$request->all(),'page'=>$request->input('page')],compact('users'));
 
@@ -135,6 +134,8 @@ class UploadController extends Controller
                 'label' => 'required|min:2|max:16',
                 'content' => 'required|min:10|max:30',
                 'file_name' => 'required',
+                'video_img' => 'required',
+                'video_time' => 'required|max:120',
             ];
             $msg = [
                 'file_name.required' => '请先上传文件',
@@ -148,6 +149,8 @@ class UploadController extends Controller
                 'content.required' => '内容不能为空',
                 'content.min' => '内容最小为10位',
                 'content.max' => '内容最大为30位',
+                'video_img.required' => "请上传图片",
+                'video_time.max' => "最大不能超过120分钟",
             ];
             $validator = Validator::make($data, $rule, $msg);
             if ($validator->fails()) {
@@ -169,11 +172,27 @@ class UploadController extends Controller
              //\Storage::disk('qiniu')->writeStream('uploads/'.$filename, fopen($file->getRealPath(), 'r'));
                 //修改文件数据
             $data['file_name'] = $filename;
-            $data['upload_address'] = 'uploads/' . $filename;
+            $data['upload_address'] = 'http://ow44tz416.bkt.clouddn.com/uploads/' . $filename;
 
            }
         }
 
+            //判断图片是否有上传
+            //获取上传的文件对象
+            $file = Input::file('video_img');
+            if($request->hasFile("video_img")) {
+                //确认上传的文件是否成功
+                if ($request->file('video_img')->isValid()) {
+                    $ext = $request->file('video_img')->getClientOriginalExtension();
+                    //执行移动上传文件
+                    $fileimg = time().rand(10000,99999).".".$ext;
+                    $request->file('video_img')->move("./uploads",$fileimg);
+                    //\Storage::disk('qiniu')->writeStream('uploads/'.$filename, fopen($file->getRealPath(), 'r'));
+                    //修改文件数据
+                    $data['video_img'] = 'uploads/' .$fileimg;
+
+                }
+            }
             $time = date('Y-m-d H:i:s', time());
             $data['upload_time'] = $time;
 //                //插入数据库

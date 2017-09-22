@@ -75,10 +75,12 @@
                                 <th class="table-id">ID</th>
                                 <th class="table-title">用户名</th>
                                 <th class="table-type">分类</th>
+                                <th class="table-type">时长</th>
                                 <th class="table-author am-hide-sm-only">标题</th>
                                 <th class="table-date am-hide-sm-only">标签</th>
                                 <th class="table-set">内容</th>
-                                <th class="table-set">上传路径</th>
+                                <th class="table-set">图片上传路径</th>
+                                <th class="table-set">视频上传路径</th>
 
                                 <th class="table-set">状态</th>
                                 <th class="table-set">上传时间</th>
@@ -92,12 +94,14 @@
                             <tr>
                                 <td><input type="checkbox"></td>
                                 <td>{{$item->upload_id}}</td>
-                                <td><a href="#">{{$item->users_name}}</a></td>
+                                <td><a href="#">{{$item->user_name}}</a></td>
                                 <td>{{$item->type_name}}</td>
+                                <td>{{$item->video_time}}</td>
                                 <td class="am-hide-sm-only">{{$item->title}}</td>
                                 <td class="am-hide-sm-only">{{$item->label}}</td>
                                 <td>{{$item->content}}</td>
-                                <td>http://ow44tz416.bkt.clouddn.com/{{$item->upload_address}}</td>
+                                <td>{{$item->video_img}}</td>
+                                <td>{{$item->upload_address}}</td>
                                 <td>{{$item->status}}</td>
                                 <td>{{$item->upload_time}}</td>
                                 <td>{{$item->audit_time}}</td>

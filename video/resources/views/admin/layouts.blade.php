@@ -82,8 +82,10 @@
 
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+
                         <span class="tpl-header-list-user-nick">欢迎您 {{session('admin')->admin_name}}</span><span class="tpl-header-list-user-ico"> 
                         @if(empty(session('admin')->admin_face))
+
                         <img src="{{asset('admin/assets/img/user01.png')}}">
                         @else
                         <img src="{{url('/uploads')}}/{{session('admin')->admin_face}}" style="width: 40px;">
@@ -403,39 +405,8 @@
 
 <script type="text/javascript" src="http://cdn.staticfile.org/plupload/2.1.9/i18n/ar.js"></script>
 
-<!-- <script type="text/javascript"   src="{{asset('admin_temp/assets/js/bootstrap.min.js')}}"></script> -->
-
-    <script type="text/javascript">
-        //验证信息
-        var str = '';
-        if(typeof($('.info').html()) == 'string' && $('.info').html() !== null    ){
-               $('.info').each(function(i,n){
-                 str += $(n).html()+'<br>'; 
-                 layer.alert(str, {icon: 5});   
-            });
-        }
-
-        //提示信息
-         if(typeof($('#session').html()) == 'string' &&  $('#session').html()  )
-      {
-            layer.alert($('#session').html(), {icon: 8});
-      }
-       //清除session 
-      if( typeof($('#session').html()) == 'string' &&  $('#session').html()  )
-        
-       {
-            $.ajax({
-                type: "post",
-                url: "/admin/index/session",
-                data: {id:1,_token:'{{csrf_token()}}'}, 
-            });
-       } 
-
-   </script>  
-
+{{--<!-- <script type="text/javascript"   src="{{asset('admin_temp/assets/js/bootstrap.min.js')}}"></script> -->--}}
     @yield('js')
-
-
 </body>
 
 </html>

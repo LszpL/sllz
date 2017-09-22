@@ -2,9 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('title')
-
     <meta name="description" content="bilibili是一家弹幕站点,大家可以在这里找到许多的欢乐.">
     <meta name="keywords" content="B站 弹幕 字幕 AMV MAD MTV ANIME 动漫 动漫音乐 游戏 游戏解说 ACG galgame 动画 番组 新番 初音 洛天依 vocaloid">
     <meta name="referrer" content="always">
@@ -22,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('home/user/style/css/x_dialog.css')}}" type="text/css"/>
     <link rel="stylesheet" href="{{asset('home/user/style/css/zclc2.css')}}" type="text/css"/>
 
+
     <script type="text/javascript" src="{{asset('home/user/style/js/alertplate.js')}}"></script>
     <script type="text/javascript" src="{{asset('home/user/style/js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('home/user/style/js/sea.config.js')}}"></script>
@@ -31,14 +31,13 @@
     <script type="text/javascript" src="{{asset('home/user/style/js/txv.sea.js')}}"></script>
     <script type="text/javascript" src="{{asset('home/user/style/js/uploader.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('home/user/style/js/uploadExtend.min.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('Home')}}" type="text/css"/>
+    <script type="text/javascript"  src="{{asset('home/layer/layer.js')}}"></script>
 
 
     <style>
         .security-right{
             min-height: 928px!important;
         }
-
         .security-list li a .al-vip {
             background: url(style/images/img/icons_m.png) -23px -975px no-repeat;
         }
@@ -76,7 +75,7 @@
         }
 
         .isnewvip {
-            display: none;
+            display: nonoe;
             position: absolute;
             top: 4px;
             right: -8px;
@@ -94,6 +93,7 @@
         <div class="z_header">
             <div class="z_top_nav">
                 <ul>
+
                     <li class="home">
                         <a class="i-link" href="//www.bilibili.com/index.html"><span>主站</span></a>
                     </li>
@@ -116,31 +116,15 @@
                         <div class="i_div mz" data-frame="mz"></div>
                     </li>
                 </ul>
-
             </div>
             <div class="uns_box">
                 <ul class="menu">
-                    <li id="i_menu_profile_btn" guest="no" class="u-i i_user" i_menu="#i_menu_profile">
-                        <a class="i-link" href="//space.bilibili.com/" target="_blank">
-                            <img class="i_face">
-                        </a>
-                        <div id="i_menu_profile" class="i_menu">
-                            <div class="i_menu_bg_t"></div>
-                            <div class="info clearfix"><div class="uname"></div><div class="coin"></div></div>
-                            <div class="member-menu-wrp">
-                                <ul class="member-menu">
-                                    <li><a href="https://account.bilibili.com/site/home" target="_blank" class="account"><i class="b-icon b-icon-p-account"></i>个人中心</a></li>
-                                    <li><a href="//member.bilibili.com/v/#!/article" target="_blank" class="member"><i class="b-icon b-icon-p-member"></i>投稿管理</a></li>
-                                    <li><a href="https://pay.bilibili.com/" target="_blank" class="wallet"><i class="b-icon b-icon-p-wallet"></i>B币钱包</a></li>
-                                    <li><a href="//link.bilibili.com/p/center/index" target="_blank" class="live"><i class="b-icon b-icon-p-live"></i>直播中心</a></li>
-                                    <li><a href="/home.blade.php/show.bilibili.com/platform/home.html" target="_blank" class="ticket"><i class="b-icon b-icon-p-ticket"></i>会员购订单</a></li>
-                                </ul>
-                            </div>
-                            <div class="member-bottom">
-                                <a class="logout" href="https://account.bilibili.com/login?act=exit">退出</a>
-                            </div>
-                        </div>
+                    <li class="u-i i_user" id="i_menu" guest="no" i_menu="#i_menu_profile" style="display: block;"><a class="i-link" href="//space.bilibili.com/" target="_blank"><img class="i_face" src='' />
+
+                            <div class=" legalize-icon" style="top: 65px; right: -16px; position: absolute; z-index: 30; display: block;"></div></a>
                     </li>
+
+
                     <li id="i_menu_become_vip" guest="no" i_menu="become_vip" class="u-i">
                         <a class="i-link" href="//big.bilibili.com/site/big.html" target="_blank">成为大会员</a>
                     </li>
@@ -151,7 +135,7 @@
                         <div class="num" id="dynamic_num_total"></div>
                         <a class="i-link" href="//www.bilibili.com/account/dynamic" target="_blank">动态</a>
                     </li>
-                    <li id="i_menu_watchLater_btn" guest="no" class="u-i" style="display:list-item">
+                    <li id="i_menu_watchLater_btn" guest="no" class="u-i" style="display:none">
                         <a class="i-link" href="//www.bilibili.com/watchlater/#/list" target="_blank">稍后再看</a>
                     </li>
                     <li id="i_menu_fav_btn" guest="no" i_menu="#i_menu_fav" class="u-i">
@@ -174,6 +158,7 @@
                         </ul>
                     </li>
                 </ul>
+
             </div>
 
         </div>
@@ -219,7 +204,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" id="face">
+                        <a href="{{url('home/user/face')}}" id="face">
                             <i class="al-tx"></i>
                             <span>我的头像</span>
                         </a>
@@ -243,8 +228,6 @@
                     </li>
                     <li>
                         <a href="{{url('home/user/myupload')}}" id="coin">
-
-
 
                             <i class="al-coin"></i>
                             <span>我的上传</span>
@@ -281,7 +264,7 @@
         <div class="footer-cnt clearfix">
             <ul class="boston-postcards">
                 <li>
-                    <div class="tips">bilibili</div>
+                    <div class="tips"></div>
                     <div class="cards"><a target="_blank" href="//www.bilibili.com/blackboard/aboutUs.html">关于我们</a></div>
                     <div class="cards"><a target="_blank" href="//www.bilibili.com/blackboard/friends-links.html">友情链接</a></div>
                     <div class="cards"><a target="_blank" href="//bmall.bilibili.com/#!/">哔哩哔哩周边</a></div>
@@ -290,7 +273,7 @@
                     <div class="cards"><a target="_blank" href="https://account.bilibili.com/site/ident.html">官方认证</a></div>
                 </li>
                 <li>
-                    <div class="tips">传送门</div>
+                    <div class="tips"></div>
                     <div class="cards"><a target="_blank" href="//www.bilibili.com/blackboard/help.html">帮助中心</a></div>
                     <div class="cards"><a target="_blank" href="//www.bilibili.com/video/av120040/">高级弹幕</a></div>
                     <div class="cards"><a target="_blank" href="//www.bilibili.com/blackboard/activity_list.html">活动专题页</a></div>
@@ -347,7 +330,7 @@
                     <div class="partner-banner"></div>
                 </div>
                 <div class="block left" style="margin: 0px 68px 0 115px;line-height:24px;float: none;">
-                    <p>广播电视节目制作经营许可证：<span>（沪）字第1248号 </span> | 网络文化经营许可证：<span>沪网文[2013]0480-056号</span> | 信息网络传播视听节目许可证：<span>0910417</span> | 互联网ICP备案：<span>沪ICP备13002172号-3</span> 沪ICP证：<span>沪B2-20100043</span> | 违法不良信息举报邮箱：help@bilibili.com | 违法不良信息举报电话：4000233233转3</p>
+                    <p><span>（沪）字第1248号 </span> | 网络文化经营许可证：<span>沪网文[2013]0480-056号</span> | 信息网络传播视听节目许可证：<span>0910417</span> | 互联网ICP备案：<span>沪ICP备13002172号-3</span> 沪ICP证：<span>沪B2-20100043</span> | 违法不良信息举报邮箱：help@bilibili.com | 违法不良信息举报电话：4000233233转3</p>
                     <p><a href="http://www.shjbzx.cn" target="_blank"><i class="icons-footer icons-footer-report"></i><span> 上海互联网举报中心</span></a> | <a href="http://jb.ccm.gov.cn/" target="_blank">12318 全国文化市场举报网站</a> | <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502001911"><img src="style/images/beiantubiao.png" style="vertical-align: top;"> 沪公网安备 31011502001911号</a> | <a href="mailto:userreport@bilibili.com">儿童色情信息举报专区</a></p>
                     <p><a href="http://report.12377.cn:13225/toreportinputNormal_anis.do" target="_blank">网上有害信息举报专区：<img src="style/images/12377.png" width="16" height="16" style="vertical-align: sub;"> 中国互联网违法和不良信息举报中心</a></p>
                 </div>
@@ -357,7 +340,6 @@
 </div>
 
 <script type="text/javascript" src="{{asset('home_temp/style/js/alertplate.js')}}"></script>
-<script type="text/javascript" src="{{asset('Home')}}"></script>
 <script type="text/javascript" src="{{asset('home_temp/style/js/sea.config.js')}}"></script>
 <script id="seajsnode" type="text/javascript" src="{{asset('home_temp/style/js/sea.js')}}"></script>
 <script type="text/javascript" src="{{asset('home_temp/style/js/tvu.uploader.js')}}"></script>
@@ -365,9 +347,15 @@
 <script type="text/javascript" src="{{asset('home_temp/style/js/txv.sea.js')}}"></script>
 <script type="text/javascript" src="{{asset('home_temp/style/js/uploader.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('home_temp/style/js/uploadExtend.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('home_temp/history/style/css/txv.core.js?(none)')}}"></script>
+<script type="text/javascript" src="{{asset('home_temp/history/style/css/txv.core.js')}}"></script>
 <script src="{{asset('home_temp/history/style/css/txv.sea.js')}}"></script>
-
+<script src="{{asset('home_temp/history/style/css/txv.sea.js')}}"></script>
+<script type="text/javascript"  src="{{asset('home_temp/history/js/txv.sea.js')}}"  ></script>
+<script>
+    window.onload() = function () {
+        $("#i_menu_profile").css('display','block');
+    }
+</script>
 @yield('js')
 </body>
 </html>

@@ -108,7 +108,7 @@
                                 <div class="am-form-group">
                                     <label for="user-email" class="am-u-sm-3 am-form-label">视频 / 时长</label>
                                     <div class="am-u-sm-9">
-                                 		<input type="time" name="video_time" placeholder="输入你要添加的类别 " value="" style="width:120px" >
+                                 		<input type="text" name="video_time" placeholder="输入格式00:00:00" value="{{$first->video_time}}" style="width:120px" >
                                     </div>
                                 </div>
 

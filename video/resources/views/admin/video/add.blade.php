@@ -14,7 +14,7 @@
             </ol>
     </div>
   
-   <div class="tpl-portlet-components" style="height:1064px" >
+   <div class="tpl-portlet-components" style="height:1100px" >
                 <div class="portlet-title">
                     <div class="caption font-green bold">
                         <span class="am-icon-code"></span> 视频添加
@@ -95,7 +95,7 @@
                                 <div class="am-form-group">
                                     <label for="user-email" class="am-u-sm-3 am-form-label">视频 / 时长</label>
                                     <div class="am-u-sm-9">
-                                 		<input type="time" name="video_time" placeholder="输入你要添加的类别 " value="" style="width:120px" >
+                                 		<input type="text" name="video_time" placeholder="输入格式 00:00:00" value="" style="width:120px" >
                                     </div>
                                 </div>
 
@@ -121,11 +121,27 @@
                                 </div>
 								
                                 <div class="am-form-group">
-                                    <label for="user-intro" class="am-u-sm-3 am-form-label">上线 / 下线</label>
+                                    <label for="user-intro" class="am-u-sm-3 am-form-label">上线 </label>
                                     <div class="am-u-sm-9">
                                         <div class="tpl-switch">
                                           
                                             <input type="checkbox" id="one"   name="video_status" class="ios-switch bigswitch tpl-switch-btn" checked=""  value="上线"	 style="width:150px" >
+                                            
+                                            <div class="tpl-switch-btn-view">
+                                                <div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-intro" class="am-u-sm-3 am-form-label">免费</label>
+                                    <div class="am-u-sm-9">
+                                        <div class="tpl-switch">
+                                          
+                                            <input type="checkbox" id="two"   name="video_status" class="ios-switch bigswitch tpl-switch-btn" checked=""  value="免费"     style="width:150px" >
                                             
                                             <div class="tpl-switch-btn-view">
                                                 <div>
@@ -135,7 +151,6 @@
 
                                     </div>
                                 </div>
-
                                  <div class="am-form-group">
                                     <label for="user-weibo" class="am-u-sm-3 am-form-label">封面图 <span class="tpl-form-line-small-title">Images</span></label>
                                     <div class="am-u-sm-9">
@@ -148,7 +163,7 @@
 
                                            <input type="text" size="50" name="video_img" id="art_thumb"><br>
                                            <div class="tpl-form-file-img">
-                                                <img  id="img1"  src="{{asset('admin_temp/assets/img/a5.png')}}" alt="点我选择" style="height:175px">
+                                                <img  id="img1"  src="{{asset('admin_temp/assets/img/timg .jpg')}}" alt="点我选择" style="height:175px">
                                            </div>
 									       <!-- <input id="file_upload" name="file_upload" type="file" multiple="true">
 									       <p><img id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p> -->
@@ -157,6 +172,7 @@
 
                                     </div>
                                 </div>
+                                
 
                                 <div class="am-form-group">
                                     <label for="user-intro" class="am-u-sm-3 am-form-label">视频 / 描述</label>
@@ -194,6 +210,16 @@
 				$('#one').val('上线');
 			}
 		});
+
+        $('#two').on('click',function(){
+
+            if($('#two').val() == '付费'){
+                $('#two').val('免费');
+                
+            }else{
+                $('#two').val('付费');
+            }
+        });
 		//
 		//
 		

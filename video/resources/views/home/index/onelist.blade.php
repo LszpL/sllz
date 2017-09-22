@@ -9,10 +9,10 @@
           <a href="#" class="link">首页</a>
         </li>
 
-        @foreach($types as $k=> $v)
+        @foreach($type as $k=> $v)
 
         <li class="item">
-          <a href="{{url('home/index/onelist')}}/{{$v['value']['type_name']}}/{{$v['value']['type_id']}}/" class="link">
+          <a href="{{url('home/index/onelist')}}/{{$v['value']['type_name']}}/{{$v['value']['type_id']}}" class="link">
             <div class="num"><i>887</i></div>
            
                {{$v['value']['type_name']}}
@@ -204,7 +204,7 @@
               <a href="#" class="cur">有新动态</a>
               <a href="#">最新投稿</a>
             </div>
-            <a href="#" class="main-link"><i></i>我的十月新番打开方式一定有问题</a>
+            <a href="#" class="main-link"></a>
             <div class="more-wrap">
               <a href="#" class="dynamic"><i></i>392条新动态</a>
               
@@ -416,7 +416,7 @@
                     <img src="/{{$oo->video_img}}" alt="#">
                     <div>
                       <p class="title">【{{substr($oo->created_at,5,2)}}月】{{$oo->video_name}}</p>
-                      <p class="mark">播放次数: {{$oo->video_count}}</p>
+                      <p class="mark">评论次数: {{$oo->video_comments}}</p>
                     </div>
                   </a>
                 </li>
@@ -428,36 +428,7 @@
 
                 <!-- ? -->
               </ul>
-             <!--  <ul class="tab-cont__item main-rank">
-                <li class="item item-one">
-                  <a href="#">
-                    <i class="n1">1</i>
-                    <img src="{{asset('home_temp/images/cont/main-rank__img2.jpg')}}" alt="#">
-                    <div>
-                      <p class="title">【1月】小林家的龙女仆 10【独家正版】</p>
-                      <p class="mark">综合评分: 109.3万</p>
-                    </div>
-                  </a>
-                </li>
-                <li class="item">
-                  <a href="#"><i class="n2">2</i>                  【1月】火影忍者 疾风传 719</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i class="n3">3</i>                    【4月】双星之阴阳师 48</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>4</i>狐妖小红娘 52 狗血大戏正上演 OP特效又更换</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>5</i>少年锦衣卫 第一季 06 怪谈</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>6</i>画江湖之不良人Ⅱ 35 阋墙之祸</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>7</i>【1月】黑白来看守所 24【独家正版】</a>
-                </li>
-              </ul> -->
+            
 
 
             </div>

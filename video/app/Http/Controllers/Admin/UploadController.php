@@ -18,10 +18,35 @@ class UploadController extends Controller
 
     public function finish(Request  $request ,$id){
         //审核完成
+        //
             if('status' == '审核完成'){
 
                return  redirect('/admin/upload/index?page='.$request->input('page'),['page'=>$request->input('page')]);
             }
+
+        
+        // $upload=\DB::table('users_upload')->where('upload_id',$id)->first();
+
+            // $data['type_id']=$upload->type_name;
+            // $data['video_name']=$upload->title;
+            // $data['video_url'] =$upload->file_name;
+            // $data['admin_name']=$upload->users_name;
+            // // $data['video_time']=$upload->video_time;
+            // $data['video_labels']=$upload->label;
+            // $data['video_status']='上线';
+            // // $data['video_img']=$upload->video_img;
+            // $data["video_desc"]=$upload->content;
+            
+            // $data['created_at']=$upload->upload_time;
+            // $data['video_like'] = 0;
+            // $data['video_trample'] = 0;
+            // $data['video_collect'] = 0;
+            // $data['video_count'] = 0;
+            // $data['video_comments'] = 0;
+
+            //$row=\DB::table('videos_data')->insert($data);
+
+         //dd($data);
         $res=\DB::table('users_upload')->where('upload_id', $id) ->update(['status' => '审核完成','audit_time'=>date('Y-m-d H:i:s')]);
 
         if($res){

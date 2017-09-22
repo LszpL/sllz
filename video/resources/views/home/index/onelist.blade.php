@@ -12,7 +12,8 @@
         @foreach($type as $k=> $v)
 
         <li class="item">
-          <a href="{{url('home/index/onelist')}}/{{$v['value']['type_id']}}" class="link">
+
+          <a href="{{url('home/index/onelist')}}/{{$v['value']['type_name']}}/{{$v['value']['type_id']}}" class="link">
             <div class="num"><i>887</i></div>
            
                {{$v['value']['type_name']}}
@@ -23,7 +24,8 @@
                 <li>
                   
                     @if($kk != 'value')
-                    <a href="{{url('home/index/twolist')}}/{{$vv['value']['type_id']}}">
+
+                    <a href="{{url('home/index/twolist')}}/{{$vv['value']['type_name']}}/{{$vv['value']['type_id']}}">
                     <em>{{$vv['value']['type_name']}}<i></i></em>
                       
                     @endif  

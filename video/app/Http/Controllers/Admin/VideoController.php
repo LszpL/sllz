@@ -52,7 +52,7 @@ class VideoController extends Controller
 	        'admin_name'=>'required',
 	        'video_time'=>'required',
 	        'video_labels'=>'required',
-	        'video_status'=>'required',
+	        
 	        'video_img'=>'required',
 	        "video_desc" => 'required|max:255'
       ],[
@@ -64,7 +64,7 @@ class VideoController extends Controller
 	        'admin_name.required'=>'发布人未选中',
 	        'video_time.required'=>'视频时长未添加',
 	        'video_labels.required'=>'视频标签未选择',
-	        'video_status.required'=>'视频状态未选择',
+	        
 	        'video_img.required'=>'视频缩略图未添加',
 	        'video_desc.required'=>'视频描述未填写'
       ]
@@ -77,14 +77,19 @@ class VideoController extends Controller
 		$data['created_at']=date('Y-m-d H:i:s');
 		$video_labels= serialize($data['video_labels']);
 
-
+		if(empty($data['video_status'])){
+				$data['video_status']='下线';
+		}
+		if(empty($data['video_vip'])){
+				$data['video_vip']='付费';
+		}
 		$data['video_labels']= $video_labels;
 		$data['video_like'] = 0;
 		$data['video_trample'] = 0;
 		$data['video_collect'] = 0;
 		$data['video_count'] = 0;
 		$data['video_comments'] = 0;
-
+		
 		$res=\DB::table('videos_data')->insert($data);
 		
 		$id = \DB::table('videos_data')->where('video_name',$data['video_name'])->first()->video_id;

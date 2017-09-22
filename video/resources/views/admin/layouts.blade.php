@@ -146,8 +146,8 @@
                             </li>
                         </ul>
                     </li>
-					
-					<li class="tpl-left-nav-item">
+                    
+                    <li class="tpl-left-nav-item">
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                             <i class="fa fa-users"></i>
                             <span>用户管理</span>

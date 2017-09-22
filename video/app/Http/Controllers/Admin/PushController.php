@@ -45,7 +45,7 @@ class PushController extends Controller
         $res = \DB::table('generalizes')->insert($data);
         if($res)
         {
-            return redirect('admin/position/push/index')->with('info','添加成功');
+            return redirect('admin/position/push/index?position_id=0')->with('info','添加成功');
         }else{
             return redirect('admin/position/push/add/'.$data['video_id'])->with(['info'=>'添加失败']);
         }

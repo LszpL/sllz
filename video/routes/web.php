@@ -174,13 +174,20 @@ Route::post('home/doforget','Home\LoginController@doforget');
 
 
 //前台首页
- Route::get('/home/index/index','home\IndexController@index');
 
-Route::get('/home/index/onelist/{name}/{id}','home\OneListController@onelist');
+
 
 Route::get('home/search','home\LoginController@search');
 
 // Route::get('xsearch','Home\LoginController@xsearch');
+
+Route::get('/home/index/index','home\IndexController@index');
+ // Route::get('/home/index/more','home\IndexController@more');
+ 
+Route::get('/home/index/onelist/{name}/{id}','home\OneListController@onelist');
+Route::get('/home/index/twolist/{name}/{id}','home\TwoListController@twolist');
+Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@labelTwolist');
+
 
 
 //前台个人中心

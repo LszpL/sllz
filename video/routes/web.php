@@ -210,5 +210,10 @@ Route::post('/home/user/imgs','Home\UserController@imgs');
 // 前台
 Route::get('/home/user/comment','Home\UserController@comment');
 Route::get('/home/user/history','Home\UserController@history');
+Route::post('/home/user/history/delhistory','Home\UserController@delhistory');
+Route::get('/home/play/index','Home\PlayController@index');
+Route::post('/home/play/comment','Home\PlayController@comment');
+Route::get('/ad','Home\PlayController@comment');
+//Route::post('/test','Home\UserController@delhistory');
 
 

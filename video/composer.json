@@ -12,8 +12,12 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "overtrue/laravel-filesystem-qiniu": "^1.0",
-        "predis/predis": "~1.0",
-        "qiniu/php-sdk": "^7.2"
+
+        "predis/predis": "^1.1",
+        "qiniu/php-sdk": "^7.2",
+        "robloach/component-installer": "^0.2.3",
+        "xj/yii2-jplayer-widget": "2.9.0.1"
+
     },
     "require-dev": {
         "filp/whoops": "~2.0",

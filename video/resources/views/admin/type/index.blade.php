@@ -94,8 +94,10 @@
                                      @endforeach   
                                     </tbody>
                                 </table>
+
                                 
                                 <hr>
+
 
                             </form>
                         </div>

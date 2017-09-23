@@ -1,0 +1,21 @@
+/* Code tidied up by ScrapBook */
+.s_tag .tag-area li { float: left; margin: 0px 10px 8px 0px; border: 1px solid rgb(229, 233, 239); border-radius: 20px; padding: 0px 10px; position: relative; height: 22px; transition: all 0.3s ease 0s; }
+.s_tag .tag-area li a { display: inline-block; height: 22px; color: rgb(109, 117, 122); line-height: 22px; vertical-align: middle; position: relative; z-index: 10; transition: all 0.3s ease 0s; }
+.s_tag .tag-area li:hover { border-color: rgb(0, 161, 214); }
+.s_tag .tag-area li:hover a { color: rgb(0, 161, 214); }
+.s_tag .nothing { float: left; color: rgb(153, 162, 170); font-size: 12px; line-height: 26px; margin-right: 10px; }
+.s_tag .btn-add { float: left; width: 23px; height: 23px; border-radius: 50%; border: 1px solid rgb(229, 233, 239); position: relative; transition: all 0.3s ease 0s; }
+.s_tag .btn-add span { position: absolute; background: rgb(155, 163, 171) none repeat scroll 0% 0%; transition: all 0.3s ease 0s; }
+.s_tag .btn-add .one { left: 5px; top: 11px; width: 14px; height: 2px; }
+.s_tag .btn-add .two { left: 11px; top: 5px; width: 2px; height: 14px; }
+.s_tag .btn-add:hover { border-color: rgb(0, 161, 214); }
+.s_tag .btn-add:hover span { background: rgb(0, 161, 214) none repeat scroll 0% 0%; }
+.s_tag .ipt { display: none; float: left; width: 23px; height: 23px; border-radius: 23px; border: 1px solid rgb(0, 161, 214); position: relative; opacity: 0; }
+.s_tag .ipt input { height: 23px; line-height: 23px; width: 120px; padding: 0px 10px; background: transparent none repeat scroll 0% 0%; transition: all 0.3s ease 0s; border: medium none; }
+.s_tag .ipt input:focus { font-size: 14px; }
+.s_tag .ipt a { position: absolute; width: 10px; height: 10px; background: rgba(0, 0, 0, 0) url("icons.png") no-repeat scroll -539px -539px; left: 138px; top: 6px; }
+.s_tag .ipt .tips { display: none; margin-top: 5px; color: rgb(255, 0, 0); }
+.s_tag .btn-view-tag { margin-top: 10px; color: rgb(236, 239, 243); }
+.s_tag .btn-view-tag a { color: rgb(109, 117, 122); }
+.s_tag .btn-view-tag a:hover { color: rgb(0, 161, 214); }
+.s_tag .btn-view-tag span { margin: 0px 10px; }

@@ -1,0 +1,34 @@
+/* Code tidied up by ScrapBook */
+.tminfo .charge-appeal-init { margin-left: 44px; width: 64px; text-align: center; border-radius: 4px; }
+.tminfo .charge-appeal-init:hover { background: rgb(229, 233, 239) none repeat scroll 0% 0%; }
+.appeal-mask { display: none; position: fixed; top: 0px; left: 0px; z-index: 10000; width: 100%; height: 100%; background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0.6; }
+.appeal-floatbox { display: none; position: fixed; top: 50%; left: 50%; z-index: 10001; margin-top: -285px; margin-left: -320px; width: 640px; height: 590px; font-size: 14px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 5px; }
+.appeal-floatbox h3 { height: 52px; width: 100%; line-height: 52px; font-size: 14px; border-bottom: 1px solid rgb(229, 233, 239); text-align: center; color: rgb(34, 34, 34); }
+.appeal-floatbox .appeal-floatbox-close { display: block; width: 20px; height: 20px; line-height: 20px; text-align: center; position: absolute; right: 30px; top: 16px; cursor: pointer; text-decoration: none; border-radius: 10px; }
+.appeal-floatbox .appeal-floatbox-close::before { content: "x"; color: rgb(204, 204, 204); font-size: 20px; font-weight: 300; font-family: Arial,sans-serif; }
+.appeal-floatbox .appeal-floatbox-main { padding: 30px 30px 0px; }
+.appeal-floatbox .appeal-floatbox-main label { display: block; height: 16px; line-height: 16px; padding-top: 20px; padding-left: 16px; color: rgb(34, 34, 34); }
+.appeal-floatbox .appeal-floatbox-main .appeal-radio-reason { float: left; margin: 1px 5px 0px 0px; }
+.appeal-floatbox .appeal-floatbox-reasontit { height: 38px; line-height: 38px; padding-left: 46px; }
+.appeal-floatbox .appeal-gray { color: rgb(204, 208, 215); }
+.appeal-floatbox .appeal-red { color: rgb(228, 12, 76); }
+.appeal-floatbox textarea { width: 540px; height: 72px; padding: 4px; border-radius: 4px; margin-left: 46px; border: 1px solid rgb(0, 0, 0); }
+.appeal-floatbox .appeal-floatbox-imgfile { position: relative; padding: 0px 46px; margin-top: 9px; }
+.appeal-floatbox .appeal-floatbox-explain { display: block; padding-left: 12px; position: absolute; top: 6px; left: 116px; color: rgb(153, 162, 170); font-size: 12px; }
+.appeal-floatbox .appeal-filebtn-label { display: block; width: 120px; height: 32px; line-height: 32px; text-align: center; border: 0px none; border-radius: 4px; background: rgb(0, 161, 214) none repeat scroll 0% 0%; color: rgb(255, 255, 255); font-size: 14px; }
+.appeal-floatbox .appeal-floatbox-btn { position: absolute; bottom: 20px; width: 100%; }
+.appeal-floatbox-btn button { width: 100px; height: 32px; }
+.appeal-floatbox-btn .appeal-floatbox-submitemsg { margin-left: 200px; color: rgb(228, 12, 76); }
+.appeal-floatbox-btn .floatbox-btn-submit { margin-left: 200px; border: 1px solid rgb(0, 161, 214); }
+.appeal-floatbox-btn .floatbox-btn-cancel { margin-left: 20px; border: 1px solid rgb(204, 208, 215); color: rgb(109, 117, 122); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.appeal-floatbox .appeal-floatbox-copyright { position: relative; width: 536px; height: 92px; line-height: 92px; margin-left: 46px; padding-left: 12px; border-radius: 4px; background: rgb(244, 245, 247) none repeat scroll 0% 0%; border: 1px solid rgb(229, 233, 239); margin-top: 15px; }
+.appeal-floatbox .appeal-floatbox-copyright a { display: block; position: absolute; top: 30px; left: 325px; width: 84px; height: 32px; line-height: 32px; text-align: center; color: rgb(255, 255, 255); background: rgb(0, 161, 214) none repeat scroll 0% 0%; border-radius: 4px; }
+.appeal-floatbox .appeal-floatbox-content, .appeal-floatbox .appeal-floatbox-copyright, .appeal-floatbox .appeal-floatbox-operation, .appeal-floatbox .appeal-floatbox-result { display: none; }
+.appeal-floatbox .appeal-floatbox-content.current, .appeal-floatbox .appeal-floatbox-copyright.current, .appeal-floatbox .appeal-floatbox-operation.current, .appeal-floatbox .appeal-floatbox-result.current { display: block; }
+.appeal-floatbox .floatbox-result-msg { padding: 36px 0px 40px; font-size: 16px; text-align: center; }
+.appeal-floatbox-result div { width: 548px; height: 280px; border: 1px solid rgb(229, 233, 239); border-radius: 4px; background: rgb(244, 245, 247) none repeat scroll 0% 0%; margin: 0px auto; }
+.appeal-floatbox-result div img { display: block; margin: 46px auto; }
+.appeal-floatbox-result button { position: absolute; bottom: 30px; left: 50%; margin-left: -50px; display: block; width: 100px; height: 32px; }
+.appeal-floatbox .appeal-filelist { height: 64px; }
+.appeal-textarea-wrp { position: relative; }
+.appeal-floatbox .appeal-floatbox-number { position: absolute; bottom: 8px; right: 50px; color: rgb(34, 34, 34); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }

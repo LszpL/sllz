@@ -1,0 +1,81 @@
+<?php
+
+namespace App\Http\Controllers\Home;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class UserController extends Controller
+{
+
+    public function home()
+    {
+
+        return view('home.user.home');
+
+    }
+
+    public function message()
+    {
+
+        $message=\DB::table('users_message')->get();
+
+
+        return view('home.user.message',compact('message'));
+
+
+    }
+
+    public function add()
+    {
+
+        //引入视频分类
+        $type = \DB::table('videos_type')->get();
+        $type = \DB::table('videos_type')->select('*', \DB::raw("concat(path,',',type_id) AS sort_path"))->orderBy('sort_path')->get();
+        foreach ($type as $key => $value) {
+            $num = substr_count($value->path, ',');
+            $type[$key]->type_name = str_repeat('|| - ', $num) . $value->type_name;
+
+
+        }
+        //引入标签分类
+        $label = \DB::table('videos_label')->get();
+        return view('home.user.add', ['title' => '用户视频添加'], compact('type','label'));
+
+
+    }
+
+    public function comment()
+    {
+        return view('home.user.comment')->with('title','我的评论');
+    }
+
+    public function history()
+    {
+        $data = \DB::table('watchs_history')->leftJoin('videos_data', 'watchs_history.videos_id', '=', 'videos_data.video_id')->where('users_id','1')->paginate(10);
+//        dd($data);
+        return view('home.user.history')->with(['title'=>'观看历史','data'=>$data]);
+    }
+
+    public function delhistory(Request $request)
+    {
+        $id = $request->only('id');
+        $res = \DB::table('watchs_history')->where('watchs_id',$id)->delete();
+        if($res)
+        {
+            $data = [
+                'state'=>1
+            ];
+        }else{
+            $data = [
+                'state'=>0
+            ];
+        }
+        return $data;
+    }
+
+}
+
+
+
+

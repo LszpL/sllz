@@ -5,6 +5,9 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Demo</title>
   <link rel="shortcut icon" href="favicons/1.png')}}">
+  <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
+  <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
+  <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/history/css/common.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/history/css/index.css')}}">
 </head>

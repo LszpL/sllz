@@ -16,7 +16,7 @@
 						<form action="{{url('home/user/domessage')}}"   method="post">
 							{{csrf_field()}}
 							@foreach($message as $item)
-						<input type="hidden"   name="user_id"   value="{{$res[0]}}" >
+						<input type="hidden"   name="users_id"   value="{{$res[0]}}" >
 						<input type="hidden"   name="message_id"   value="{{$item->message_id}}" >
 						<li>
 							<div class="sb-info">
@@ -32,7 +32,7 @@
 							<div class="sb-info">
 								<p class="sbi-l">用户名：</p>
 								<div class="sbi-m">
-									<span readonly  name="user_name"    >{{$res[1]}}</span>
+									<span readonly  name="users_name"    >{{$res[1]}}</span>
 								</div>
 								<p class="sbi-r">注：用户名为本人手机号,不可修改</p>
 

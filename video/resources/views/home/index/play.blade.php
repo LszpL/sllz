@@ -1,18 +1,11 @@
 @extends('home.layouts')
 
 @section('content')
-    {{--<link rel="shortcut icon" href="{{asset('home_temp/play/css/favicon.ico')}}" />--}}
-    {{--<link rel="search" type="application/opensearchdescription+xml" href="https://static.hdslb.com/opensearch.xml" title="哔哩哔哩" />--}}
-    {{--<link rel="stylesheet" href="{{asset('home_temp/play/css/jquery-ui.css')}}" type="text/css" />--}}
     <link rel="stylesheet" href="{{asset('home_temp/play/css/video.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{asset('home_temp/play/css/page-core.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{asset('home_temp/play/css/tag-index2.0.css')}}" type="text/css" />
-    {{--<link rel="stylesheet" href="{{asset('home_temp/play/css/elec.css')}}" />--}}
-    {{--<link rel="stylesheet" href="{{asset('home_temp/play/css/chart.min.css')}}" />--}}
     <link rel="stylesheet" type="text/css" href="{{asset('home_temp/play/css/comment.min.css')}}" />
-    {{--<link rel="stylesheet" href="{{asset('home_temp/play/css/appeal.css')}}" type="text/css" />--}}
 
-    {{--<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>--}}
 
     <style>
         /* Code tidied up by ScrapBook */
@@ -31,7 +24,6 @@
         /* Code tidied up by ScrapBook */
         /*#player_placeholder { visibility: hidden; }*/
     </style>
-    {{--<script type="text/javascript" charset="utf-8" async="" src="about:blank"></script>--}}
 
 <div class="b-page-body">
     <div class="main-inner" style="width: 1160px;">

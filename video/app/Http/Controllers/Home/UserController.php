@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $data = session('user');
         $id= $data->login_id;
-        $res=\DB::table('users_message')->where('user_id',$id)->get();
+        $res=\DB::table('users_message')->where('users_id',$id)->get();
         return view('home.user.home',compact('res'));
 
     }
@@ -26,7 +26,7 @@ class UserController extends Controller
         $data = session('user');
         $res[] = $data->login_id;
         $res[] = $data->login_name;
-        $message = $users = \DB::table('users_message')->where('user_id', '=', $res[0])->get();
+        $message = $users = \DB::table('users_message')->where('users_id', '=', $res[0])->get();
 
         return view('home.user.message', compact('message', 'res'));
 
@@ -79,7 +79,7 @@ class UserController extends Controller
         $fc = session('user');
         $id=$fc->login_id;
 // 查询数据库,如果有头像获取头像
-        $faceimg = $users = \DB::table('users_message')->where('user_id', '=', $id)->get();
+        $faceimg = $users = \DB::table('users_message')->where('users_id', '=', $id)->get();
         return view('home.user.face',compact('faceimg'));
 
     }
@@ -123,7 +123,7 @@ class UserController extends Controller
         $uid = session('user');
         $id= $uid->login_id;
         //插入数据库
-        $res = \DB::table('users_message')->where('user_id', $id)->update($data);
+        $res = \DB::table('users_message')->where('users_id', $id)->update($data);
         if ($res) {
             return back()->with(['info' => '修改成功']);
         } else {

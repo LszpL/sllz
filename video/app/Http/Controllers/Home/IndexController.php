@@ -40,7 +40,7 @@ class IndexController extends Controller
 			}
 		$types=[];	
 		$types=$r[0];
-
+		// dd($types);
 		 //注册人数
 		$man =\DB::table('users_message')->count();
 		//一天前

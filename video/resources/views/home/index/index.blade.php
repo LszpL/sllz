@@ -2,9 +2,14 @@
 
 
 @section('content')
-  111
+  <nav id="nav">
+    <div class="page-width clearfix">
+      <ul class="nav-list">
+        <li class="item item-home">
+          <a href="#" class="link">首页</a>
+        </li>
 
-
+        @foreach($types as $k=>$v)
 
         <li class="item">
           <a href="{{url('home/index/onelist')}}/{{$v['value']['type_name']}}/{{$v['value']['type_id']}}/" class="link">
@@ -474,7 +479,6 @@
 @endsection
  
 @section('js')
-
 
 
 

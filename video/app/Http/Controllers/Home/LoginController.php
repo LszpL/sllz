@@ -76,6 +76,8 @@ class LoginController extends Controller
         // dd($data);
         //         4 如果验证通过，将用户信息写入session,作为用户登录标志
         session(['user'=>$data]);
+        session('user')->login_id = $user->login_id;
+        session('user')->login_name = $user->login_name;
         // dd(session('user'));
         // 5 跳转到后台首页
         return redirect('/home/index/index');       

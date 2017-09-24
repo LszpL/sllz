@@ -38,6 +38,20 @@
                         </div>
                         <p class="sbi-r">注：请不要上传过大文件</p>
                     </div>
+
+                </li>
+                <li>
+                    <div class="sb-info">
+                        <p class="sbi-l">图片：</p>
+                        <div class="sbi-m">
+                            <input id="file_name" type="file" name="video_img" value=""  multiple="true">
+                            {{--<input type="text" size="50" name="art_thumb" id="art_thumb">--}}
+                            {{--<p><img id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>--}}
+
+                        </div>
+                        <p class="sbi-r">注：请上传图片格式</p>
+                    </div>
+
                 </li>
                 <li>
                     <div class="sb-info">
@@ -59,7 +73,6 @@
 
                                         @foreach( $type as $item)
                                             <option value="{{$item->type_id}}" >{{$item->type_name}}</option>
-
                                         @endforeach
                                     </select>
                                 </div>
@@ -94,7 +107,20 @@
                         </div>
 
                     </div>
+                </li>
+                <li>
+                    <div class="sb-info">
+                        <p class="sbi-l">时长：</p>
+                        <div class="sbi-m">
+                            <div class="">
+                                <span><input type="text" name="video_time" value=""  style="width:180px;" placeholder="请不要上传超过120分钟的视频"> </span> <em></em>
 
+                            </div>
+
+                        </div>
+
+                    </div>
+                </li>
                     <div class="sb-info">
                         <div class="sbi-m">
                             <div class="">
@@ -126,8 +152,8 @@
         }
 ////        //判断上传文件的后缀名
         var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
-        if (strExtension != 'jpg' && strExtension != 'gif'
-            && strExtension != 'png' && strExtension != 'bmp') {
+        if (strExtension != 'mp4' && strExtension != 'avi'
+            && strExtension != 'wmv' && strExtension != 'jpg') {
             alert("请选择图片文件");
             return;
         }

@@ -17,7 +17,7 @@ class Login
     {
 
         //如果用户没有登录
-        if(!session('user')){
+        if(!session('admin')){
             return redirect('admin/login')->with(['info'=>'请注意素质!!必须通过登录页面才能进入后台首页']);
         }
 

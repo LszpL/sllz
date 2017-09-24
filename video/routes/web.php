@@ -28,7 +28,7 @@ Route::get('/code/captcha/{tmp}', 'Admin\LoginController@captcha');
 Route::post('admin/dologin','Admin\LoginController@doLogin');
 
 // ====================中间件============================
-Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['Login']],function(){
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['Login','Auths']],function(){
 	//后台首页的路由
 Route::get('index','IndexController@index');
 
@@ -51,8 +51,6 @@ Route::post('user/sq/{id}','UserController@sq');
 Route::post('user/fh/{id}','UserController@fh');
 
 
-//后台首页	
- Route::post('index/session','IndexController@session');
 
 
  //分类模块
@@ -165,36 +163,59 @@ Route::post('home/dozhuce','Home\LoginController@dozhuce');
 //注册手机验证码
 Route::post('phone','Home\LoginController@index');
 
+//忘记密码
+Route::get('home/forget','Home\LoginController@forget');
+//忘记密码验证码
+Route::post('fphone','Home\LoginController@findex');
+
+Route::post('home/doforget','Home\LoginController@doforget');
 
 
 
 //前台首页
- Route::get('/home/index/index','home\IndexController@index');
 
 
 
+Route::get('home/search','home\LoginController@search');
 
-//前台个人中心
+// Route::get('xsearch','Home\LoginController@xsearch');
+
+Route::get('/home/index/index','home\IndexController@index');
+ // Route::get('/home/index/more','home\IndexController@more');
+ 
+Route::get('/home/index/onelist/{name}/{id}','home\OneListController@onelist');
+Route::get('/home/index/twolist/{name}/{id}','home\TwoListController@twolist');
+Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@labelTwolist');
+
+
+
+//前台用户个人中心
 //前台个人首页
 Route::get('/home/user/home','Home\UserController@home');
 //首页个人信息
 Route::get('/home/user/message','Home\UserController@message');
+//首页个人信息更新
+Route::post('/home/user/domessage','Home\UserController@domessage');
 //首页上传
 Route::get('/home/user/add','Home\UserController@add');
 Route::post('/home/user/video','Home\UploadController@video');
 Route::post('/home/user/upload','Home\UploadController@upload');
 Route::get('/home/user/myupload','Home\UploadController@myupload');
-//Route::get('/home/user/face','Home');
-
+//用户首页头像
+Route::get('/home/user/face','Home\UserController@face');
+Route::post('/home/user/myface','Home\UserController@myface');
+Route::post('/home/user/imgs','Home\UserController@imgs');
 
 
 // 前台
 Route::get('/home/user/comment','Home\UserController@comment');
 Route::get('/home/user/history','Home\UserController@history');
+Route::get('home/user/vip','Home\UserController@vip');
+Route::get('home/user/ds','Home\UserController@ds');
 Route::post('/home/user/history/delhistory','Home\UserController@delhistory');
-Route::get('/home/play/index','Home\PlayController@index');
+Route::get('/home/play/index/{id}','Home\PlayController@index');
 Route::post('/home/play/comment','Home\PlayController@comment');
-Route::get('/ad','Home\PlayController@comment');
-//Route::post('/test','Home\UserController@delhistory');
+Route::post('home/play/reply','Home\PlayController@reply');
+
 
 

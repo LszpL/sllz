@@ -1,13 +1,12 @@
 @extends('home.layouts')
 
 @section('content')
+    <link rel="stylesheet" href="{{asset('home_temp/history/css/common.css')}}">
+    <link rel="stylesheet" href="{{asset('home_temp/history/css/index.css')}}">
     <link rel="stylesheet" href="{{asset('home_temp/history/css/reset.css')}}">
-    {{--<script src="{{asset('home_temp/history/js/script.js')}}"></script>--}}
+
     <script src="{{asset('home_temp/history/js/vendor_34cd10da.js')}}"></script>
-    {{--<script src="{{asset('home_temp/history/js/nav.js')}}"></script>--}}
-    {{--<script src="{{asset('home_temp/history/js/jquery.min.js')}}"></script>--}}
-    {{--<script src="{{asset('home_temp/history/js/footer.js')}}"></script>--}}
-    {{--<script src="{{asset('home_temp/history/js/base.core.js')}}"></script>--}}
+
     <script src="{{asset('home_temp/history/js/app_34cd10da.js')}}"></script>
 
     <div id="app">
@@ -19,8 +18,10 @@
                         <span class="b-head-t">播放历史</span>
                     </div>
                     <div class="history-btn">
-                        <a href="#" class="btn">暂停记录历史</a>
+                        <a href="#" class="btn">开通会员</a>
+                        @if(empty($data['0']))
                         <a href="#" class="btn cleanhsbtn">清空历史</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -58,7 +59,7 @@
                         </div>
                         <div class="r-info clearfix">
                             <div class="cover-contain">
-                                <a class="preview">
+                                <a href="{{url('/home/play/index\/').$item->videos_id}}" class="preview">
                                     <img src="/{{$item->video_img}}">
                                 </a>
                                 <div class="info"> </div>

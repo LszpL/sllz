@@ -19,22 +19,6 @@
                      列表
                     </div>
                 </div>
-                <!-- 提示信息 -->
-                                <div style="display:none;">
-                                    @if(session('info'))
-                                    <p id="session">{{session('info')}}</p>
-                                    @endif
-                                </div> 
-                                <!-- 验证信息 -->
-                                @if (count($errors) > 0)
-                                    <div class="alert alert-danger" style="display:none;">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li class= "info" >{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
                 <div class="tpl-block">
                     <div class="am-g">
                         <div class="am-u-sm-12 am-u-md-6">

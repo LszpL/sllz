@@ -25,36 +25,27 @@
 
 
                         <div class="am-u-sm-12 am-u-md-9">
-                            @if (count($errors) > 0)
-                                <div class="mark">
-                                    <ul>
-                                        @if(is_object($errors))
-                                            @foreach ($errors->all() as $error)
-                                                <li style="color:red">{{ $error }}</li>
-                                            @endforeach
-                                        @else
-                                            <li style="color:red">{{ $errors }}</li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            @endif
-                            @if(session('info'))
-                                <div  id="alertError"  class="danger">
-
-                                    {{session('info')}}
-                                </div>
-                            @endif
                             <form class="am-form am-form-horizontal"  id="art_form" action="{{url('admin/upload/insert')}}" method="post"  enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="am-form-group">
                                     <label for="user-weibo" class="am-u-sm-3 am-form-label">上传视频</label>
 
                                     <div class="am-u-sm-9">
-                                        {{--<input type="file" id="user-weibo" name="file_name">--}}
                                         {{--<input type="text" size="50" name="art_thumb" id="art_thumb">--}}
                                         <input id="file_name" name="file_name" type="file" multiple="true">
 
                                         {{--<p><img id="img1" alt="上传后显示图片"  style="max-width:350px ;max-height:100px;" /></p>--}}
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">上传图片</label>
+
+                                    <div class="am-u-sm-9">
+                                        {{--<input type="file" id="user-weibo" name="file_name">--}}
+                                        <input type="text" size="50" name="art_thumb" id="art_thumb">
+                                        <input id="file_name" name="video_img" type="file" multiple="true">
+
+                                        <p><img id="img1" alt="上传后显示图片"  style="max-width:350px ;max-height:100px;" /></p>
                                     </div>
                                 </div>
                                 <div class="am-form-group">
@@ -79,7 +70,12 @@
                                         </select>
                                     </div>
                                 </div>
-
+                                <div class="am-form-group">
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label">时长</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="tel"  name="video_time"  id="user-phone" placeholder="填写视频时长 "  style="width:150px;">
+                                    </div>
+                                </div>
                                 <div class="am-form-group">
                                     <label for="user-phone" class="am-u-sm-3 am-form-label">标签</label>
                                     <div class="am-u-sm-9">
@@ -114,41 +110,43 @@
     </div>
 @endsection
 @section('js')
-<script type="text/javascript">
-    $(function () {
-        $("#file_name").change(function () {
-            uploadImage();
-        })
-    })
-    function uploadImage() {
-//  判断是否有选择上传文件
-        var imgPath = $("#file_name").val();
-        if (imgPath == "") {
-            alert("请选择上传图片！");
-            return;
-        }
-////        //判断上传文件的后缀名
-        var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
-        if (strExtension != 'jpg' && strExtension != 'avi'
-            && strExtension != 'rmvb' && strExtension != 'wmv') {
-            alert("请选择视频文件");
-            return;
-        }
-        var formData = new FormData($('#art_form')[0]);
-        $.ajax({
-            type: "POST",
-            url: "/admin/upload/insert",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(data) {
-                $('#img1').attr('src','/'+data);
-                $('#art_thumb').val(data)
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert("上传失败，请检查网络后重试");
-            }
-        });
-    }
+    <script type="text/javascript">
+//        alert
+        //    $(function () {
+//        $("#file_name").change(function () {
+
+//            uploadImage();
+//        })
+//    })
+//    function uploadImage() {
+////  判断是否有选择上传文件
+//        var imgPath = $("#file_name").val();
+//        if (imgPath == "") {
+//            alert("请选择上传图片！");
+//            return;
+//        }
+//////        //判断上传文件的后缀名
+//        var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+//        if (strExtension != 'mp4' && strExtension != 'avi'
+//            && strExtension != 'rmvb' && strExtension != 'wmv') {
+//            alert("请选择视频文件");
+//            return;
+//        }
+//        var formData = new FormData($('#art_form')[0]);
+//        $.ajax({
+//            type: "POST",
+//            url: "/admin/upload/insert",
+//            data: formData,
+//            contentType: false,
+//            processData: false,
+//            success: function(data) {
+//                $('#img1').attr('src','/'+data);
+//                $('#art_thumb').val(data)
+//            },
+//            error: function(XMLHttpRequest, textStatus, errorThrown) {
+//                alert("上传失败，请检查网络后重试");
+//            }
+//        });
+    //}
 </script>
 @endsection

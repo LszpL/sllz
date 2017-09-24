@@ -2,6 +2,7 @@
 
 
 @section('content')
+
   <nav id="nav">
     <div class="page-width clearfix">
       <ul class="nav-list">
@@ -12,22 +13,20 @@
         @foreach($types as $k=> $v)
 
         <li class="item">
-          <a href="#" class="link">
+          <a href="{{url('home/index/onelist')}}/{{$v['value']['type_name']}}/{{$v['value']['type_id']}}/" class="link">
             <div class="num"><i>887</i></div>
            
                {{$v['value']['type_name']}}
               
           </a>
           <ul class="nav-item__hover">
-            <li>
-            
                 @foreach($v as $kk=>$vv)
-                  <a href="#">
+                <li>
+                  
                     @if($kk != 'value')
-                     <!--  @foreach($vv as $vvv)
-                      {{ $vvv['type_name'] }}
-                      @endforeach -->
-                      {{$vv['value']['type_name']}}
+                    <a href="{{url('home/index/twolist')}}/{{$vv['value']['type_name']}}/{{$vv['value']['type_id']}}">
+                    <em>{{$vv['value']['type_name']}}<i></i></em>
+                      
                     @endif  
                   </a>
                 </li>
@@ -114,14 +113,15 @@
     </div>
   </nav>
 
+
   <div id="banner">
     <div class="page-width clearfix">
       <div class="slider fl">
         <div class="slider-img">
-          <a href="#" slider-title="pic1"><img src="{{asset('home_temp/images/cont/slider_img1.png')}}" alt="#"></a>
-          <a href="#" slider-title="pic2"><img src="{{asset('home_temp/images/cont/slider_img2.png')}}" alt="#"></a>
-          <a href="#" slider-title="pic3"><img src="{{asset('home_temp/images/cont/slider_img3.png')}}" alt="#"></a>
-          <a href="#" slider-title="pic4"><img src="{{asset('home_temp/images/cont/slider_img4.png')}}" alt="#"></a>
+          @foreach($video_1 as $k=>$v)
+          <a href="#" slider-title="{{$v->video_name}}"><img src="/{{$v->video_img}}" alt="#"></a>
+         
+          @endforeach
         </div>
         <div class="slider-title"><p>pic1</p></div>
         <div class="slider-btn">
@@ -134,72 +134,27 @@
       </div>
       <div class="banner-list fr">
         <ul>
+          @foreach($video_2 as $k=>$V)
           <li>
             <a href="#">
-              <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
+              <img src="/{{$v->video_img}}" alt="#">
               <div class="info">
-                <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
-                <p class="author">up主：丧尸の桑</p>
-                <p class="play">播放：48243</p>
+                <p class="title">【{{substr($v->created_at,5,2)}}月】【{{$v->video_name}}】</p>
+                <p class="author">bL主：{{$v->admin_name}}</p>
+                <p class="play">播放：{{$v->video_count}}</p>
               </div>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-              <div class="info">
-                <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
-                <p class="author">up主：丧尸の桑</p>
-                <p class="play">播放：48243</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-              <div class="info">
-                <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
-                <p class="author">up主：丧尸の桑</p>
-                <p class="play">播放：48243</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-              <div class="info">
-                <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
-                <p class="author">up主：丧尸の桑</p>
-                <p class="play">播放：48243</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-              <div class="info">
-                <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
-                <p class="author">up主：丧尸の桑</p>
-                <p class="play">播放：48243</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-              <div class="info">
-                <p class="title">【初音ミク】39 TECHNO【八王子P】</p>
-                <p class="author">up主：丧尸の桑</p>
-                <p class="play">播放：48243</p>
-              </div>
-            </a>
-          </li>
+          @endforeach
+         
         </ul>
         <a href="#" class="btn btn-prev">昨日</a>
         <a href="#" class="btn btn-next">一周</a>
       </div>
     </div>
   </div>
+
+
 
   <div id="main">
     <div class="page-width">
@@ -212,55 +167,28 @@
             <a href="#" class="promote-link">来感受创作的力量吧！</a>
           </div>
           <ul class="pic-list__wrapper clearfix">
+            @foreach($video_3 as $k=>$v)
             <li class="item">
               <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
+                <img src="/{{$v->video_img}}" alt="#">
                 <span class="mask"></span>
-                <span class="time">3:39</span>
+                <span class="time">{{$v->video_time}}</span>
               </a>
               <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
+                <a href="#">【{{$v->type_name}}】{{$v->video_name}}</a>
               </div>
             </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【欧美男模】 禁欲系 （西装控）</a>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">煮泡面好吃还是泡泡面好吃？藤椒双辣挑战！~</a>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【DEC】S5E8 化学方法的划手特效~</a>
-              </div>
-            </li>
+            @endforeach
+           
           </ul>
         </div>
         <div class="main-side fr">
           <div class="promote-side__title">
-            <a href="#">在线人数：715509</a>
+            <a href="#">注册人数：{{$man}}</a>
             <span>|</span>
-            <a href="#">最新投稿：5806</a>
+            <a href="#">最新投稿：{{$new_video}}</a>
           </div>
-          <a href="#" class="promote-side__img"><img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#"></a>
+          <a href="#" class="promote-side__img"><img src="{{asset('/uploads/2564b7999716e6f7348c4c8619379619f39468ba.jpg')}}" alt="#"></a>
         </div>
       </div>
 
@@ -281,7 +209,7 @@
             <div class="more-wrap">
               <a href="#" class="dynamic"><i></i>392条新动态</a>
               
-              <a href="{{url('/home/index/index?a=')}}{{$_GTE['a']}}" class="more">更多<i></i></a>
+              <a href="{{url('/home/index/index')}}" class="more">更多<i></i></a>
             </div>
           </div>
           <ul class="pic-list__wrapper clearfix tab-cont__item tab-cont__cur">
@@ -311,7 +239,8 @@
           </ul>
           <!-- 最新投稿 -->
           <ul class="pic-list__wrapper clearfix tab-cont__item">
-               <div style="dispaly:none;"> {{$i=0}}</div>
+               <div style="display:none;">  {{$i=0}}</div> 
+               
            @foreach($data_2 as $kk=>$vv)
               
               @if($i<8 && $vv->type_id==$k)
@@ -432,53 +361,75 @@
             </li>
           </ul>
         </div>
+       
+        
+
         <div class="main-side fr" js-tab="true">
           <div class="main-side__title">
             <div class="rank-t">
               <h3>排行</h3>
             </div>
             <div class="tab-title">
-              <a href="#" class="cur">全部</a>
-              <a href="#">原创</a>
+              <a href="#" class="cur">播放</a>
+              <a href="#">评论</a>
             </div>
             <div class="side-select">
               <span>三日</span>
               <i></i>
             </div>
+
           </div>
           <div class="main-side__cont">
             <div class="tab-cont">
-              <ul class="tab-cont__item main-rank">
+          
+
+              <ul class="tab-cont__item main-rank" style="height:415px;">
+               <div style="display:none;">  {{$m=0}}</div> 
+              @foreach($play_data as $pp=>$yy)
+                 @if($m<6 && $yy->type_id==$k)
+                 <div style="display:none;"> {{$m++}}</div>
                 <li class="item item-one">
                   <a href="#">
-                    <i class="n1">1</i>
-                    <img src="{{asset('home_temp/images/cont/main-rank__img1.jpg')}}" alt="#">
+                    <i class="n1">{{$m}}</i>
+                    <img src="/{{$yy->video_img}}" alt="#">
                     <div>
-                      <p class="title">【1月】小林家的龙女仆 10【独家正版】</p>
-                      <p class="mark">综合评分: 109.3万</p>
+                      <p class="title">【{{substr($yy->created_at,5,2)}}月】{{$yy->video_name}}</p>
+                      <p class="mark">播放次数: {{$yy->video_count}}</p>
                     </div>
                   </a>
                 </li>
-                <li class="item">
-                  <a href="#"><i class="n2">2</i>                  【1月】火影忍者 疾风传 719</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i class="n3">3</i>                    【4月】双星之阴阳师 48</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>4</i>狐妖小红娘 52 狗血大戏正上演 OP特效又更换</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>5</i>少年锦衣卫 第一季 06 怪谈</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>6</i>画江湖之不良人Ⅱ 35 阋墙之祸</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>7</i>【1月】黑白来看守所 24【独家正版】</a>
-                </li>
+               <!--  <li class="item">
+                  <a href="#"><i class="n2">{{$pp+1}}</i>【1月】火影忍者 疾风传 719</a>
+                </li> -->
+              @endif
+              @endforeach
+
+                <!-- ? -->
               </ul>
-              <ul class="tab-cont__item main-rank">
+              <ul class="tab-cont__item main-rank" style="height:415px;">
+               <div style="display:none;">  {{$m=0}}</div> 
+              @foreach($comment_data as $cc=>$oo)
+                 @if($m<6 && $oo->type_id==$k)
+                 <div style="display:none;"> {{$m++}}</div>
+                <li class="item item-one">
+                  <a href="#">
+                    <i class="n1">{{$m}}</i>
+                    <img src="/{{$oo->video_img}}" alt="#">
+                    <div>
+                      <p class="title">【{{substr($oo->created_at,5,2)}}月】{{$oo->video_name}}</p>
+                      <p class="mark">播放次数: {{$oo->video_count}}</p>
+                    </div>
+                  </a>
+                </li>
+               <!--  <li class="item">
+                  <a href="#"><i class="n2">{{$pp+1}}</i>【1月】火影忍者 疾风传 719</a>
+                </li> -->
+              @endif
+              @endforeach
+
+                <!-- ? -->
+              </ul>
+             <!--  <ul class="tab-cont__item main-rank">
                 <li class="item item-one">
                   <a href="#">
                     <i class="n1">1</i>
@@ -507,11 +458,14 @@
                 <li class="item">
                   <a href="#"><i>7</i>【1月】黑白来看守所 24【独家正版】</a>
                 </li>
-              </ul>
+              </ul> -->
+
+
             </div>
             <a href="#" class="more">查看更多<i></i></a>
           </div>
         </div>
+        
       </div>
       @endforeach
       
@@ -527,22 +481,6 @@
  
 @section('js')
 
-<script type="text/javascript">
 
- function bian(a)
- {  
-    alert({{$a}});
-    if(a == 2 ){
-     {{$a=3}};
-    }
-    if(a==3){
-      {{$a=2}}
-    }
- }
-
-
-
-
-</script>
 
 @endsection 

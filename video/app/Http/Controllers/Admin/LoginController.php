@@ -94,7 +94,7 @@ class LoginController extends Controller
             return back()->with(['info'=>'验证码错误'])->withInput();
         }
         //         4 如果验证通过，将用户信息写入session,作为用户登录标志
-        session(['user'=>$user]);
+        session(['admin'=>$user]);
         // 5 跳转到后台首页
         return redirect('admin/index');
 	}
@@ -103,8 +103,8 @@ class LoginController extends Controller
 	public  function logout(Request $request){
     	// dd(111);
     	//清除session
-    	$request->session()->forget('user');
-    	\Session::forget('user');
+    	$request->session()->forget('admin');
+    	\Session::forget('admin');
 
     	//跳转
     	return redirect('/admin/login')->with(['info'=>'登出成功']);

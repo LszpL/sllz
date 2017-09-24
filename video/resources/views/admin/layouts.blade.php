@@ -83,11 +83,13 @@
 
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
-                        <span class="tpl-header-list-user-nick">欢迎您 {{session('user')->admin_name}}</span><span class="tpl-header-list-user-ico"> 
-                        @if(empty(session('user')->admin_face))
+
+                        <span class="tpl-header-list-user-nick">欢迎您 {{session('admin')->admin_name}}</span><span class="tpl-header-list-user-ico"> 
+                        @if(empty(session('admin')->admin_face))
+
                         <img src="{{asset('admin/assets/img/user01.png')}}">
                         @else
-                        <img src="{{url('/uploads')}}/{{session('user')->admin_face}}" style="width: 40px;">
+                        <img src="{{url('/uploads')}}/{{session('admin')->admin_face}}" style="width: 40px;">
                         @endif
                         </span>
                     </a>
@@ -147,8 +149,8 @@
                             </li>
                         </ul>
                     </li>
-					
-					<li class="tpl-left-nav-item">
+                    
+                    <li class="tpl-left-nav-item">
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                             <i class="fa fa-users"></i>
                             <span>用户管理</span>
@@ -160,6 +162,12 @@
                                     <i class="am-icon-angle-right"></i>
                                     <span>用户列表</span>
                                 </a>
+                            </li>
+                            <li>
+                                    <a href="{{url('admin/user/vip')}}">
+                                        <i class="am-icon-angle-right"></i>
+                                        <span>会员列表</span>
+                                    </a>
                             </li>
                         </ul>
                     </li>
@@ -213,28 +221,7 @@
                             </li>
                         </ul>
                     </li>
-
-                    <li class="tpl-left-nav-item " >
-                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
-                            <i class="fa fa-user-plus"></i>
-                            <span>推荐位管理</span>
-                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
-                        </a>
-                        <ul class="tpl-left-nav-sub-menu">
-                            <li>
-                                <a href="{{url('admin/position/create')}}">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>推荐位添加</span>
-                                </a>
-                                <a href="{{url('admin/position')}}">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>推荐位列表</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-
-                     <li class="tpl-left-nav-item">
+                    <li class="tpl-left-nav-item">
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-table"></i>
                             <span>视频管理</span>
@@ -280,14 +267,14 @@
                                     <a href="{{url('admin/upload/index')}}">
                                         <i class="am-icon-angle-right"></i>
                                         <span>用户上传列表</span>
-                                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right">
+
 
                                         </i>
                                     </a>
                                     <a href="{{url('admin/upload/add')}}">
                                         <i class="am-icon-angle-right"></i>
                                         <span>用户视频添加</span>
-                                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right">
+
 
                                         </i>
                                     </a>
@@ -305,27 +292,50 @@
                                     <a href="{{url('admin/comment')}}">
                                         <i class="am-icon-angle-right"></i>
                                         <span>评论列表</span>
-                                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                       
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="tpl-left-nav-item">
+
+                    <li class="tpl-left-nav-item " >
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="fa fa-user-plus"></i>
+                            <span>推荐位管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu">
+                            <li>
+                                <a href="{{url('admin/position/create')}}">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>推荐位添加</span>
+                                </a>
+                                <a href="{{url('admin/position')}}">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>推荐位列表</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+                     <li class="tpl-left-nav-item">
                             <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                                 <i class="am-icon-table"></i>
-                                <span>用户管理</span>
+                                <span>推广管理</span>
                                 <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                             </a>
                             <ul class="tpl-left-nav-sub-menu">
                                 <li>
-                                    <a href="{{url('admin/user/vip')}}">
+                                    <a href="{{url('admin/position/push/index?position_id=0')}}">
                                         <i class="am-icon-angle-right"></i>
-                                        <span>会员列表</span>
-                                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                        <span>推广视频列表</span>
+                                        
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>   
+
+                    
                         <li class="tpl-left-nav-item">
                             <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                                 <i class="am-icon-table"></i>
@@ -339,14 +349,14 @@
                                     <a href="{{url('admin/config/create')}}">
                                         <i class="am-icon-angle-right"></i>
                                         <span>添加网站配置</span>
-                                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right">
+                                        
 
                                         </i>
                                     </a>
                                     <a href="{{url('admin/config')}}">
                                         <i class="am-icon-angle-right"></i>
                                         <span>网站配置列表</span>
-                                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right">
+                                        
 
                                         </i>
                                     </a>
@@ -363,34 +373,19 @@
                                     <a href="{{url('admin/link')}}">
                                         <i class="am-icon-angle-right"></i>
                                         <span>链接列表</span>
-                                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                        
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{url('admin/link/add')}}">
                                         <i class="am-icon-angle-right"></i>
                                         <span>添加链接</span>
-                                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                        
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="tpl-left-nav-item">
-                            <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
-                                <i class="am-icon-table"></i>
-                                <span>推广管理</span>
-                                <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
-                            </a>
-                            <ul class="tpl-left-nav-sub-menu">
-                                <li>
-                                    <a href="{{url('admin/position/push/index?position_id=0')}}">
-                                        <i class="am-icon-angle-right"></i>
-                                        <span>推广视频列表</span>
-                                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>                
+                                     
                 </ul>
             </div>
         </div>  
@@ -411,10 +406,9 @@
 
 <script type="text/javascript" src="http://cdn.staticfile.org/plupload/2.1.9/i18n/ar.js"></script>
 
-<!-- <script type="text/javascript"   src="{{asset('admin_temp/assets/js/bootstrap.min.js')}}"></script> -->
+<script type="text/javascript">
 
-    <script type="text/javascript">
-        //验证信息
+ //验证信息
         var str = '';
         if(typeof($('.info').html()) == 'string' && $('.info').html() !== null    ){
                $('.info').each(function(i,n){
@@ -428,22 +422,8 @@
       {
             layer.alert($('#session').html(), {icon: 8});
       }
-       //清除session 
-      if( typeof($('#session').html()) == 'string' &&  $('#session').html()  )
-        
-       {
-            $.ajax({
-                type: "post",
-                url: "/admin/index/session",
-                data: {id:1,_token:'{{csrf_token()}}'}, 
-            });
-       } 
-
-   </script>  
-
+</script>
     @yield('js')
-
-
 </body>
 
 </html>

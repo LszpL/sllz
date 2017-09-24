@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class UploadController extends Controller
 {
     public function index(Request $request){
-        $users = \DB::table('users_upload')->where('user_name','like','%'.$request->input('keywords').'%')->paginate($request->input('num',8));
+        $users = \DB::table('users_upload')->where('users_name','like','%'.$request->input('keywords').'%')->paginate($request->input('num',8));
         //显示分页并且保持分页
         return view('admin.uploads.index',['title'=>'上传列表','request'=>$request->all(),'page'=>$request->input('page')],compact('users'));
 
@@ -24,28 +24,31 @@ class UploadController extends Controller
             }
 
         
-        // $upload=\DB::table('users_upload')->where('upload_id',$id)->first();
+            $upload=\DB::table('users_upload')->where('upload_id',$id)->first();
 
-            // $data['type_id']=$upload->type_name;
-            // $data['video_name']=$upload->title;
-            // $data['video_url'] =$upload->file_name;
-            // $data['admin_name']=$upload->users_name;
-            // // $data['video_time']=$upload->video_time;
-            // $data['video_labels']=$upload->label;
-            // $data['video_status']='上线';
-            // // $data['video_img']=$upload->video_img;
-            // $data["video_desc"]=$upload->content;
+            $data['type_id']=$upload->type_name;
+            $data['video_name']=$upload->title;
+            $data['video_url'] =$upload->file_name;
+
+            $pet_name=$upload->users_name;
             
-            // $data['created_at']=$upload->upload_time;
-            // $data['video_like'] = 0;
-            // $data['video_trample'] = 0;
-            // $data['video_collect'] = 0;
-            // $data['video_count'] = 0;
-            // $data['video_comments'] = 0;
+            $data['admin_name']=$pet_name;
+            $data['video_time']=$upload->video_time;
+            $data['video_labels']=$upload->label;
+            $data['video_status']='上线';
+            $data['video_vip']='免费';
+            $data['video_img']=$upload->video_img;
+            $data["video_desc"]=$upload->content;
+            $data['created_at']=$upload->upload_time;
+            $data['video_like'] = 0;
+            $data['video_trample'] = 0;
+            $data['video_collect'] = 0;
+            $data['video_count'] = 0;
+            $data['video_comments'] = 0;
+           
+            $row=\DB::table('videos_data')->insert($data);
 
-            //$row=\DB::table('videos_data')->insert($data);
-
-         //dd($data);
+         
         $res=\DB::table('users_upload')->where('upload_id', $id) ->update(['status' => '审核完成','audit_time'=>date('Y-m-d H:i:s')]);
 
         if($res){

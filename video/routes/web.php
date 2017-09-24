@@ -186,8 +186,10 @@ Route::get('/home/index/index','home\IndexController@index');
 Route::get('/home/index/onelist/{name}/{id}','home\OneListController@onelist');
 Route::get('/home/index/twolist/{name}/{id}','home\TwoListController@twolist');
 Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@labelTwolist');
-
-
+//播放页
+Route::get('/home/play/index/{id}','Home\PlayController@index');
+Route::get('/home/play/gun','Home\PlayController@gun');
+Route::post('/home/play/collect','Home\PlayController@collect');
 
 //前台用户个人中心
 //前台个人首页
@@ -211,7 +213,7 @@ Route::post('/home/user/imgs','Home\UserController@imgs');
 Route::get('/home/user/comment','Home\UserController@comment');
 Route::get('/home/user/history','Home\UserController@history');
 Route::post('/home/user/history/delhistory','Home\UserController@delhistory');
-Route::get('/home/play/index','Home\PlayController@index');
+
 Route::post('/home/play/comment','Home\PlayController@comment');
 Route::get('/ad','Home\PlayController@comment');
 //Route::post('/test','Home\UserController@delhistory');

@@ -2,12 +2,10 @@
 
 @section('content')
     <link rel="stylesheet" href="{{asset('home_temp/history/css/reset.css')}}">
-    {{--<script src="{{asset('home_temp/history/js/script.js')}}"></script>--}}
+    <link rel="stylesheet" href="{{asset('home_temp/history/css/common.css')}}">
+    <link rel="stylesheet" href="{{asset('home_temp/history/css/index.css')}}">
+  
     <script src="{{asset('home_temp/history/js/vendor_34cd10da.js')}}"></script>
-    {{--<script src="{{asset('home_temp/history/js/nav.js')}}"></script>--}}
-    {{--<script src="{{asset('home_temp/history/js/jquery.min.js')}}"></script>--}}
-    {{--<script src="{{asset('home_temp/history/js/footer.js')}}"></script>--}}
-    {{--<script src="{{asset('home_temp/history/js/base.core.js')}}"></script>--}}
     <script src="{{asset('home_temp/history/js/app_34cd10da.js')}}"></script>
 
     <div id="app">

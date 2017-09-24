@@ -118,7 +118,7 @@
       <div class="slider fl">
         <div class="slider-img">
           @foreach($video_1 as $k=>$v)
-          <a href="#" slider-title="{{$v->video_name}}"><img src="/{{$v->video_img}}" alt="#"></a>
+          <a href="{{url('/home/play/index')}}/{{$v->video_id}}" slider-title="{{$v->video_name}}"><img src="/{{$v->video_img}}" alt="#" style="height:220px;width:440px;"></a>
          
           @endforeach
         </div>
@@ -135,8 +135,8 @@
         <ul>
           @foreach($video_2 as $k=>$V)
           <li>
-            <a href="#">
-              <img src="/{{$v->video_img}}" alt="#">
+            <a href="{{url('home/play/index')}}/{{$v->video_id}}">
+              <img src="/{{$v->video_img}}" alt="#" style="height:100px;width:160px;">
               <div class="info">
                 <p class="title">【{{substr($v->created_at,5,2)}}月】【{{$v->video_name}}】</p>
                 <p class="author">bL主：{{$v->admin_name}}</p>
@@ -168,8 +168,8 @@
           <ul class="pic-list__wrapper clearfix">
             @foreach($video_3 as $k=>$v)
             <li class="item">
-              <a href="#" class="img-link">
-                <img src="/{{$v->video_img}}" alt="#">
+              <a href="{{url('home/play/index')}}/{{$v->video_id}}" class="img-link">
+                <img src="/{{$v->video_img}}" alt="" style="height:100px;width:160px;">
                 <span class="mask"></span>
                 <span class="time">{{$v->video_time}}</span>
               </a>
@@ -206,7 +206,7 @@
             </div>
             <a href="#" class="main-link"><i></i>我的十月新番打开方式一定有问题</a>
             <div class="more-wrap">
-              <a href="#" class="dynamic"><i></i>392条新动态</a>
+              <a href="#" class="dynamic"><i></i>999+新动态</a>
               
               <a href="{{url('/home/index/index')}}" class="more">更多<i></i></a>
             </div>
@@ -219,8 +219,8 @@
               @if($i<4 && $vv->type_id==$k)
              <div style="display:none;"> {{$i++}}</div>
             <li class="item">
-              <a href="#" class="img-link">
-                <img src="/{{$vv->video_img}}" alt="#">
+              <a href="{{url('/home/play/index')}}/{{$vv->video_id}}" class="img-link">
+                <img src="/{{$vv->video_img}}" alt="#" style="height:100px;width:160px;" >
                 <span class="mask"></span>
                 <span class="time">{{$vv->video_time}}</span>
               </a>
@@ -246,7 +246,7 @@
              <div style="display:none;"> {{$i++}}</div>
             <li class="item">
               <a href="#" class="img-link">
-                <img src="/{{$vv->video_img}}" alt="#">
+                <img src="/{{$vv->video_img}}" alt="#" style="height:100px;width:160px;">
                 <span class="mask"></span>
                 <span class="time">{{$vv->video_time}}</span>
               </a>
@@ -260,104 +260,7 @@
             </li>
               @endif
            @endforeach
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <a href="#" class="img-link">
-                <img src="{{asset('home_temp/images/cont/main_pic.jpg')}}" alt="#">
-                <span class="mask"></span>
-                <span class="time">3:39</span>
-              </a>
-              <div class="img-info">
-                <a href="#">【FGO】轮到两仪式来给你洗脑了~</a>
-                <div class="btm">
-                  <div class="user"><i></i>铃椛</div>
-                  <div class="online"><i></i>6732</div>
-                </div>
-              </div>
-            </li>
+           
           </ul>
         </div>
        
@@ -388,9 +291,9 @@
                  @if($m<6 && $yy->type_id==$k)
                  <div style="display:none;"> {{$m++}}</div>
                 <li class="item item-one">
-                  <a href="#">
+                  <a href="{{url('/home/play/index')}}/{{$yy->video_id}}">
                     <i class="n1">{{$m}}</i>
-                    <img src="/{{$yy->video_img}}" alt="#">
+                    <img src="/{{$yy->video_img}}" alt="#" >
                     <div>
                       <p class="title">【{{substr($yy->created_at,5,2)}}月】{{$yy->video_name}}</p>
                       <p class="mark">播放次数: {{$yy->video_count}}</p>
@@ -411,7 +314,7 @@
                  @if($m<6 && $oo->type_id==$k)
                  <div style="display:none;"> {{$m++}}</div>
                 <li class="item item-one">
-                  <a href="#">
+                  <a href="{{url('/home/play/index')}}/{{$oo->video_id}}">
                     <i class="n1">{{$m}}</i>
                     <img src="/{{$oo->video_img}}" alt="#">
                     <div>
@@ -428,36 +331,7 @@
 
                 <!-- ? -->
               </ul>
-             <!--  <ul class="tab-cont__item main-rank">
-                <li class="item item-one">
-                  <a href="#">
-                    <i class="n1">1</i>
-                    <img src="{{asset('home_temp/images/cont/main-rank__img2.jpg')}}" alt="#">
-                    <div>
-                      <p class="title">【1月】小林家的龙女仆 10【独家正版】</p>
-                      <p class="mark">综合评分: 109.3万</p>
-                    </div>
-                  </a>
-                </li>
-                <li class="item">
-                  <a href="#"><i class="n2">2</i>                  【1月】火影忍者 疾风传 719</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i class="n3">3</i>                    【4月】双星之阴阳师 48</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>4</i>狐妖小红娘 52 狗血大戏正上演 OP特效又更换</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>5</i>少年锦衣卫 第一季 06 怪谈</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>6</i>画江湖之不良人Ⅱ 35 阋墙之祸</a>
-                </li>
-                <li class="item">
-                  <a href="#"><i>7</i>【1月】黑白来看守所 24【独家正版】</a>
-                </li>
-              </ul> -->
+             
 
 
             </div>

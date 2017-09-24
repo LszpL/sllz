@@ -217,7 +217,7 @@ class TwoListController extends Controller
 		//全部视频排行三到七
 		$up_video2=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('video_labels','like','%'.$labelv.'%')->orderBy('video_count','desc')->offset(3)->limit(7)->get();	
 
-		 return view('home.index.twolist')->with(['title'=>$name,'id'=>$id,'type'=>$type,'type_1'=>$type_1,'type_2'=>$type_2,'label'=>$label,'new_video'=>$new_video,'all_video'=>$all_video,'up_video1'=>$up_video1,'up_video2'=>$up_video2]);
+		 return view('home.index.twolist')->with(['title'=>'芭拉芭拉-'.$name,'id'=>$id,'type'=>$type,'type_1'=>$type_1,'type_2'=>$type_2,'label'=>$label,'new_video'=>$new_video,'all_video'=>$all_video,'up_video1'=>$up_video1,'up_video2'=>$up_video2]);
 
 	}
 

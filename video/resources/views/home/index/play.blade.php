@@ -1,10 +1,20 @@
 @extends('home.layouts')
 
 @section('content')
-    <link rel="stylesheet" href="{{asset('home_temp/play/css/video.css')}}" type="text/css" />
+  
     <link rel="stylesheet" href="{{asset('home_temp/play/css/page-core.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{asset('home_temp/play/css/tag-index2.0.css')}}" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{asset('home_temp/play/css/comment.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('home_temp/css/jquery.allofthelights.css')}}">
+    <link rel="stylesheet" href="{{asset('home_temp/css/jsmodern-1.1.1.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('home_temp/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('toast/css/toast.css')}}">
+
+       
+        <script type="text/javascript" src="{{asset('home_temp/js/js.js')}}" ></script>
+        <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+
+        <script src="{{asset('home_temp/js/jsmodern-1.1.1.min.js')}}"></script>
 
 
     <style>
@@ -24,61 +34,58 @@
         /* Code tidied up by ScrapBook */
         /*#player_placeholder { visibility: hidden; }*/
     </style>
-
+    
 <div class="b-page-body">
     <div class="main-inner" style="width: 1160px;">
         <div id="heimu"></div>
         <div class="viewbox report-scroll-module report-wrap-module" id="viewbox_report">
             <div class="info">
                 <div class="v-title">
-                    <h1 title="【陈奕迅/浮夸】这可能是陈奕迅唱的最好的一次浮夸了吧">【陈奕迅/浮夸】这可能是陈奕迅唱的最好的一次浮夸了吧</h1>
+                    <h1 title="【{{$video->type_name}}】{{$video->video_name}}">【{{$video->type_name}}】{{$video->video_name}}</h1>
                 </div>
                 <div class="arcrank"></div>
                 <div class="tminfo" xmlns:v="//rdf.data-vocabulary.org/#">
-                    <a href="https://www.bilibili.com/" rel="v:url" property="v:title">主页</a> &gt;
-                    <span typeof="v:Breadcrumb"><a href="https://www.bilibili.com/video/music.html" rel="v:url" property="v:title">音乐</a></span> &gt;
-                    <span typeof="v:Breadcrumb"><a href="https://www.bilibili.com/video/music-coordinate-1.html" class="on" rel="v:url" property="v:title">三次元音乐</a></span>
-                    <time itemprop="startDate" datetime="2017-05-30T17:51"><i>2017-05-30 17:51</i></time>
-                    <a class="charge-appeal-init">稿件投诉</a>
+                     <li class="item item-home">
+                      <a href="#" class="link">首页</a>
+                    </li>
+                    
                 </div>
                 <div class="v-title-info" title="投硬币枚数1086">
                     <div class="v-title-line" title="总播放数133236">
                         <i class="b-icon b-icon-a b-icon-play"></i>
-                        <span id="dianji">13.3万</span>
+                        <span id="dianji">{{$video->video_count}}</span>
                     </div>
                     <div class="v-title-line" title="总弹幕数815">
                         <i class="b-icon b-icon-a b-icon-danmaku"></i>
-                        <span id="dm_count">815</span>
+                        <span id="dm_count">{{$video->video_comments}}</span>
                     </div>
                     <div class="v-title-line v-rank" title="本日日排行数据过期后，再纳入本稿件的历史排行数据进行对比得出">
                         <!-- 排行数据 -->
                     </div>
-                    <div class="v-title-line v-coin coin_btn" title="投硬币枚数1086">
-                        <i class="b-icon b-icon-a b-icon-coin" style="display: block; background-image: url({{asset('home_temp/play/images/anim-coin-small.png')}}); width: 60px; height: 60px; background-position: 0px 0px;"></i>
-                        <span class="coin-status">硬币</span>
-                        <span id="v_ctimes">1086</span>
-                    </div>
-                    <div class="v-title-line v-stow fav_btn" title="收藏人数5654">
+                    
+                    <div class="v-title-line v-stow fav_btn" title="收藏人数" >  
                         <i class="b-icon b-icon-a b-icon-stow" style="display: block; background-image: url({{asset('home_temp/play/images/anim-collect.png')}}); width: 60px; height: 60px; background-position: 0px 0px;"></i>
                         <span class="stow-status">收藏</span>
-                        <span id="stow_count">5654</span>
+                        <span id="stow_count">{{$video->video_comments}}</span>
                     </div>
                 </div>
             </div>
+            @if(!isset($video->file_name))
             <div class="upinfo">
                 <div class="u-face" id="r-info-rank">
-                    <a href="https://space.bilibili.com/34160092" card="二次元萝莉守护者" mid="34160092" title="二次元萝莉守护者" target="_blank"> <img src="{{asset('home_temp/play/images/d405bcf24592e2d080fdc575fa09959434abf0d5.jpg_68x68.jpg')}}" alt="二次元萝莉守护者" /> </a>
+                    
+                    <a href="#" card="二次元萝莉守护者" mid="34160092" title="二次元萝莉守护者" target="_blank"> <img src="{{asset('home_temp/play/images/d405bcf24592e2d080fdc575fa09959434abf0d5.jpg_68x68.jpg')}}" alt="二次元萝莉守护者" /> </a>
                 </div>
                 <div class="r-info">
                     <div class="usname">
-                        <a class="name" href="https://space.bilibili.com/34160092" mid="34160092" card="二次元萝莉守护者" title="二次元萝莉守护者" target="_blank">二次元萝莉守护者</a>
+                        <a class="name" href="https://space.bilibili.com/34160092" mid="34160092" card="二次元萝莉守护者" title="二次元萝莉守护者" target="_blank">管理员:{{$video->admin_name}}</a>
                         <a mid="34160092" href="https://message.bilibili.com/#whisper/mid34160092" target="_blank" class="message">私信</a>
                     </div>
                     <div class="sign"></div>
                     <script type="text/javascript">/* Code removed by ScrapBook */</script>
                     <div class="up-video-message">
                         <div class="archiveCount" title="投稿数2">
-                            投稿：2
+                            发布：2
                         </div>
                         <div title="粉丝数121">
                             粉丝：121
@@ -92,10 +99,43 @@
                     </div>
                 </div>
             </div>
+            @endif
+
+            @if(isset($video->file_name))
+            <div class="upinfo">
+                <div class="u-face" id="r-info-rank">
+                    
+                    <a href="#" card="二次元萝莉守护者" mid="34160092" title="二次元萝莉守护者" target="_blank"> <img src="{{asset('home_temp/play/images/d405bcf24592e2d080fdc575fa09959434abf0d5.jpg_68x68.jpg')}}" alt="二次元萝莉守护者" /> </a>
+                </div>
+                <div class="r-info">
+                    <div class="usname">
+                        <a class="name" href="https://space.bilibili.com/34160092" mid="34160092" card="二次元萝莉守护者" title="二次元萝莉守护者" target="_blank">up主:{{$video->admin_name}}</a>
+                        <a mid="34160092" href="https://message.bilibili.com/#whisper/mid34160092" target="_blank" class="message">私信</a>
+                    </div>
+                    <div class="sign"></div>
+                    <script type="text/javascript">/* Code removed by ScrapBook */</script>
+                    <div class="up-video-message">
+                        <div class="archiveCount" title="投稿数2">
+                            发布：2
+                        </div>
+                        <div title="粉丝数121">
+                            粉丝：121
+                        </div>
+                    </div>
+                    <div mid="34160092" class="b-btn f">
+                        + 关注
+                    </div>
+                    <div class="b-btn elec hide">
+                        充电
+                    </div>
+                </div>
+            </div>
+            @endif
+
         </div>
         <div class="ad-f">
             <div class="left ad-fl" b-stat="arc.ad-fl" b-stat-v="http://e.cn.miaozhen.com/r/k=2036531&amp;p=74YBq&amp;dx=__IPDX__&amp;rt=2&amp;ns=__IP__&amp;ni=__IESID__&amp;v=__LOC__&amp;xa=__ADPLATFORM__&amp;mo=__OS__&amp;m0=__OPENUDID__&amp;m0a=__DUID__&amp;m1=__ANDROIDID1__&amp;m1a=__ANDROIDID__&amp;m2=__IMEI__&amp;m4=__AAID__&amp;m5=__IDFA__&amp;m6=__MAC1__&amp;m6a=__MAC__&amp;o=http://www.bilibili.com/blackboard/activity-ml0915.html" style="overflow: hidden; position: relative; height: auto; visibility: visible;">
-                <a id="a_ds_51" data-id="" data-loc-id="124" href="https://cm.bilibili.com/cm/api/fees/pc/sync/v2?msg=a%7C125%2Cb%7Cbilibili%2Cc%7C1%2Cd%7C1%2Ce%7CCMUgEAAY5wkgACgAMAI4fUIeMTUwNTk1NTM1NTk1NHExNzJhMThhNjFhMTM4cTg4SLK6vI%2FqK1IJ5YyX5Lqs5biCWgnljJfkuqzluIJiBuS4reWbvWgAcAF4yAGAAQCIAbsFkgEOMTA2LjEyMS42NS4xMjGaAQdkZWZhdWx0oAEAqAEAsgEgEB8z%2FL8Q0gd8U6wd2eKv2%2BslE9TGsx6L2hmcY5ogBUK6AbECaHR0cDovL2UuY24ubWlhb3poZW4uY29tL3Ivaz0yMDM2NTMxJnA9NzRZQnEmZHg9X19JUERYX18mcnQ9MiZucz1fX0lQX18mbmk9X19JRVNJRF9fJnY9X19MT0NfXyZ4YT1fX0FEUExBVEZPUk1fXyZtbz1fX09TX18mbTA9X19PUEVOVURJRF9fJm0wYT1fX0RVSURfXyZtMT1fX0FORFJPSURJRDFfXyZtMWE9X19BTkRST0lESURfXyZtMj1fX0lNRUlfXyZtND1fX0FBSURfXyZtNT1fX0lERkFfXyZtNj1fX01BQzFfXyZtNmE9X19NQUNfXyZvPWh0dHA6Ly93d3cuYmlsaWJpbGkuY29tL2JsYWNrYm9hcmQvYWN0aXZpdHktbWwwOTE1Lmh0bWw%3D%2Cf%7Cclick_sync_3%2Cg%7C1%2Ch%7C1%2Ci%7C%2Cj%7C%2Ck%7C1505955357444%2Cl%7C124%2Cm%7C1505955355839%2Cn%7C1%2Co%7C&amp;ts=1505955357445" data-target-url="http://e.cn.miaozhen.com/r/k=2036531&amp;p=74YBq&amp;dx=__IPDX__&amp;rt=2&amp;ns=__IP__&amp;ni=__IESID__&amp;v=__LOC__&amp;xa=__ADPLATFORM__&amp;mo=__OS__&amp;m0=__OPENUDID__&amp;m0a=__DUID__&amp;m1=__ANDROIDID1__&amp;m1a=__ANDROIDID__&amp;m2=__IMEI__&amp;m4=__AAID__&amp;m5=__IDFA__&amp;m6=__MAC1__&amp;m6a=__MAC__&amp;o=http://www.bilibili.com/blackboard/activity-ml0915.html" target="_blank" style="display: block; position: relative;"><img src="{{asset('home_temp/play/images/c5cf68509cc8d92c20c8c3a80c558dd2.jpg')}}" width="468" border="0" height="60" /><img img-ad="" src="{{asset('home_temp/play/images/web_banner_logo.png')}}" style="width: 32px; height: 20px; position: absolute; left: 2px; bottom: 2px;" width="468" height="60" /></a>
+                <a id="a_ds_51" data-id="" data-loc-id="124" href="https://cm.bilibili.com/cm/api/fees/pc/sync/v2?msg=a%7C125%2Cb%7Cbilibili%2Cc%7C1%2Cd%7C1%2Ce%7CCMUgEAAY5wkgACgAMAI4fUIeMTUwNTk1NTM1NTk1NHExNzJhMThhNjFhMTM4cTg4SLK6vI%2FqK1IJ5YyX5Lqs5biCWgnljJfkuqzluIJiBuS4reWbvWgAcAF4yAGAAQCIAbsFkgEOMTA2LjEyMS42NS4xMjGaAQdkZWZhdWx0oAEAqAEAsgEgEB8z%2FL8Q0gd8U6wd2eKv2%2BslE9TGsx6L2hmcY5ogBUK6AbECaHR0cDovL2UuY24ubWlhb3poZW4uY29tL3Ivaz0yMDM2NTMxJnA9NzRZQnEmZHg9X19JUERYX18mcnQ9MiZucz1fX0lQX18mbmk9X19JRVNJRF9fJnY9X19MT0NfXyZ4YT1fX0FEUExBVEZPUk1fXyZtbz1fX09TX18mbTA9X19PUEVOVURJRF9fJm0wYT1fX0RVSURfXyZtMT1fX0FORFJPSURJRDFfXyZtMWE9X19BTkRST0lESURfXyZtMj1fX0lNRUlfXyZtND1fX0FBSURfXyZtNT1fX0lERkFfXyZtNj1fX01BQzFfXyZtNmE9X19NQUNfXyZvPWh0dHA6Ly93d3cuYmlsaWJpbGkuY29tL2JsYWNrYm9hcmQvYWN0aXZpdHktbWwwOTE1Lmh0bWw%3D%2Cf%7Cclick_sync_3%2Cg%7C1%2Ch%7C1%2Ci%7C%2Cj%7C%2Ck%7C1505955357444%2Cl%7C124%2Cm%7C1505955355839%2Cn%7C1%2Co%7C&amp;ts=1505955357445" data-target-url="http://e.cn.miaozhen.com/r/k=2036531&amp;p=74YBq&amp;dx=__IPDX__&amp;rt=2&amp;ns=__IP__&amp;ni=__IESID__&amp;v=__LOC__&amp;xa=__ADPLATFORM__&amp;mo=__OS__&amp;m0=__OPENUDID__&amp;m0a=__DUID__&amp;m1=__ANDROIDID1__&amp;m1a=__ANDROIDID__&amp;m2=__IMEI__&amp;m4=__AAID__&amp;m5=__IDFA__&amp;m6=__MAC1__&amp;m6a=__MAC__&amp;o=http://www.bilibili.com/blackboard/activity-ml0915.html" target="_blank" style="display: block; position: relative;"><img  src="{{asset('home_temp/play/images/c5cf68509cc8d92c20c8c3a80c558dd2.jpg')}}" width="468" border="0" height="60" /><img img-ad="" src="{{asset('home_temp/play/images/web_banner_logo.png')}}" style="width: 32px; height: 20px; position: absolute; left: 2px; bottom: 2px;" width="468" height="60" /></a>
             </div>
             <div class="right ad-fr" b-stat="arc.ad-fr" b-stat-v="" style="overflow: hidden; position: relative; height: 1px; visibility: hidden;">
                 <a id="a_ds_46" data-id="" data-loc-id="126" data-target-url="" target="_blank" style="display: block; position: relative;"><img src="{{asset('home_temp/play/images/transparent.gif')}}" width="468" border="0" height="1" /></a>
@@ -123,45 +163,27 @@
                 </div>
             </div>
         </div>
-        {{--<div class="scontent video-text" id="bofqi" style="opacity: 1;">--}}
-            <div class="video-text">基于HTML5+CSS3播放器</div>
-            <div class="video-box" unselectable="on" onselectstart="return false;" id='box'>
+       
+            <!--播放器 -->
+          <div id="top"></div>
 
-                <video  poster="{{asset('home_temp/play/images/video-start.jpg')}}" id="video" width="100%" height="100%" />
-                <source src="{{asset('home_temp/play/video/video.mp4')}}" type="video/mp4">
-                亲，您的浏览器版本太旧，不支持该播放器，请换个浏览器再点击播放。
-                <div>dad</div>
-                </video>
-                <div class="video-opt-box clearfix">
-                    <div class="video-prog clearfix" id="video-prog">
-                        <span class="video-prog-line"></span>
-                        <span class="video-prog-line-finish" id="v-prog"></span>
-                        <i class="video-prog-point" id="video-prog-point"></i>
-                    </div>
-                    <div class="video-controll clearfix">
-                        <!-- <input type="button" class="video-play" > -->
-                        <i class="video-play videoIconfont" id="play">&#xe64f;</i>
-                        <span class="video-time"> <em class="video-currentTime">0:00</em> / <em class="video-allTime">0:00</em></span>
-                        <i class="video-full videoIconfont" id="fullScreenBtn">&#xe652;</i>
-                        <span class="video-volume">
-                    <i class="video-volume-logo videoIconfont" id="playMuted" >&#xe654;</i>
-                    <div class="video-volume-box"  id="volume-prog">
-                        <span class="video-volume-prog-finish" id="vol-prog"></span>
-                        <i class="video-volume-point"  id="volume-prog-point"></i>
-                    </div>
-                </span>
-                    </div>
-                </div>
-                <div class="mid-pause" id="screenPause">
-                    <i class="pauseIcon videoIconfont">&#xe600;</i>
-                </div>
-            </div>
-        {{--</div>--}}
+        <div class="container">
+
+                  
+
+            <!-- Allofthelights.js switch & iframe video -->
+
+            <div id="switch"></div>
+
+            <iframe id="video" width="860" height="524" style="margin-left:250px;" src="{{$video->video_url}}" frameborder="0" allowfullscreen></iframe>
+
+        </div>  
+       
         <div class="arc-toolbar report-scroll-module report-wrap-module" id="arc_toolbar_report">
             <div class="share-tool-bar">
                 <div class="drawer">
                     <span class="title">分享</span>
-                    <span class="num" title="分享人数1555">1555</span>
+                    <span class="num" title="分享人数1555"></span>
                     <span class="arrow"></span>
                     <div class="share-box" id="share_list" style="display: none;">
                         <div class="share-left">
@@ -194,31 +216,31 @@
                     </div>
                 </div>
                 <div class="share-btn-bar">
-                    <div class="g-share-btn weibo" data-id="btn_weibo" title="分享到新浪微博"></div>
-                    <div class="g-share-btn qzone" data-id="btn_qqzone" title="分享到QQ空间"></div>
-                    <div class="g-share-btn qq" data-id="btn_qq" title="分享到QQ"></div>
-                    <div class="g-share-btn tieba" data-id="btn_baidu" title="分享到百度贴吧"></div>
+                    <div  id="share-sina" class="g-share-btn weibo " data-id="btn_weibo"  title="分享到新浪微博"></div>
+                    <div  id="share-qzone" class="g-share-btn qzone" data-id="btn_qqzone" title="分享到QQ空间"></div>
+                    <div  id="share-qq"  class="g-share-btn qq" data-id="btn_qq" title="分享到QQ"></div>
+                    <div  class="g-share-btn tieba" data-id="btn_baidu" title="分享到百度贴吧"></div>
                 </div>
             </div>
             <div class="block fav">
-                <span class="t fav_btn" href="//www.bilibili.com/m/stow?aid=10945180" title="收藏人数5654"> <i class="b-icon b-icon-a b-icon-anim-fav" style="display: block; background-image: url({{asset('home_temp/play/images/anim-fav.png')}}); width: 80px; height: 80px; background-position: 0px 0px;"></i>
+                <span class="t fav_btn" href="//www.bilibili.com/m/stow?aid=10945180" title="收藏人数5654"> <i class="b-icon b-icon-a b-icon-anim-fav" style="display: block; background-image: url({{asset('home_temp/play/images/anim-fav.png')}}); width: 80px; height: 80px; background-position: 0px 0px; " onclick="collect({{$video->video_id}})" ></i>
                     <div class="t-right" title="收藏人数5654">
                         <span class="t-right-top">收藏</span>
                         <span class="t-right-bottom stow_count">5654</span>
                     </div> </span>
             </div>
             <div class="block coin" arctype="Copy" style="display: block;">
-                <span class="t" title="投硬币枚数1086"> <i class="b-icon b-icon-a b-icon-anim-coin" style="display: block; background-image: url({{asset('home_temp/play/images/anim-coin-small.png')}}); width: 80px; height: 80px; background-position: 0px 0px;"></i>
+                <span class="t" title="投硬币枚数1086">
                     <div class="t-right" title="投硬币枚数1086">
                         <span class="t-right-top">硬币</span>
                         <span class="t-right-bottom v_ctimes">1086</span>
                     </div> </span>
             </div>
             <div class="block watch-later" aid="10945180" title="稍后看">
-                <span class="t"> <i class="b-icon b-icon-a b-icon-anim-watch-later" style="display: block; background-image: url({{asset('home_temp/play/images/anim-watch-later.png')}}); width: 80px; height: 80px; background-position: 0px 0px;"></i>
+                <span class="t"> <i  class="b-icon b-icon-a b-icon-anim-watch-later" style="display: block; background-image: url({{asset('home_temp/play/images/anim-watch-later.png')}}); width: 80px; height: 80px; background-position: 0px 0px;"></i>
                     <div class="t-right">
-                        <span class="t-right-top">稍后看</span>
-                        <span class="t-right-bottom">马克一下~</span>
+                        <span class="t-right-top">播放</span>
+                        <span class="t-right-bottom"> {{$video->video_count}}</span>
                     </div> </span>
             </div>
             <div class="block app initialized" id="app_qrcode_box" title="用手机看">
@@ -298,34 +320,15 @@
             <div class="v_info">
                 <div class="s_tag report-scroll-module report-wrap-module" id="tag_report">
                     <ul class="tag-area clearfix">
-                        <li class="tag" data-index="4" data-tagid="25885"> <a href="https://search.bilibili.com/all?keyword=%E9%99%88%E5%A5%95%E8%BF%85&amp;from_source=video_tag" target="_blank">陈奕迅</a> </li>
-                        <li class="tag" data-index="3" data-tagid="499"> <a href="https://search.bilibili.com/all?keyword=%E9%9F%B3%E4%B9%90&amp;from_source=video_tag" target="_blank">音乐</a> </li>
-                        <li class="tag" data-index="2" data-tagid="25886"> <a href="https://search.bilibili.com/all?keyword=%E6%B5%AE%E5%A4%B8&amp;from_source=video_tag" target="_blank">浮夸</a> </li>
-                        <li class="tag" data-index="1" data-tagid="1794"> <a href="https://search.bilibili.com/all?keyword=%E6%BC%94%E5%94%B1%E4%BC%9A&amp;from_source=video_tag" target="_blank">演唱会</a> </li>
-                        <li class="tag" data-index="0" data-tagid="38511"> <a href="https://search.bilibili.com/all?keyword=%E5%AE%8C%E7%BE%8E%E6%BC%94%E7%BB%8E&amp;from_source=video_tag" target="_blank">完美演绎</a> </li>
-                        <div class="nothing" style="display: none;">
-                            快来成为第一个添加标签的人吧~
-                        </div>
-                        <a class="btn-add"><span class="one"></span><span class="two"></span></a>
-                        <div class="ipt">
-                            <input placeholder="按回车键完成输入" type="text" />
-                            <a class="btn-close"></a>
-                            <div class="tips">
-                                标签字数超出限制
-                            </div>
-                        </div>
+                        @foreach($label as $v)
+                        <li class="tag" data-index="4" data-tagid="25885"> <a href="https://search.bilibili.com/all?keyword=%E9%99%88%E5%A5%95%E8%BF%85&amp;from_source=video_tag" target="_blank">{{$v}}</a> </li>
+                        @endforeach
+                       
                     </ul>
                     <span id="newtag"></span>
-                    <div class="btn-view-tag">
-                        <a class="btn-view-mod" href="https://www.bilibili.com/taglog#aid=10945180&amp;title=%E3%80%90%E9%99%88%E5%A5%95%E8%BF%85/%E6%B5%AE%E5%A4%B8%E3%80%91%E8%BF%99%E5%8F%AF%E8%83%BD%E6%98%AF%E9%99%88%E5%A5%95%E8%BF%85%E5%94%B1%E7%9A%84%E6%9C%80%E5%A5%BD%E7%9A%84%E4%B8%80%E6%AC%A1%E6%B5%AE%E5%A4%B8%E4%BA%86%E5%90%A7" target="_blank">查看标签修改记录</a>
-                        <span>|</span>
-                        <a class="btn-view-user" href="https://www.bilibili.com/html/help.html#s" target="_blank">查看标签使用说明</a>
-                    </div>
+                    
                 </div>
-                <div class="intro">
-                    <div class="v_desc report-scroll-module report-wrap-module" id="v_desc" data-desc="0">陈奕迅2010年DUO演唱会时唱的浮夸，那时的歇斯底里完美演绎了这首《浮夸》。<br>陈奕迅2010年DUO演唱会完整高清视频：<a href="http://acg.tv/av2585075" class="arcinfo_link" target="_blank">av2585075<img _src="http://info.acg.tv/av2585075" /></a>
-                    </div>
-                </div>
+                
             </div>
             <div class="v-content">
                 <div class="ad ad-e1" b-stat="arc.ad-e1" b-stat-v="" style="overflow: hidden; position: relative; height: 1px; visibility: hidden; display: block;">
@@ -340,153 +343,28 @@
                 </div>
                 <div class="rm-list-wrp">
                     <ul class="rm-list" style="width: 3520px;">
+                        @foreach($videos as  $v)
+
                         <li>
                             <div class="v">
-                                <a class="preview" href="https://www.bilibili.com/video/av12873848/" target="_blank" title="陈奕迅【十年】全程走音，真的没一个字在调上【当MV去掉BGM后之十年】">
+                                <a class="preview" href="{{url('/home/play/index')}}/{{$v->video_id}}" target="_blank" title="【{{$v->video_desc}}】">
                                     <div class="medal"></div>
                                     <div class="original"></div>
-                                    <div class="border"></div> <img data-img="" src="{{asset('home_temp/play/images/2fbb63f83b4141f13c71d01578f64e121df1ef5e.jpg')}}" loaded="loaded" alt="陈奕迅【十年】全程走音，真的没一个字在调上【当MV去掉BGM后之十年】" style="opacity: 1;" /> </a>
+                                    <div class="border"></div> <img data-img="" src="/{{$v->video_img}}" loaded="loaded" alt="【{{$v->video_desc}}】" style="opacity: 1;" /> </a>
                                 <i class="watch-later" aid="12873848"></i>
-                                <a href="https://www.bilibili.com/video/av12873848/" target="_blank" title="陈奕迅【十年】全程走音，真的没一个字在调上【当MV去掉BGM后之十年】">
+                                <a href="{{url('/home/play/index')}}/{{$v->video_id}}" target="_blank" title="【{{$v->video_name}}】">
                                     <div class="t">
-                                        陈奕迅【十年】全程走音，真的没一个字在调上【当MV去掉BGM后之十年】
+                                        【{{$v->video_name}}】{{$v->video_desc}}
                                     </div>
                                     <div class="i">
-                                        <span><i class="b-icon b-icon-v-play"></i>7.9万</span>
-                                        <span><i class="b-icon b-icon-v-dm"></i>387</span>
+                                        <span><i class="b-icon b-icon-v-play"></i>播放:{{$v->video_count}}</span>
+                                        <span><i class="b-icon b-icon-v-dm"></i>评论:{{$v->video_comments}}</span>
                                     </div>
                                 </a>
                             </div>
                         </li>
-                        <li>
-                            <div class="v">
-                                <a class="preview" href="https://www.bilibili.com/video/av12860575/" target="_blank" title="笑死我了，超级歌声模仿秀一个比一个像！">
-                                    <div class="medal">
-                                    </div>
-                                    <div class="original"></div>
-                                    <div class="border"></div> <img data-img="" src="{{asset('home_temp/play/images/fcaf455133e8782430de4af1276e7dd50d6df90a.jpg')}}" loaded="loaded" alt="笑死我了，超级歌声模仿秀一个比一个像！" style="opacity: 1;" /> </a>
-                                <i class="watch-later" aid="12860575"></i>
-                                <a href="https://www.bilibili.com/video/av12860575/" target="_blank" title="笑死我了，超级歌声模仿秀一个比一个像！">
-                                    <div class="t">
-                                        笑死我了，超级歌声模仿秀一个比一个像！
-                                    </div>
-                                    <div class="i">
-                                        <span><i class="b-icon b-icon-v-play"></i>1.6万</span>
-                                        <span><i class="b-icon b-icon-v-dm"></i>133</span>
-                                    </div> </a>
-                            </div> </li>
-                        <li>
-                            <div class="v">
-                                <a class="preview" href="https://www.bilibili.com/video/av4443282/" target="_blank" title="盘点那些哭的一塌糊涂的演唱会现场">
-                                    <div class="medal"></div>
-                                    <div class="original"></div>
-                                    <div class="border"></div> <img data-img="" src="{{asset('home_temp/play/images/048d63d2cc04db3c401a7544af44608384249a1c.jpg')}}" loaded="loaded" alt="盘点那些哭的一塌糊涂的演唱会现场" style="opacity: 1;" /> </a>
-                                <i class="watch-later" aid="4443282"></i>
-                                <a href="https://www.bilibili.com/video/av4443282/" target="_blank" title="盘点那些哭的一塌糊涂的演唱会现场">
-                                    <div class="t">
-                                        盘点那些哭的一塌糊涂的演唱会现场
-                                    </div>
-                                    <div class="i">
-                                        <span><i class="b-icon b-icon-v-play"></i>26.8万</span>
-                                        <span><i class="b-icon b-icon-v-dm"></i>8194</span>
-                                    </div> </a>
-                            </div> </li>
-                        <li>
-                            <div class="v">
-                                <a class="preview" href="https://www.bilibili.com/video/av788591/" target="_blank" title="豆瓣音乐评分9.9！我是哭着听完的">
-                                    <div class="medal"></div>
-                                    <div class="original"></div>
-                                    <div class="border"></div> <img data-img="" src="{{asset('home_temp/play/images/60dc222ef56dd337715fbfe6354d43990911d7c6.jpg')}}" loaded="loaded" alt="豆瓣音乐评分9.9！我是哭着听完的" style="opacity: 1;" /> </a>
-                                <i class="watch-later" aid="788591"></i>
-                                <a href="https://www.bilibili.com/video/av788591/" target="_blank" title="豆瓣音乐评分9.9！我是哭着听完的">
-                                    <div class="t">
-                                        豆瓣音乐评分9.9！我是哭着听完的
-                                    </div>
-                                    <div class="i">
-                                        <span><i class="b-icon b-icon-v-play"></i>171.4万</span>
-                                        <span><i class="b-icon b-icon-v-dm"></i>2.4万</span>
-                                    </div> </a>
-                            </div> </li>
-                        <li>
-                            <div class="v">
-                                <a class="preview" href="https://www.bilibili.com/video/av11612902/" target="_blank" title="【田馥甄】《痒》把导师都唱酥掉了 听完好痒~">
-                                    <div class="medal"></div>
-                                    <div class="original"></div>
-                                    <div class="border"></div> <img data-img="" src="{{asset('home_temp/play/images/31c5d2e96fa14e839679f6fbafe7dfc2eda8fea6.jpg')}}" loaded="loaded" alt="【田馥甄】《痒》把导师都唱酥掉了 听完好痒~" style="opacity: 1;" /> </a>
-                                <i class="watch-later" aid="11612902"></i>
-                                <a href="https://www.bilibili.com/video/av11612902/" target="_blank" title="【田馥甄】《痒》把导师都唱酥掉了 听完好痒~">
-                                    <div class="t">【田馥甄】《痒》把导师都唱酥掉了 听完好痒~</div>
-                                    <div class="i">
-                                        <span><i class="b-icon b-icon-v-play"></i>17.3万</span>
-                                        <span><i class="b-icon b-icon-v-dm"></i>658</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="v">
-                                <a class="preview" href="https://www.bilibili.com/video/av14218245/" target="_blank" title="新歌声差点就就剩三位导师 陈奕迅竟被那英淘汰？">
-                                    <div class="medal"></div>
-                                    <div class="original"></div>
-                                    <div class="border"></div> <img data-img="" src="{{asset('home_temp/play/images/3a9cd1382faaf35771ec419cdc9a67d8403b99d3.jpg')}}" loaded="loaded" alt="新歌声差点就就剩三位导师 陈奕迅竟被那英淘汰？" style="opacity: 1;" /> </a>
-                                <i class="watch-later" aid="14218245"></i>
-                                <a href="https://www.bilibili.com/video/av14218245/" target="_blank" title="新歌声差点就就剩三位导师 陈奕迅竟被那英淘汰？">
-                                    <div class="t">
-                                        新歌声差点就就剩三位导师 陈奕迅竟被那英淘汰？
-                                    </div>
-                                    <div class="i">
-                                        <span><i class="b-icon b-icon-v-play"></i>3.6万</span>
-                                        <span><i class="b-icon b-icon-v-dm"></i>60</span>
-                                    </div> </a>
-                            </div> </li>
-                        <li>
-                            <div class="v">
-                                <a class="preview" href="https://www.bilibili.com/video/av11493851/" target="_blank" title="陈奕迅Eason - 浮夸  唱哭韩国粉丝 1440P 超清HD">
-                                    <div class="medal"></div>
-                                    <div class="original"></div>
-                                    <div class="border"></div> <img data-img="" src="{{asset('home_temp/play/images/e28e0c3c589bb2fe843afdc5bb6324e7b596b444.jpg')}}" loaded="loaded" alt="陈奕迅Eason - 浮夸  唱哭韩国粉丝 1440P 超清HD" style="opacity: 1;" /> </a>
-                                <i class="watch-later" aid="11493851"></i>
-                                <a href="https://www.bilibili.com/video/av11493851/" target="_blank" title="陈奕迅Eason - 浮夸  唱哭韩国粉丝 1440P 超清HD">
-                                    <div class="t">
-                                        陈奕迅Eason - 浮夸 唱哭韩国粉丝 1440P 超清HD
-                                    </div>
-                                    <div class="i">
-                                        <span><i class="b-icon b-icon-v-play"></i>27.8万</span>
-                                        <span><i class="b-icon b-icon-v-dm"></i>1562</span>
-                                    </div> </a>
-                            </div> </li>
-                        <li>
-                            <div class="v">
-                                <a class="preview" href="https://www.bilibili.com/video/av14125205/" target="_blank" title="全开麦燃炸了！！现场吞cd！！全程高能还有香槟！实力服气！！！">
-                                    <div class="medal"></div>
-                                    <div class="original"></div>
-                                    <div class="border"></div> <img data-img="" src="{{asset('home_temp/play/images/6328d05b2535462b17e65aeb9a2ac17f8ab3ccf1.jpg')}}" loaded="loaded" alt="全开麦燃炸了！！现场吞cd！！全程高能还有香槟！实力服气！！！" style="opacity: 1;" /> </a>
-                                <i class="watch-later" aid="14125205"></i>
-                                <a href="https://www.bilibili.com/video/av14125205/" target="_blank" title="全开麦燃炸了！！现场吞cd！！全程高能还有香槟！实力服气！！！">
-                                    <div class="t">
-                                        全开麦燃炸了！！现场吞cd！！全程高能还有香槟！实力服气！！！
-                                    </div>
-                                    <div class="i">
-                                        <span><i class="b-icon b-icon-v-play"></i>7.5万</span>
-                                        <span><i class="b-icon b-icon-v-dm"></i>638</span>
-                                    </div> </a>
-                            </div> </li>
-                        <li>
-                            <div class="v">
-                                <a class="preview" href="https://www.bilibili.com/video/av2556035/" target="_blank" title=" 这么多年，第一次听懂陈奕迅的《你的背包》">
-                                    <div class="medal"></div>
-                                    <div class="original"></div>
-                                    <div class="border"></div> <img data-img="" src="{{asset('home_temp/play/images/a367f3086cc482de522136c7cfba0572ab4a6164.jpg')}}" loaded="loaded" alt=" 这么多年，第一次听懂陈奕迅的《你的背包》" style="opacity: 1;" /> </a>
-                                <i class="watch-later" aid="2556035"></i>
-                                <a href="https://www.bilibili.com/video/av2556035/" target="_blank" title=" 这么多年，第一次听懂陈奕迅的《你的背包》">
-                                    <div class="t">
-                                        这么多年，第一次听懂陈奕迅的《你的背包》
-                                    </div>
-                                    <div class="i">
-                                        <span><i class="b-icon b-icon-v-play"></i>10.9万</span>
-                                        <span><i class="b-icon b-icon-v-dm"></i>775</span>
-                                    </div> </a>
-                            </div> </li>
+                        @endforeach
+                        
                     </ul>
                     <div class="page next no-select">
                         <span class="icon"></span>
@@ -510,17 +388,7 @@
                                     <li class="on" data-sort="0">全部评论</li>
                                 </ul>
                             </div>
-                            <div class="header-page paging-box">
-                                <span class="result">共11页</span>
-                                <span class="disabled">上一页</span>
-                                <span class="current">1</span>
-                                <a class="tcd-number">2</a>
-                                <a class="tcd-number">3</a>
-                                <a class="tcd-number">4</a>
-                                <span class="dian">...</span>
-                                <a class="tcd-number">11</a>
-                                <a class="next">下一页</a>
-                            </div>
+                           
                         </div>
                         @if(empty(session('user')))
                             <div class="comment-send no_login">
@@ -528,7 +396,7 @@
                             <div class="comment-send">
                         @endif
                             <div class="user-face">
-                                <img class="user-head" src="/uploads/{{session('uinfo')->face}}" />
+                                <img class="user-head" src="/uploads/{{session('user')->face}}" />
                             </div>
                             <div class="textarea-container">
                                 <div class="baffle">请先<a class="b-btn btn-open-mini-Login">登录</a>后发表评论 (・ω・)</div>
@@ -686,14 +554,58 @@
             </div>
         </div>
     </div>
+   
+
+    
 @endsection
 @section('js')
+        
+
+
+
+
+        <script src="{{asset('home_temp/js/jquery.allofthelights.js')}}"></script>    
         <script>
+            //收藏
+           
+
+
+
+
+            function collect(id){
+
+                $.ajax({
+                        type:'post',
+                        data:{id:id,_token:'{{csrf_token()}}' },
+                        url:'/home/play/collect',
+                        success:function(data){
+                        alert(data);
+                        },
+                        dateType:'json'
+                    });  
+                  
+                // stow_count
+             }    
+
+            //分享
+            jsModern.share({
+                qrcode: "#share-qrcode",
+                douban: "#share-douban",
+                qzone: "#share-qzone",
+                sina: "#share-sina",
+                qq: "#share-qq"
+            });  
+            
+
+            if({{$play}} ==2){
+
+                location.href="{{url('/home/play/gun')}}";
+            }
 
             var flag =1;
             var id = {{$one['0']->videos_id}};
             $(".comment-emoji").on('click',function () {
-//                alert(11);
+                alert(11);
                 if(flag == 1){
                     $(".emoji-box").css('display','block');
                     flag = 0;
@@ -746,7 +658,5 @@
 
 
         </script>
-        {{--<script src=”//api.html5media.info/1.1.8/html5media.min.js></script>--}}
-        <script src="{{asset('home_temp/play/js/video.js')}}"></script>
-        <script src="{{asset('home_temp/play/js/fullScreen.js')}}"></script>
+       
 @endsection

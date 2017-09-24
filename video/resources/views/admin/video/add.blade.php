@@ -141,7 +141,7 @@
                                     <div class="am-u-sm-9">
                                         <div class="tpl-switch">
                                           
-                                            <input type="checkbox" id="two"   name="video_status" class="ios-switch bigswitch tpl-switch-btn" checked=""  value="免费"     style="width:150px" >
+                                            <input type="checkbox" id="two"   name="video_vip" class="ios-switch bigswitch tpl-switch-btn" checked=""  value="免费"     style="width:150px" >
                                             
                                             <div class="tpl-switch-btn-view">
                                                 <div>
@@ -201,25 +201,7 @@
 
 
 
-		$('#one').on('click',function(){
-
-			if($('#one').val() == '上线'){
-				$('#one').val('下线');
-				
-			}else{
-				$('#one').val('上线');
-			}
-		});
-
-        $('#two').on('click',function(){
-
-            if($('#two').val() == '付费'){
-                $('#two').val('免费');
-                
-            }else{
-                $('#two').val('付费');
-            }
-        });
+		
 		//
 		//
 		

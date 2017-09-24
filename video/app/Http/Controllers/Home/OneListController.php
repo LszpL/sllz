@@ -77,28 +77,7 @@ class OneListController extends Controller
 		$types=$m[0];
 		$types=$types[$id];
 		
-	 //        foreach($types as $k=>$v)
-	 //        {
-	 //        		//echo  $v['value']['type_name'];
-
-	 //        	 foreach($data as $kk=>$vv)
-	 //        	 {	
-	        	 			
- 	//                    if($vv->type_id==$k)
- 	//                    { 
- 	//                    		echo '<br>',$vv->video_name;
- 	//                    }
-	        	 	  
-
-	 //        	 }
-
-	 //        }
-
-
-		// echo '<pre>';
-		// print_r($types);
-		// echo '</pre>';
-		
+	 
 		
 		 //注册人数
 		$man =\DB::table('users_message')->count();
@@ -144,7 +123,7 @@ class OneListController extends Controller
 		  ->where('positions.position_name','一级列表推广位')->limit(6)->get();
 		
 
-		return view('home/index/onelist')->with(['title'=>'一级列表','name'=>$name,'type'=>$type,'types'=>$types,'data_1'=>$data_1,'data_2'=>$data_2,'video_1'=>$video_1,'video_2'=>$video_2,'video_3'=>$video_3,'man'=>$man,'new_video'=>$new_video,'play_data'=>$play_data,'comment_data'=>$comment_data]);
+		return view('home/index/onelist')->with(['title'=>'芭拉芭拉-列表页','name'=>$name,'type'=>$type,'types'=>$types,'data_1'=>$data_1,'data_2'=>$data_2,'video_1'=>$video_1,'video_2'=>$video_2,'video_3'=>$video_3,'man'=>$man,'new_video'=>$new_video,'play_data'=>$play_data,'comment_data'=>$comment_data]);
 	}
 
 }

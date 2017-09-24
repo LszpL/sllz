@@ -201,25 +201,7 @@
 
 
 
-		$('#one').on('click',function(){
-
-			if($('#one').val() == '上线'){
-				$('#one').val('下线');
-				
-			}else{
-				$('#one').val('上线');
-			}
-		});
-
-        $('#two').on('click',function(){
-
-            if($('#two').val() == '付费'){
-                $('#two').val('免费');
-                
-            }else{
-                $('#two').val('付费');
-            }
-        });
+		
 		//
 		//
 		

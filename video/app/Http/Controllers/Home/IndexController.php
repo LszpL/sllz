@@ -89,65 +89,10 @@ class IndexController extends Controller
 		  ->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')
 		  ->where('positions.position_name','首页推广位')->limit(6)->get();
 			
-		 //更多 视频显示数
 		 
-		 // if(!isset($_GET['a'])){
-		 // 	$_GET['a']=2;
-		 // }elseif($_GET['a']=2){
-		 // 	$_GET['a']=4;
-		 // }elseif($_GET['a']=4){
-		 // 	$_GET['a']=2;
-		 // }
-		 
-
-		    // $data=[]; 
-
-	     //   foreach($res as $k=>$v){
-	     //   	$data[$k]=
-	     //   	[ 	
-	       		
-	       		
-		    //    	'pid'=>$v->parent_id,
-		    //    	'type_id'=>$v->type_id,
-		    //    	'type_name'=>$v->type_name,
-		    //    	'video_id'=>$v->video_id,
-		    //    	'video_name'=>$v->video_name,
-		    //    	'video_time'=>$v->video_time,
-		    //    	'video_img'=>$v->video_img,
-		    //    	'created_at'=>$v->created_at,
-		    //    	'created_at'=>$v->video_count 
-		       	
-	     //   	];	
-	     //   }
-
-	       
-	        // echo '<pre>';
-	        // print_r($data_1);
-	        // echo '</pre>';
-	        // echo '<pre>';
-	        // print_r($data_2);
-	        // echo '</pre>';
-
-	        // foreach($types as $k=>$v)
-	        // {
-
-
-	        // 	 foreach($data as $kk=>$vv)
-	        // 	 {	
-	        	 		
- 	       //             if($vv->type_id==$k)
- 	       //             {
-	        // 	 				echo'1';
- 	       //             		echo $vv->video_name;
- 	       //             }
-	        	 	  
-
-	        // 	 }
-
-	        // }
 	     	
-		return view('home.index.index',['title'=>'视频首页'])
-		->with(['title'=>'首页','types'=>$types,'data_1'=>$data_1,'data_2'=>$data_2,'video_1'=>$video_1,'video_2'=>$video_2,'video_3'=>$video_3,'man'=>$man,'new_video'=>$new_video,'play_data'=>$play_data,'comment_data'=>$comment_data]);
+		return view('home.index.index')
+		->with(['title'=>'芭拉芭拉-首页','types'=>$types,'data_1'=>$data_1,'data_2'=>$data_2,'video_1'=>$video_1,'video_2'=>$video_2,'video_3'=>$video_3,'man'=>$man,'new_video'=>$new_video,'play_data'=>$play_data,'comment_data'=>$comment_data]);
 
 	} 
 

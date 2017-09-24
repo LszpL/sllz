@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Demo</title>
 
+  <title>{{$title}}</title>
   <link rel="shortcut icon" href="{{asset('home_temp/favicons/favicon.ico')}}">
-  <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
+
   <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
-  
+  <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
 
 </head>
 <body>
@@ -136,6 +136,7 @@
               <a href="{{url('home/login')}}">登录</a>
               <span></span>
               <a href="{{url('home/zhuce')}}">注册</a>
+
             </div>
             @else
               <div class="login-box">
@@ -169,6 +170,7 @@
           <div class="search-box">
             <input type="text" class="text" placeholder="Search here...">
             <a href="{{url('home/search')}}" class="btn"><i></i></a>
+
             <div class="search-history">
               <div class="title">历史搜索</div>
               <div class="list">
@@ -271,7 +273,7 @@
   </div>
 
   
-  <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+  <script src="{{asset('admin/assets/js/jquery.min.js')}}"></script>
   <script src="{{asset('home_temp/js/script.js')}}"></script>
 
   <script type="text/javascript" src="{{asset('home/layer/layer.js')}}"></script>
@@ -283,7 +285,6 @@
             layer.msg($('#sessions').html());
       }
   </script>
-
  @yield('js') 
 </body>
 </html>

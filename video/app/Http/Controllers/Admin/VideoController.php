@@ -71,7 +71,6 @@ class VideoController extends Controller
       );
 
 
-
 		 
 	    //视频添加
 		$data['created_at']=date('Y-m-d H:i:s');
@@ -136,7 +135,8 @@ class VideoController extends Controller
     {
 
     	$first = \DB::table('videos_data')->where('video_id',$id)->first();
-
+    	//排行 video
+    	
     	$video_labels= unserialize($first->video_labels);
     	$str='';
     	foreach($video_labels as $k=>$v)

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('admin/assets/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('admin/assets/css/admin.css')}}">
     <link rel="stylesheet" href="{{asset('admin/assets/css/app.css')}}">
-
+    <script type="text/javascript" src="{{asset('admin/layer/layer.js')}}" ></script>
     <script src="{{asset('admin/assets/js/echarts.min.js')}}"></script>
 
     <!-- <link rel="stylesheet" href="{{asset('admin/dist/css/bootstrap.min.css')}}"> -->
@@ -406,9 +406,11 @@
 
 <script type="text/javascript" src="http://cdn.staticfile.org/plupload/2.1.9/i18n/ar.js"></script>
 
+
 <script type="text/javascript">
 
  //验证信息
+
         var str = '';
         if(typeof($('.info').html()) == 'string' && $('.info').html() !== null    ){
                $('.info').each(function(i,n){

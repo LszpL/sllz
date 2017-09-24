@@ -214,16 +214,16 @@ Route::get('/home/index/index','home\IndexController@index');
 Route::get('/home/index/onelist/{name}/{id}','home\OneListController@onelist');
 Route::get('/home/index/twolist/{name}/{id}','home\TwoListController@twolist');
 Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@labelTwolist');
-
-
-
-
+//播放页
+Route::get('/home/play/index/{id}','Home\PlayController@index');
+Route::get('/home/play/gun','Home\PlayController@gun');
+Route::post('/home/play/collect','Home\PlayController@collect');
 
 
 // 前台
-
-Route::get('/home/play/index/{id}','Home\PlayController@index');
 Route::post('home/play/reply','Home\PlayController@reply');
+
+
 Route::post('/home/play/comment','Home\PlayController@comment');
 
 //

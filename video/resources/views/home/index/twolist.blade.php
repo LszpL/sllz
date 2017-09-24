@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
- <head>
- 
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-  <title>{{$title}}</title> 
+@extends('home.layouts')
+
+
+@section('content')
   <meta name="description" content="bilibili是国内知名的视频弹幕网站，这里有最及时的动漫新番，最棒的ACG氛围，最有创意的Up主。大家可以在这里找到许多欢乐。" /> 
   <meta name="keywords" content="B站,弹幕,字幕,AMV,MAD,MTV,ANIME,动漫,动漫音乐,游戏,游戏解说,ACG,galgame,动画,番组,新番,初音,洛天依,vocaloid" /> 
   <meta name="renderer" content="webkit" /> 
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
-  <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
-  <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
+
   <link rel="stylesheet" href="{{asset('/home/two/css/jquery-ui.css')}}" type="text/css" /> 
   <link rel="stylesheet" href="{{asset('/home/two/css/page-core.css')}}" type="text/css" /> 
   <link type="text/css" href="{{asset('/home/two/css/page-tag.css')}}" rel="stylesheet" />
@@ -31,165 +27,7 @@
    <div class="close"></div>
    <div id="float_window"></div>
   </div> 
-  <!-- 截取 -->
-   <header id="header">
-    <div id="page_top">
-      <div class="bg-wrap">
-        <div class="bg"></div>
-        <div class="mask"></div>
-      </div>
-      <div class="header-top">
-        <div class="page-width clearfix">
-          <div class="header-top__nav">
-            <ul>
-              <li class="item item-home">
-                <a href="#">主站</a>
-              </li>
-              <li class="item"><a href="#">画友</a></li>
-              <li class="item">
-                <a href="#">游戏中心</a>
-                <div class="game-center header-hover">
-                  <div class="c clearfix">
-                    <div class="fl">
-                      <div class="imgbox">
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/game-center__img1.jpg')}}" alt="#">
-                          <span>命运-冠位指定（Fate/GO）</span>
-                        </a>
-                      </div>
-                      <div class="game-img">
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/game_img1.png')}}" alt="#">
-                          <span>刀剑乱舞</span>
-                        </a>
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/game_img2.png')}}" alt="#">
-                          <span>刀剑乱舞</span>
-                        </a>
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/game_img3.jpg')}}" alt="#">
-                          <span>刀剑乱舞</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="fr">
-                      <div class="game-list">
-                        <div class="title">
-                          <i></i>
-                          <a href="#">游戏论坛</a>
-                        </div>
-                        <div class="all">
-                          <a href="#">仙剑奇侠传幻璃镜</a>
-                          <a href="#">魔法禁书目录</a>
-                          <a href="#">萌王EX</a>
-                          <a href="#">妖精的衣橱</a>
-                          <a href="#">神代梦华谭</a>
-                          <a href="#">碧蓝航线</a>
-                          <a href="#">光明大陆</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="gameImg"></div>
-                </div>
-              </li>
-              <li class="item">
-                <a href="#">直播</a>
-                <div class="live-box header-hover">
-                  <div class="live-box__c">
-                    <div class="fl">
-                      <div class="title">热门直播:</div>
-                      <div class="cont">
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/live-box__img1.jpg')}}" alt="#">
-                          <i>LIVE</i>
-                          <p>热爱电竞の三三</p>
-                        </a>
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/live-box__img2.jpg')}}" alt="#">
-                          <i>LIVE</i>
-                          <p>大角虫漫画</p>
-                        </a>
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/live-box__img3.jpg')}}" alt="#">
-                          <i>LIVE</i>
-                          <p>木本青</p>
-                        </a>
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/live-box__img4.gif')}}" alt="#">
-                          <i>LIVE</i>
-                          <p>一只小鹿噜噜噜</p>
-                        </a>
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/live-box__img5.jpg')}}" alt="#">
-                          <i>LIVE</i>
-                          <p>污叶妹屮</p>
-                        </a>
-                        <a href="#">
-                          <img src="{{asset('home_temp/images/cont/live-box__img6.jpg')}}" alt="#">
-                          <i>LIVE</i>
-                          <p>污污_永远的魔法师_</p>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="fl">
-                      <div class="title">热门直播:</div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="item"><a href="#">周边</a></li>
-              <li class="item">
-                <a href="#">移动端</a>
-                <!-- <div class="header-app header-hover">
-                  <i></i>
-                </div> -->
-              </li>
-            </ul>
-          </div>
-          <div class="header-top__user">
-            <div class="login-box">
-              <a href="#">登录</a>
-              <span></span>
-              <a href="#">注册</a>
-            </div>
-            <div class="user-post">
-              <a href="#" class="link">投 稿</a>
-              <div class="user-post__hover header-hover">
-                <a href="#" class="post">视频投稿</a>
-                <a href="#" class="manage">投稿管理</a>
-                <a href="#" class="create">创作中心</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="header-c">
-      <div class="page-width">
-        <a href="#" id="header_logo"></a>
-        <p id="header_title"></p>
-        <div id="search" class="clearfix">
-          <div class="search-rank">排行榜</div>
-          <div class="search-box">
-            <input type="text" class="text" placeholder="Search here...">
-            <a href="#" class="btn"><i></i></a>
-            <div class="search-history">
-              <div class="title">历史搜索</div>
-              <div class="list">
-                <a href="#">努巴尼欢乐秀<i></i></a>
-                <a href="#">主播真会玩守望篇<i></i></a>
-                <a href="#">主播真会玩女神篇<i></i></a>
-                <a href="#">暴暴勺暴暴<i></i></a>
-                <a href="#">OverWatch<i></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="header-title">哔哩哔哩 (゜-゜)つロ 干杯~</div>
-      </div>
-    </div>
-  </header>
+ 
 
    <nav id="nav">
     <div class="page-width clearfix">
@@ -355,7 +193,7 @@
           
           <li>
            <div class="v" gk="undefined" sc="undefined" pl="undefined" dm="undefined" up="undefined" subtitle="undefined" lm="undefined" tg="undefined" yb="undefined">
-            <a class="preview cover-preview" href="https://www.bilibili.com/video/av11546863/" target="_blank">
+            <a class="preview cover-preview" href="{{url('home/play/index')}}/{{$v->video_id}}" target="_blank">
              <div class="medal"></div>
              <div class="original"></div>
              <div class="border"></div><img style="opacity: 1;" loaded="loaded" src="/{{$v->video_img}}" data-img="" />
@@ -459,7 +297,7 @@
           <li>
            <div class="l-item">
             <div class="l-l">
-             <a href="https://www.bilibili.com/video/av14196552" target="_blank" class="preview cover-preview"><img  alt="『你的名字/AMV』只想这样来见你" loaded="loaded" src="/{{$v->video_img}}" data-img="" />
+             <a href="{{url('home/play/index')}}/{{$v->video_id}}" target="_blank" class="preview cover-preview"><img  alt="『你的名字/AMV』只想这样来见你" loaded="loaded" src="/{{$v->video_img}}" data-img="" />
               <div class="back">
                <div></div>
               </div>
@@ -522,9 +360,9 @@ BGM：s-AVE-aimer
 动画：末日时在做什么？有没有空？可以来拯救吗？
 封面P站ID13155904" data-tg="2017-08-31 18:07" data-lm="MAD&middot;AMV" data-subtitle="" data-up="暗猫の祝福" data-dm="1655" data-pl="1951" data-sc="7837" data-gk="62600"><i class="number n2">{{$k+1}}</i>
           <div class="preview">
-           <a href="https://www.bilibili.com/video/av14029900/" title="【暗猫】末日时AMV「再见了，世界上最幸福的女孩。」" target="_blank"><img  src="/{{$v->video_img}}" data-img="" /></a>
+           <a href="{{url('home/play/index')}}/{{$v->video_id}}" title="【暗猫】末日时AMV「再见了，世界上最幸福的女孩。」" target="_blank"><img  src="/{{$v->video_img}}" data-img="" /></a>
            <i class="watch-later" aid="14029900"></i>
-          </div><a class="rl-info" href="https://www.bilibili.com/video/av14029900/" title="【暗猫】末日时AMV「再见了，世界上最幸福的女孩。」" target="_blank">
+          </div><a class="rl-info" href="{{url('home/play/index')}}/{{$v->video_id}}" title="【暗猫】末日时AMV「再见了，世界上最幸福的女孩。」" target="_blank">
            <div class="title t">
             【】{{$v->video_name}} {{$v->video_desc}}
            </div>
@@ -537,10 +375,10 @@ BGM：s-AVE-aimer
           @foreach($up_video2 as $k=>$v)
          <li ><i class="number">{{$k+4}}</i>
           <div class="preview">
-           <a href="https://www.bilibili.com/video/av14124402/" title="【银魂】只要有你想要保护的东西，那就拔剑好了！" target="_blank">
+           <a href="{{url('home/play/index')}}/{{$v->video_id}}" title="【银魂】只要有你想要保护的东西，那就拔剑好了！" target="_blank">
            <img alt="【银魂】只要有你想要保护的东西，那就拔剑好了！" loaded="loaded" style="opacity: 1;" src="/{{$v->video_img}}" data-img="" /></a>
            <i class="watch-later" aid="14124402"></i>
-          </div><a class="rl-info" href="https://www.bilibili.com/video/av14124402/" title="【银魂】只要有你想要保护的东西，那就拔剑好了！" target="_blank">
+          </div><a class="rl-info" href="{{url('home/play/index')}}/{{$v->video_id}}" title="【银魂】只要有你想要保护的东西，那就拔剑好了！" target="_blank">
            <div class="title t">
             【{{$v->type_name}}】{{$v->video_name}} {{$v->video_desc}}
            </div>
@@ -563,69 +401,5 @@ BGM：s-AVE-aimer
  
   </div> 
    <!--  尾部-->
-   <footer id="footer">
-    <div class="page-width">
-      <ul class="footer-c clearfix">
-         <li>
-           <h6>dilidili</h6>
-           <a href="#" class="card">关于我们</a>
-           <a href="#" class="card">友情链接</a>
-           <a href="#" class="card">周边</a>
-           <a href="#" class="card">联系我们</a>
-           <a href="#" class="card">加入我们</a>
-           <a href="#" class="card">官方认证</a>
-         </li>
-         <li class="middle">
-           <h6>传送门</h6>
-           <a href="#" class="card">帮助中心</a>
-           <a href="#" class="card">高级弹幕</a>
-           <a href="#" class="card">活动专题页</a>
-           <a href="#" class="card">侵权申诉</a>
-           <a href="#" class="card">分院帽计划</a>
-           <a href="#" class="card">活动中心</a>
-           <a href="#" class="card">用户反馈论坛</a>
-           <a href="#" class="card">壁纸站</a>
-           <a href="#" class="card">名人堂</a>
-         </li>
-         <li class="footer-icon">
-           <div class="cont">
-             <a href="#" class="app">
-               <i></i>
-               <em>手机端下载</em>
-               <img src="{{asset('home_temp/images/app-qrcode.png')}}" alt="#">
-             </a>
-             <a href="#" class="weibo">
-               <i></i>
-               <em>新浪微博</em>
-               <img src="{{asset('home_temp/images/weibo-qrcode.png')}}" alt="#">
-             </a>
-             <a href="#" class="weixin">
-               <i></i>
-               <em>官方微信</em>
-               <img src="{{asset('home_temp/images/weixin-arcode.gif')}}" alt="#">
-             </a>
-           </div>
-         </li>
-      </ul>
-    </div>
-  </footer>
- 
-  <div style="opacity: 0; display: none; top: 498px; left: 1174.5px; right: auto;" class="index-nav sub" id="index_nav">
-   <div class="border"></div>
-   <div class="nav-list">
-    <div class="pointer-block"></div>
-   </div>
-   <div class="n-i gotop sub">
-    <div class="s-line"></div>
-    <div class="btn_gotop" title="返回顶部"></div>
-   </div>
-  </div>
-  <ul style="top: 154px; left: 894.5px; display: none; min-width: 268px; max-width: 360px;" class="bilibili-suggest"></ul>  
- </body>
-</html>
-<script type="text/javascript">
+  @endsection
 
-  
-
-
-</script>

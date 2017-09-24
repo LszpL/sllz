@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2115976911fbf6547a71cbed5a1b9412",
+    "content-hash": "48566fb221d891c845f25d50413d3996",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1141,56 +1141,6 @@
             "time": "2017-03-13T16:27:32+00:00"
         },
         {
-            "name": "predis/predis",
-            "version": "v1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nrk/predis.git",
-                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/nrk/predis/f0210e38881631afeafb56ab43405a92cafd9fd1.zip",
-                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8"
-            },
-            "suggest": {
-                "ext-curl": "Allows access to Webdis when paired with phpiredis",
-                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Predis\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniele Alessandri",
-                    "email": "suppakilla@gmail.com",
-                    "homepage": "http://clorophilla.net"
-                }
-            ],
-            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
-            "homepage": "http://github.com/nrk/predis",
-            "keywords": [
-                "nosql",
-                "predis",
-                "redis"
-            ],
-            "time": "2016-06-16T16:22:20+00:00"
-        },
-        {
             "name": "psr/container",
             "version": "1.0.0",
             "source": {
@@ -1597,6 +1547,7 @@
         },
         {
             "name": "symfony/console",
+
             "version": "v3.3.6",
             "source": {
                 "type": "git",
@@ -1611,6 +1562,7 @@
             },
             "require": {
                 "php": ">=5.5.9",
+
                 "symfony/debug": "~2.8|~3.0",
                 "symfony/polyfill-mbstring": "~1.0"
             },
@@ -1624,6 +1576,7 @@
                 "symfony/event-dispatcher": "~2.8|~3.0",
                 "symfony/filesystem": "~2.8|~3.0",
                 "symfony/http-kernel": "~2.8|~3.0",
+
                 "symfony/process": "~2.8|~3.0"
             },
             "suggest": {
@@ -1662,6 +1615,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
+
             "time": "2017-07-29T21:27:59+00:00"
         },
         {
@@ -1680,6 +1634,7 @@
             },
             "require": {
                 "php": ">=5.5.9"
+
             },
             "type": "library",
             "extra": {
@@ -1852,6 +1807,7 @@
             },
             "require": {
                 "php": ">=5.5.9"
+
             },
             "type": "library",
             "extra": {
@@ -1901,6 +1857,7 @@
             },
             "require": {
                 "php": ">=5.5.9",
+
                 "symfony/polyfill-mbstring": "~1.1"
             },
             "require-dev": {
@@ -1936,6 +1893,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
+
             "time": "2017-07-21T11:04:46+00:00"
         },
         {
@@ -1954,6 +1912,7 @@
             },
             "require": {
                 "php": ">=5.5.9",
+
                 "psr/log": "~1.0",
                 "symfony/debug": "~2.8|~3.0",
                 "symfony/event-dispatcher": "~2.8|~3.0",
@@ -2022,7 +1981,9 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
+
             "time": "2017-08-01T10:25:59+00:00"
+
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2085,6 +2046,7 @@
         },
         {
             "name": "symfony/process",
+
             "version": "v3.3.6",
             "source": {
                 "type": "git",
@@ -2130,6 +2092,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
+
             "time": "2017-07-13T13:05:09+00:00"
         },
         {
@@ -2148,6 +2111,7 @@
             },
             "require": {
                 "php": ">=5.5.9"
+
             },
             "conflict": {
                 "symfony/config": "<2.8",
@@ -2208,6 +2172,7 @@
                 "uri",
                 "url"
             ],
+
             "time": "2017-07-21T17:43:13+00:00"
         },
         {
@@ -2226,6 +2191,7 @@
             },
             "require": {
                 "php": ">=5.5.9",
+
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
@@ -2273,6 +2239,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
+
             "time": "2017-06-24T16:45:30+00:00"
         },
         {
@@ -2291,6 +2258,7 @@
             },
             "require": {
                 "php": ">=5.5.9",
+
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
@@ -2341,7 +2309,9 @@
                 "debug",
                 "dump"
             ],
+
             "time": "2017-07-28T06:06:09+00:00"
+
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -2444,6 +2414,7 @@
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
+
             "version": "1.0.5",
             "source": {
                 "type": "git",
@@ -2458,18 +2429,23 @@
             },
             "require": {
                 "php": ">=5.3,<8.0-DEV"
+
             },
             "require-dev": {
                 "athletic/athletic": "~0.1.8",
                 "ext-pdo": "*",
                 "ext-phar": "*",
+
                 "phpunit/phpunit": "~4.0",
                 "squizlabs/php_codesniffer": "~2.0"
+
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
+
                     "dev-master": "1.0.x-dev"
+
                 }
             },
             "autoload": {
@@ -2494,7 +2470,9 @@
                 "constructor",
                 "instantiate"
             ],
+
             "time": "2015-06-14T21:17:01+00:00"
+
         },
         {
             "name": "filp/whoops",

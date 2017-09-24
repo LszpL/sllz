@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{asset('home_temp/history/css/index.css')}}">
     <link rel="stylesheet" href="{{asset('home_temp/history/css/reset.css')}}">
 
+
     <script src="{{asset('home_temp/history/js/vendor_34cd10da.js')}}"></script>
 
     <script src="{{asset('home_temp/history/js/app_34cd10da.js')}}"></script>

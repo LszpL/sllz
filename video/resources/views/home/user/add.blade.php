@@ -36,7 +36,7 @@
                                  {{--<p><img id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>--}}
 
                         </div>
-                        <p class="sbi-r">注：请不要上传过大文件</p>
+                        <p class="sbi-r">注：视频上传可能过慢,请耐心等待,上传过程中请勿刷新</p>
                     </div>
 
                 </li>
@@ -57,7 +57,7 @@
                     <div class="sb-info">
                         <p class="sbi-l">视频标题：</p>
                         <div class="sbi-m">
-                            <span><input class="title" type="text" name="title" value=""></span>
+                            <span><input class="title" type="text" name="title" value="" placeholder="请输入吸引人的标题"></span>
                         </div>
                     </div>
                 </li>
@@ -100,7 +100,7 @@
                         <p class="sbi-l">视频描述：</p>
                         <div class="sbi-m">
                             <div class="">
-                                <span><input type="text" name="content" value=""> </span> <em></em>
+                                <span><input type="text" name="content" value="" placeholder="描述最少要输10个字"> </span> <em></em>
 
                             </div>
 

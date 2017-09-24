@@ -44,7 +44,10 @@ class UserController extends Controller
         $data['update_time'] = $time;
         session('user')->pet_name= $data['pet_name'];
 //                //插入数据库
+//        更新后重新插入session中
+        session('user')->pet_name= $data['pet_name'];
         $res = \DB::table('users_message')->where('message_id', $id)->update($data);
+
         if ($res) {
             return back()->with(['info' => '修改成功']);
         } else {
@@ -135,6 +138,55 @@ class UserController extends Controller
     }
 
     public function  imgs(Request $request){
+        $uid = session('user');
+        $id= $uid->login_id;
+        $data['face'] = $img;
+        $res = \DB::table('users_message')->where('users_id', $id)->update($data);
+        if($res){
+            $da=[
+                'status'=>0,
+                'msg'=>"更新成功"
+
+            ];
+       }else{
+
+            $da=[
+               'status'=>1,
+               'msg'=>"更新失败"
+            ];
+        }
+        return  $da;
+
+
+    }
+
+
+    public function set(){
+        $uid = session('user');
+        $id= $uid->login_id;
+//        $data=\DB::table('users_upload')->leftJoin('videos_data', 'users_upload.content', '=', 'videos_data.video_desc')->where('users_id',$id)->where('users_upload.video_status','审核完成')->get();
+        $res = \DB::table('users_upload')->where('users_id',$id)->where('status', '审核完成')->get();
+        return view('home.user.set',compact('res'));
+
+    }
+    //执行操作
+    public  function  setedit($id){
+
+            $res=\DB::table('users_upload')->where('upload_id',$id)->delete();
+            if($res){
+                $data=[
+                    'status'=>0,
+                   'msg'=>"删除成功"
+
+                ];
+            }else{
+
+              $data=[
+                  'status'=>1,
+                  'msg'=>"删除失败"
+              ];
+            }
+            return  $data;
 
     }
 

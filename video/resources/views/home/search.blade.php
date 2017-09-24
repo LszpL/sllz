@@ -6,7 +6,7 @@
     </script>
     <title>{{$title}}</title>
     <meta charset="utf-8">
-
+	<link rel="shortcut icon" href="{{asset('home_temp/favicons/favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('home/searchs/css/page-core.css')}}">
 	
     <link rel="stylesheet" href="{{asset('home/searchs/css/search-10fdccf082.css')}}">

@@ -23,6 +23,7 @@ class UploadController extends Controller
                return  redirect('/admin/upload/index?page='.$request->input('page'),['page'=>$request->input('page')]);
             }
 
+
         
         // $upload=\DB::table('users_upload')->where('upload_id',$id)->first();
 
@@ -45,10 +46,34 @@ class UploadController extends Controller
 
             //$row=\DB::table('videos_data')->insert($data);
 
+
          //dd($data);
         $res=\DB::table('users_upload')->where('upload_id', $id) ->update(['status' => '审核完成','audit_time'=>date('Y-m-d H:i:s')]);
 
         if($res){
+
+            $upload=\DB::table('users_upload')->where('upload_id',$id)->first();
+            $data['type_id']=$upload->type_name;
+            $data['video_name']=$upload->title;
+            $data['video_url'] =$upload->file_name;
+//            $pet_name=\DB::table('users_message')->where('users_name',$upload->users_name);
+            $pet_name=$upload->users_name;
+            $data['admin_name']=$pet_name;
+            $data['video_time']=$upload->video_time;
+            $data['video_labels']=$upload->label;
+            $data['video_status']='上线';
+            $data['video_vip']='免费';
+            $data['video_img']=$upload->video_img;
+            $data["video_desc"]=$upload->content;
+            $data['created_at']=$upload->upload_time;
+            $data['video_like'] = 0;
+            $data['video_trample'] = 0;
+            $data['video_collect'] = 0;
+            $data['video_count'] = 0;
+            $data['video_comments'] = 0;
+
+      \DB::table('videos_data')->insert($data);
+//      dd($data);
             return redirect('/admin/upload/index?page='.$request->input('page'))->with(['info'=>'该用户已成功通过审核','page'=>$request->input('page')]);
         }
 
@@ -66,6 +91,7 @@ class UploadController extends Controller
         //审核失败
         $res=\DB::table('users_upload')->where('upload_id', $id) ->update(['status' => '审核失败','audit_time'=>date('Y-m-d H:i:s')]);
         if($res){
+
             return redirect('/admin/upload/index?page='.$request->input('page'))->with(['info'=>'该用户审核未通过','page'=>$request->input('page')]);
         }
 

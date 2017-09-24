@@ -15,19 +15,20 @@
                 <tr>
                     <td style="width: 26.7%;"><div>标题</div></td>
                     <td style="width: 29.3%;"><div>内容</div></td>
+                    <td style="width: 29.3%;"><div>视频</div></td>
                     <td style="width: 14.7%;"><div>状态</div></td>
                 </tr>
             </thead>
             @foreach($users as $item)
             <tbody class="list_js">
+                <form>
                 <tr>
                     <td><div>{{$item->title}}</div></td>
                     <td><div>{{$item->content}}</div></td>
+                    <td><div><a href=""><img src="{{url("$item->video_img")}}"  style="width:60px; height:40px;"></a></div></td>
                     <td><div>{{$item->status}}</div></td>
                 </tr>
-
-
-
+                </form>
             </tbody>
              @endforeach
         </table>

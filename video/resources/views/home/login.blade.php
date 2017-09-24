@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{{$title}}</title>
-
+<link rel="shortcut icon" href="{{asset('home_temp/favicons/favicon.ico')}}">
 <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">

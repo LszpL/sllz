@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Demo</title>
-  <link rel="shortcut icon" href="favicons/1.png')}}">
-
+  <link rel="shortcut icon" href="{{asset('home_temp/favicons/favicon.ico')}}">
+  <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
-  <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
+  
 </head>
 <body>
   <!-- 头部 -->
@@ -127,7 +127,9 @@
             </ul>
           </div>
           <div class="header-top__user">
+
           @if(empty(session('user')->face))
+
             <div class="login-box">
               <a href="{{url('home/login')}}">登录</a>
               <span></span>
@@ -135,6 +137,7 @@
             </div>
             @else
               <div class="login-box">
+<<<<<<< HEAD
                 <a href="{{url('home/user/home')}}">欢迎您 {{session('user')->pet_name}}</a>
                 <span></span>
                 <a href="{{url('home/user/home')}}"><img  src="{{url('/uploads')}}/{{session('user')->face}}" style="border-radius: 50%;width: 40px;height: 40px;"></a>

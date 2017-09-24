@@ -1,6 +1,6 @@
 ﻿@extends('home/user/layouts')
 @section('title')
-	<title>balabala视频网站个人中心</title>
+	<title>芭拉芭拉-个人中心</title>
 @endsection
 
 

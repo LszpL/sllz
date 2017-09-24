@@ -193,10 +193,7 @@ class UserController extends Controller
 
 
 
-    public function comment()
-    {
-        return view('home.user.comment')->with('title', '我的评论');
-    }
+
 
     public function history()
     {

@@ -204,33 +204,37 @@ Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@lab
 
 
 
-//前台用户个人中心
-//前台个人首页
-Route::get('/home/user/home','Home\UserController@home');
-//首页个人信息
-Route::get('/home/user/message','Home\UserController@message');
-//首页个人信息更新
-Route::post('/home/user/domessage','Home\UserController@domessage');
-//首页上传
-Route::get('/home/user/add','Home\UserController@add');
-Route::post('/home/user/video','Home\UploadController@video');
-Route::post('/home/user/upload','Home\UploadController@upload');
-Route::get('/home/user/myupload','Home\UploadController@myupload');
-//用户首页头像
-Route::get('/home/user/face','Home\UserController@face');
-Route::post('/home/user/myface','Home\UserController@myface');
-Route::post('/home/user/imgs','Home\UserController@imgs');
-//用户上传管理
-Route::get('/home/user/set','Home\UserController@set');
-Route::post('/home/user/setedit/{id}','Home\UserController@setedit');
+
 
 // 前台
-Route::get('/home/user/comment','Home\UserController@comment');
-Route::get('/home/user/history','Home\UserController@history');
-Route::post('/home/user/history/delhistory','Home\UserController@delhistory');
+
 Route::get('/home/play/index','Home\PlayController@index');
 Route::post('/home/play/comment','Home\PlayController@comment');
-Route::get('/ad','Home\PlayController@comment');
-//Route::post('/test','Home\UserController@delhistory');
+
+//
+//
+Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>['User']],function(){
+	Route::get('user/history','UserController@history');
+	Route::post('user/history/delhistory','UserController@delhistory');
+	//前台用户个人中心
+	//前台个人首页
+	Route::get('user/home','UserController@home');
+	//首页个人信息
+	Route::get('user/message','UserController@message');
+	//首页个人信息更新
+	Route::post('user/domessage','UserController@domessage');
+	//首页上传
+	Route::get('user/add','UserController@add');
+	Route::post('user/video','UploadController@video');
+	Route::post('user/upload','UploadController@upload');
+	Route::get('user/myupload','UploadController@myupload');
+	//用户首页头像
+	Route::get('user/face','UserController@face');
+	Route::post('user/myface','UserController@myface');
+	Route::post('user/imgs','UserController@imgs');
+	//用户上传管理
+	Route::get('user/set','UserController@set');
+	Route::post('user/setedit/{id}','UserController@setedit');
+});
 
 

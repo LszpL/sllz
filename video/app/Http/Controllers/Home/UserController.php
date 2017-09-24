@@ -42,6 +42,7 @@ class UserController extends Controller
         $id = $data['message_id'];
         $time = date('Y-m-d H:i:s', time());
         $data['update_time'] = $time;
+        session('user')->pet_name= $data['pet_name'];
 //                //插入数据库
         $res = \DB::table('users_message')->where('message_id', $id)->update($data);
         if ($res) {
@@ -123,6 +124,7 @@ class UserController extends Controller
         $uid = session('user');
         $id= $uid->login_id;
         //插入数据库
+        session('user')->face= $data['face'];
         $res = \DB::table('users_message')->where('users_id', $id)->update($data);
         if ($res) {
             return back()->with(['info' => '修改成功']);

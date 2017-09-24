@@ -65,6 +65,9 @@ class LoginController extends Controller
 		// dd($input);
 		$user = \DB::table('users_login')->where('login_name',$input['login_name'])->first();
 		// dd($user);
+        if($user->login_status=='封号'){
+            return back()->with(['info'=>'该用户已被停封'])->withInput();
+        }   
 		if(!$user||decrypt($user->login_pwd) != $input['login_pwd']){
             return back()->with(['info'=>'用户名或密码错误'])->withInput();
         }
@@ -140,7 +143,10 @@ class LoginController extends Controller
             'code.required'=>'验证码必须输入',
             'code.between'=>'验证码必须是6位',
             ]);
-
+        $user = \DB::table('users_login')->where('login_name',$request->input('login_name'))->first();
+        if($user){
+            return back()->with(['info'=>'用户名已存在'])->withInput();
+        }
         if(session('codep') != $request->input('code')){
             return back()->with(['info'=>'验证码错误'])->withInput();
         }else{
@@ -151,7 +157,10 @@ class LoginController extends Controller
         $time = date('Y-m-d H:i:s',time());
         $data['login_time'] = $time;
         $data['login_ip'] = $_SERVER['REMOTE_ADDR'];
-        $res = \DB::table('users_login')->insert($data);
+        // dd($data);
+        $res = \DB::table('users_login')->insertGetId($data);
+        // dd($res);
+         \DB::table('users_message')->insert(['users_id'=>$res,'users_name'=>$data['login_name']]);
         if($res){
             return redirect('/home/login')->with(['info'=>'注册成功']);
         }else{
@@ -288,7 +297,7 @@ class LoginController extends Controller
         }
         if($time=='ls'){
             $data = \DB::table('videos_type')->rightJoin('videos_data','videos_type.type_id','=','videos_data.type_id')
-            ->where('videos_data.video_time','>',60)
+            ->where('videos_data.video_time','>',40)
             ->paginate(5);
         }
         if($most=='px'&&$time=='qb'){
@@ -310,6 +319,13 @@ class LoginController extends Controller
             ->orderby('videos_data.created_at','desc')->paginate(5);
         }
             return view('home.search',['data'=>$data,'video'=>$video,'title'=>'芭拉芭拉-搜索页','request'=>$request->all(),'keywords'=>$keywords]);
+    }
+
+    public function tuichu(Request $request){
+        $request->session()->forget('user');
+        \Session::forget('user');
+        //跳转
+        return redirect('/home/index/index')->with(['info'=>'登出成功']);
     }
 
 }

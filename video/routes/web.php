@@ -170,16 +170,15 @@ Route::post('fphone','Home\LoginController@findex');
 
 Route::post('home/doforget','Home\LoginController@doforget');
 
-
-
-//前台首页
-
-
+//搜索
 
 Route::get('home/search','home\LoginController@search');
 
-// Route::get('xsearch','Home\LoginController@xsearch');
+// 退出
+Route::get('home/tuichu','home\LoginController@tuichu');
 
+// Route::get('xsearch','Home\LoginController@xsearch');
+//前台首页
 Route::get('/home/index/index','home\IndexController@index');
  // Route::get('/home/index/more','home\IndexController@more');
  

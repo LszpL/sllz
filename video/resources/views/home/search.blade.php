@@ -8,9 +8,10 @@
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="{{asset('home/searchs/css/page-core.css')}}">
-
+	
     <link rel="stylesheet" href="{{asset('home/searchs/css/search-10fdccf082.css')}}">
-
+	<link rel="stylesheet" type="text/css" href="{{asset('/bs/css/bootstrap.min.css')}}">
+  <script type="text/javascript" src="{{asset('/bs/js/bootstrap.min.js')}}"></script>
     <!-- <link rel="shortcut icon" href="//static.hdslb.com/images/favicon.ico"> -->
     <script>
     window.rec_rp = window.rec_rp || function() {(rec_rp.q = rec_rp.q || []).push(arguments)};
@@ -102,15 +103,21 @@
 			<div class="num" id="dynamic_num_total"></div>
 			<a class="i-link" href="//www.bilibili.com/account/dynamic" target="_blank">动态</a>
 		</li>
-    <li id="i_menu_watchLater_btn" guest="no" class="u-i" style="display:list-item">
-      <a class="i-link" href="//www.bilibili.com/watchlater/#/list" target="_blank">稍后再看</a>
-    </li>
+    
 		<li id="i_menu_fav_btn" guest="no" i_menu="#i_menu_fav" class="u-i">
 			<a class="i-link" href="//space.bilibili.com/#!/favlist" target="_blank">收藏夹</a>
 		</li>
+		@if(empty(session('user')->face))
 		<li id="i_menu_login_reg"  class="u-i">
-			<a id="i_menu_login_btn" class="i-link login" href="https://account.bilibili.com/login"><span>登录</span></a><i class="s-line"></i><a id="i_menu_register_btn" class="i-link reg" href="https://www.bilibili.com/register"><span>注册</span></a>
+			<a id="i_menu_login_btn" class="i-link login" href="{{url('home/login')}}"><span>登录</span></a><i class="s-line"></i><a id="i_menu_register_btn" class="i-link reg" href="{{url('home/zhuce')}}"><span>注册</span></a>
 		</li>
+		@else
+		<li id="i_menu_login_reg"  class="u-i">
+			<a id="i_menu_login_btn" class="i-link login" href="{{url('home/user/home')}}"><span>欢迎您 {{session('user')->pet_name}}</span></a>
+			<i class="s-line"></i><a id="i_menu_register_btn" class="i-link reg" href="{{url('home/user/home')}}"><img  src="{{url('/uploads')}}/{{session('user')->face}}" style="border-radius: 50%;width: 40px;height: 40px;"></a>
+			<a href="{{url('home/tuichu')}}">退出</a>
+		</li>
+		@endif
 
 		<li class="u-i b-post">
 			<a class="i-link" href="//member.bilibili.com/v/video/submit.html" target="_blank">投 稿</a>
@@ -142,7 +149,7 @@
             <div id="search-block">
               <i class="loupe" se-linkid='s-btn-loupe'></i>
               <div class="input-wrap">
-                <input type="text" value="{{$keywords}}" id="search-keyword" name="keywords" autocomplete="off">
+                <input type="text" value="{{$keywords}}" style="height: 44px;" id="search-keyword" name="keywords" autocomplete="off">
               </div>
       
               <div id="search-button">
@@ -209,14 +216,14 @@
 	 	<div class="all-other ">
 				<div class="synthetical-episode">
 				@foreach($data as $k=>$v)
-					<li class="movie-item">
-					<a href="{{url($v->video_url)}}" target="_blank" class="left-img" se-linkid="movie_img_1" lnk-type="movie" title="{{$v->video_name}}">
+					<li class="movie-item" style="height: 151px;">
+					<a href="{{url('home/play/index')}}/{{$v->video_id}}" target="_blank" class="left-img" se-linkid="movie_img_1" lnk-type="movie" title="{{$v->video_name}}">
 						<img src="{{url($v->video_img)}}"  >
 						<span class="duration">{{$v->video_time}}</span>
 					</a>
 					<div class="right-info">
 						<div class="headline">
-							<a href="{{url($v->video_url)}}" target="_blank" class="title" se-linkid="movie_title_1" lnk-type="movie" title="{{$v->video_name}}">{{$v->video_name}}</a>
+							<a href="{{url('home/play/index')}}/{{$v->video_id}}" target="_blank" class="title" se-linkid="movie_title_1" lnk-type="movie" title="{{$v->video_name}}">{{$v->video_name}}</a>
 							<span class="screen-time">{{$v->created_at}}</span>
 						</div>
 						<div class="area">时间：{{$v->video_time}}</div>
@@ -225,7 +232,7 @@
 						<div class="detail ">{{$v->video_desc}}...</div>
 						<ul class="so-episode">
 					
-							<a  class="list mid " disabled target="_blank" se-linkid='bangumi_3_eplist_1' title='剧场版2'>
+							<a  class="list mid " style="width: 94px;" disabled target="_blank" se-linkid='bangumi_3_eplist_1' title='剧场版2'>
 								<span class="bgm-list-title">{{$v->type_name}}</span>
 							</a>
 						</ul>

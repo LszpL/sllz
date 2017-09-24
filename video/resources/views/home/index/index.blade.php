@@ -2,6 +2,7 @@
 
 
 @section('content')
+
   <nav id="nav">
     <div class="page-width clearfix">
       <ul class="nav-list">
@@ -9,7 +10,7 @@
           <a href="#" class="link">首页</a>
         </li>
 
-        @foreach($types as $k=>$v)
+        @foreach($types as $k=> $v)
 
         <li class="item">
           <a href="{{url('home/index/onelist')}}/{{$v['value']['type_name']}}/{{$v['value']['type_id']}}/" class="link">

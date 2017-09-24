@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Demo</title>
   <link rel="shortcut icon" href="favicons/1.png')}}">
+
   <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
-  <link rel="stylesheet" href="{{asset('home_temp/history/css/common.css')}}">
-  <link rel="stylesheet" href="{{asset('home_temp/history/css/index.css')}}">
 </head>
 <body>
   <!-- 头部 -->
@@ -24,7 +22,7 @@
           <div class="header-top__nav">
             <ul>
               <li class="item item-home">
-                <a href="#">主站</a>
+                <a href="{{url('home/index/index')}}">主站</a>
               </li>
               <li class="item"><a href="#">画友</a></li>
               <li class="item">
@@ -129,11 +127,23 @@
             </ul>
           </div>
           <div class="header-top__user">
+          @if(empty(session('user')->face))
             <div class="login-box">
-              <a href="#">登录</a>
+              <a href="{{url('home/login')}}">登录</a>
               <span></span>
-              <a href="#">注册</a>
+              <a href="{{url('home/zhuce')}}">注册</a>
             </div>
+            @else
+              <div class="login-box">
+                <a href="{{url('home/user/home')}}">欢迎您 {{session('user')->pet_name}}</a>
+                <span></span>
+                <a href="{{url('home/user/home')}}"><img  src="{{url('/uploads')}}/{{session('user')->face}}" style="border-radius: 50%;width: 40px;height: 40px;"></a>
+                <a href="{{url('home/tuichu')}}">退出</a>
+                <span></span>
+                <a href="{{url('home/user/history')}}">历史</a>
+              </div>
+            @endif
+
             <div class="user-post">
               <a href="#" class="link">投 稿</a>
               <div class="user-post__hover header-hover">
@@ -150,31 +160,37 @@
       <div class="page-width">
         <a href="#" id="header_logo"></a>
         <p id="header_title"></p>
-        <form action="{{url('home/search')}}" method="get">
-          <div id="search" class="clearfix">
-            <div class="search-rank">排行榜</div>
-            <div class="search-box">
-              <input type="text" class="text" name="keywords" placeholder="Search here...">
-              <button class="btn"><i></i></button>
-              <div class="search-history">
-                <div class="title">历史搜索</div>
-                <div class="list">
-                  <a href="#">努巴尼欢乐秀<i></i></a>
-                  <a href="#">主播真会玩守望篇<i></i></a>
-                  <a href="#">主播真会玩女神篇<i></i></a>
-                  <a href="#">暴暴勺暴暴<i></i></a>
-                  <a href="#">OverWatch<i></i></a>
-                </div>
+        <div id="search" class="clearfix">
+          <div class="search-rank">排行榜</div>
+          <div class="search-box">
+            <input type="text" class="text" placeholder="Search here...">
+            <a href="{{url('home/search')}}" class="btn"><i></i></a>
+            <div class="search-history">
+              <div class="title">历史搜索</div>
+              <div class="list">
+                <a href="#">努巴尼欢乐秀<i></i></a>
+                <a href="#">主播真会玩守望篇<i></i></a>
+                <a href="#">主播真会玩女神篇<i></i></a>
+                <a href="#">暴暴勺暴暴<i></i></a>
+                <a href="#">OverWatch<i></i></a>
               </div>
             </div>
           </div>
-        </form>
+        </div>
         <div class="header-title">哔哩哔哩 (゜-゜)つロ 干杯~</div>
       </div>
     </div>
   </header>
 
   <!-- 头部 -->
+<!-- 提示信息 -->
+
+          <div style="display: none;">
+
+              @if(session('info'))
+              <p id="sessions">{{session('info')}}</p>
+              @endif
+          </div>
 @section('content')
 
 @show
@@ -250,9 +266,18 @@
     <a href="#" class="sideBar-toTop" id="backTop"></a>
   </div>
 
+  
+  <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+  <script src="{{asset('home_temp/js/script.js')}}"></script>
+  <script type="text/javascript" src="{{asset('home/layer/layer.js')}}"></script>
+  <script type="text/javascript">
 
-  <script src="{{asset('home_temp/js/jquery.min.js')}}"></script>
-
+        //提示信息
+         if(typeof($('#sessions').html()) == 'string' &&  $('#sessions').html()  )
+      {
+            layer.msg($('#sessions').html());
+      }
+  </script>
  @yield('js') 
 </body>
 </html>

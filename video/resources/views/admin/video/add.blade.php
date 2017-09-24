@@ -141,7 +141,7 @@
                                     <div class="am-u-sm-9">
                                         <div class="tpl-switch">
                                           
-                                            <input type="checkbox" id="two"   name="video_status" class="ios-switch bigswitch tpl-switch-btn" checked=""  value="免费"     style="width:150px" >
+                                            <input type="checkbox" id="two"   name="video_vip" class="ios-switch bigswitch tpl-switch-btn" checked=""  value="免费"     style="width:150px" >
                                             
                                             <div class="tpl-switch-btn-view">
                                                 <div>

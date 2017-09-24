@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class UploadController extends Controller
 {
     public function index(Request $request){
-        $users = \DB::table('users_upload')->where('user_name','like','%'.$request->input('keywords').'%')->paginate($request->input('num',8));
+        $users = \DB::table('users_upload')->where('users_name','like','%'.$request->input('keywords').'%')->paginate($request->input('num',8));
         //显示分页并且保持分页
         return view('admin.uploads.index',['title'=>'上传列表','request'=>$request->all(),'page'=>$request->input('page')],compact('users'));
 

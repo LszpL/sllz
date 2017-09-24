@@ -169,7 +169,7 @@
     </div>
 </div>
 <div class="top_bg">
-    <div class="top"></div>
+    <div ></div>
 </div>
 <div class="security_content">
     <div class="security-left">

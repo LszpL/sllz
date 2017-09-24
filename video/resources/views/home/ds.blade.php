@@ -20,8 +20,7 @@
                 </div>
             </div>
             <div class="padding-big">
-                <a href="" class="button bg-yellow">返回首页</a>
-                <a href="" class="button">保证不打死管理员</a>
+                <a href="{{url('home/index/index')}}" class="button bg-yellow">返回首页</a>
             </div>
         </div>
     </div>

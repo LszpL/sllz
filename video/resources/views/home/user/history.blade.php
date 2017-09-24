@@ -18,14 +18,11 @@
                         <span class="b-head-t">播放历史</span>
                     </div>
                     <div class="history-btn">
-                        <a href="#" class="btn">开通会员</a>
-                        @if(empty($data['0']))
-                        <a href="#" class="btn cleanhsbtn">清空历史</a>
-                        @endif
+                        <a href="{{url('home/user/vip')}}" class="btn">开通会员</a>
                     </div>
                 </div>
             </div>
-            @if(empty(session('user')))
+            @if(empty($data['0']))
                 <div class="nodata-contain">
                     <img src="//s1.hdslb.com/bfs/static/history-record/./img/nodata.png" alt="" class="nodata">
                     <div class="txt">

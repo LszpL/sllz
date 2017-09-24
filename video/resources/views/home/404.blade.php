@@ -26,7 +26,7 @@
         </div>
         <div class="text-left" style="margin-top:10%; margin-left:8%;">
             <a href="{{url('home/index/index')}}" class="button bg-yellow">返回首页</a>
-            <a href="home/user/ds" class="button">保证不打死管理员</a>
+            <a href="{{url('home/user/ds')}}" class="button">保证不打死管理员</a>
         </div>
     </div>
 </div>

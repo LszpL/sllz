@@ -113,8 +113,8 @@ class UploadController extends Controller
         $res=session('user');
         $user[] = $res->login_id;
         $user[] = $res->login_name;
-        $data['user_id'] = $user[0];
-        $data['user_name']=$user[1];
+        $data['users_id'] = $user[0];
+        $data['users_name']=$user[1];
         $time = date('Y-m-d H:i:s', time());
         $data['upload_time'] = $time;
         $data['label']= serialize($data['label']);
@@ -134,7 +134,7 @@ class UploadController extends Controller
         $res=session('user');
         $user = $res->login_id;
         $id = $user;
-        $users = \DB::table('users_upload')->where('user_id', '=', $id)->get();
+        $users = \DB::table('users_upload')->where('users_id', '=', $id)->get();
         return view('home.user.myupload',compact('users'));
     }
 

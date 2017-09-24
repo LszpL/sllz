@@ -154,9 +154,9 @@ class AdminController extends Controller
     	// dd($res);
     	if($res)
     	{
-    		if(session('user')->admin_name==$user->admin_name){
+    		if(session('admin')->admin_name==$user->admin_name){
     		// unset(session('user')->admin_face);
-    		session('user')->admin_face = $user->admin_face;
+    		session('admin')->admin_face = $user->admin_face;
     		}
     		// dd(session('user')->admin_face);
     		return redirect('/admin/admin/index?page='.$request->input('page'))->with(['info'=>'修改成功']);
@@ -187,7 +187,7 @@ class AdminController extends Controller
     }
     public function upmima(Request $request){
     	// dd($request->all());
-    	$id=session('user')->admin_id;
+    	$id=session('admin')->admin_id;
     	$this->validate($request,[
     		'admin_opwd' => 'required|between:5,18',
     		'admin_pwd' => 'required|between:5,18',
@@ -214,8 +214,8 @@ class AdminController extends Controller
     	$user['admin_pwd'] = encrypt($user['admin_pwd']);
     	$res = \DB::table('users_admin')->where('admin_id',$id)->update($user);
     	if($res){
-    		$request->session()->forget('user');
-    		\Session::forget('user');
+    		$request->session()->forget('admin');
+    		\Session::forget('admin');
     		return redirect('/admin/login')->with(['info'=>'修改成功,请重新登录']);
     	}else{
     		return back()->with(['info'=>'修改失败,请重新修改']);

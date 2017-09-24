@@ -1,6 +1,13 @@
 @extends('home.layouts')
 
 @section('content')
+    <link rel="stylesheet" href="{{asset('home_temp/history/css/common.css')}}">
+    <link rel="stylesheet" href="{{asset('home_temp/history/css/index.css')}}">
+    <link rel="stylesheet" href="{{asset('home_temp/history/css/reset.css')}}">
+
+    <script src="{{asset('home_temp/history/js/vendor_34cd10da.js')}}"></script>
+
+    <script src="{{asset('home_temp/history/js/app_34cd10da.js')}}"></script>
 
     <div id="app">
         <div class="history-wrap">
@@ -16,6 +23,14 @@
                     </div>
                 </div>
             </div>
+            @if(empty($data['0']))
+                <div class="nodata-contain">
+                    <img src="//s1.hdslb.com/bfs/static/history-record/./img/nodata.png" alt="" class="nodata">
+                    <div class="txt">
+                        <p>好像最近没有看过视频呢</p>
+                    </div>
+                </div>
+            @endif
             <div style="display: none;">
                 <div class="warn">
                     <p class="txt">历史功能暂停中，就算看不可描述的视频也不会被记录下来了</p>
@@ -30,18 +45,20 @@
                     <div class="time-label lastmonthlabel active" style="position: absolute; top: 3954px; bottom: 20px;"> 1周前 </div>
                     <div class="time-label lastthreemonthlabel" style="display: none;"> 1个月前 </div>
                 </div>
+
                 <ul class="history-list" id="history_list">
+                    @foreach($data as $item)
                     <li class="history-record todayitem">
                         <div class="l-info">
                             <div class="lastplay-time">
                                 <i class="history-red-round"></i>
-                                <span class="lastplay-t">07:19</span>
+                                <span class="lastplay-t">{{substr($item->last_time,0,10)}}</span>
                             </div>
                         </div>
                         <div class="r-info clearfix">
                             <div class="cover-contain">
                                 <a class="preview">
-                                    <img src="//i2.hdslb.com/bfs/archive/489925b5ab5464ee22316902ea6b56d54ba7c0c2.jpg@160w_100h.webp">
+                                    <img src="/{{$item->video_img}}">
                                 </a>
                                 <div class="info"> </div>
                                 <div class="progress-c">
@@ -49,100 +66,27 @@
                                 </div>
                             </div>
                             <div class="r-txt">
-                                <a class="title">台湾17岁甜美女生街头提供“免费热吻” 称为传递性别平权</a>
+                                <a class="title">{{$item->video_name}}</a>
                                 <p class="subtitle">  <span></span>  </p>
                                 <div class="w-info">
                                     <div class="time-wrap">
                                         <i class="device-i phone"></i>
                                         <span class="pro-txt">已看完</span>
+                                        <a>
+                                            <i class="userpic" style="background-image: url(&quot;//i2.hdslb.com/bfs/face/627ec7bbae0b4b8453fdde408f1c5b503717a140.jpg@20w_20h.webp&quot;);"></i>
+                                            <span style="margin-left: 106px;" class="username">{{$item->admin_name}}</span>
+                                        </a>
                                     </div>
-                                    <a>
-                                        <i class="userpic" style="background-image: url(&quot;//i2.hdslb.com/bfs/face/627ec7bbae0b4b8453fdde408f1c5b503717a140.jpg@20w_20h.webp&quot;);"></i>
-                                        <span class="username">观察者网</span>
-                                    </a>
-                                    <span class="name">日常</span>
-                                </div>
-                                <i class="history-delete"></i>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="history-record">
-                        <div class="l-info">
-                            <div class="lastplay-time">
-                                <i class="history-red-round"></i>
-                                <span class="lastplay-t">07:15</span>
-                            </div>
-                        </div>
-                        <div class="r-info clearfix">
-                            <div class="cover-contain">
-                                <a class="preview">
-                                    <img src="//i1.hdslb.com/bfs/archive/c5651170e64f6e83e8cdf62c3947ec1c5f0e450c.jpg@160w_100h.webp">
-                                </a>
-                                <div class="info"></div>
-                                <div class="progress-c">
-                                    <div class="progress radius-set" style="width: 160px;">
 
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="r-txt">
-                                <a class="title">#119【谷阿莫】5分鐘看完電影《神奇四俠2015》</a>
-                                <p class="subtitle">  <span></span>  </p>
-                                <div class="w-info">
-                                    <div class="time-wrap">
-                                        <i class="device-i phone"></i>
-                                        <span class="pro-txt">已看完</span>
-                                    </div>
-                                    <a>
-                                        <i class="userpic" style="background-image: url(&quot;//i0.hdslb.com/bfs/face/392d4b820b068a88246ddcf15b72f57b70f91942.jpg@20w_20h.webp&quot;);"></i>
-                                        <span class="username">汤姆・克鲁斯</span>
-                                    </a>
-                                    <span class="name">电影相关</span>
-                                </div>
-                                <i class="history-delete"></i>
+                                {{--<a href="javascript:;" onclick="del('this',$item->watchs_id)" ><i class="history-delete"></i></a>--}}
+                                <a value="{{$item->watchs_id}}" href="javascript:;" onclick="del(this);" ><i class="history-delete"></i></a>
                             </div>
                         </div>
                     </li>
-                    <li class="history-record">
-                        <div class="l-info">
-                            <div class="lastplay-time">
-                                <i class="history-red-round"></i>
-                                <span class="lastplay-t">2017-09-03</span>
-                            </div>
-                        </div>
-                        <div class="r-info clearfix">
-                            <div class="cover-contain">
-                                <a class="preview"><img src="//i2.hdslb.com/bfs/archive/09045c1f6817fd0ffb543cbe3ce87a84d37063bf.jpg@160w_100h.webp"></a>
-                                <div class="info"></div>
-                                <div class="progress-c">
-                                    <div class="progress" style="width: 44.977px;"></div>
-                                </div>
-                            </div>
-                            <div class="r-txt">
-                                <a class="title">我的30天锻炼记录第29天</a>
-                                <p class="subtitle">  <span></span>  </p>
-                                <div class="w-info">
-                                    <div class="time-wrap">
-                                        <i class="device-i phone"></i>
-                                        <span class="pro-txt">看到&nbsp;&nbsp;01:01</span>
-                                    </div>
-                                    <a>
-                                        <i class="userpic" style="background-image: url(&quot;//i0.hdslb.com/bfs/face/eee5a24d7bb3a89818f4f6110006cc57d3ca9976.jpg@20w_20h.webp&quot;);"></i>
-                                        <span class="username">EugeneGuo</span>
-                                    </a>
-                                    <span class="name">运动</span>
-                                </div>
-                                <i class="history-delete"></i>
-                            </div>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
-                <div class="nodata-contain" style="display: none;">
-                    <img src="//s1.hdslb.com/bfs/static/history-record/./img/nodata.png" alt="" class="nodata">
-                    <div class="txt">
-                        <p>好像最近没有看过视频呢</p>
-                    </div>
-                </div>
+
             </div>
             <div class="dlg-contain" style="display: none;">
                 <div class="hsmask"> </div>
@@ -160,5 +104,28 @@
 @endsection
 
 @section('js')
-
+    <script>
+        function del(a) {
+            var id= $(a).attr("value");
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url:'/home/user/history/delhistory',
+                type:'post',
+                data:{id:id,_token:'{{csrf_token()}}'},
+                success:function(data)
+                {
+                    if(data.state == 1){
+                        $(a).parentsUntil(".history-record").slideUp(1000,function () {
+                            location.href = location.href;
+                        });
+                    } else {
+                        alert('删除失败');
+                    }
+                },
+                dataType:'json'
+            });
+        }
+    </script>
 @endsection

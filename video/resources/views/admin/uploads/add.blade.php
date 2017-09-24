@@ -25,25 +25,6 @@
 
 
                         <div class="am-u-sm-12 am-u-md-9">
-                            @if (count($errors) > 0)
-                                <div class="mark">
-                                    <ul>
-                                        @if(is_object($errors))
-                                            @foreach ($errors->all() as $error)
-                                                <li style="color:red">{{ $error }}</li>
-                                            @endforeach
-                                        @else
-                                            <li style="color:red">{{ $errors }}</li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            @endif
-                            @if(session('info'))
-                                <div  id="alertError"  class="danger">
-
-                                    {{session('info')}}
-                                </div>
-                            @endif
                             <form class="am-form am-form-horizontal"  id="art_form" action="{{url('admin/upload/insert')}}" method="post"  enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="am-form-group">

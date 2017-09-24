@@ -32,22 +32,7 @@
 
 
                         <div class="am-u-sm-12 am-u-md-9">
-                                <!-- 提示信息 -->
-                                <div style="display:none;">
-                                    @if(session('info'))
-                                    <p id="session">{{session('info')}}</p>
-                                    @endif
-                                </div> 
-                                <!-- 验证信息 -->
-                                @if (count($errors) > 0)
-                                    <div class="alert alert-danger" style="display:none;">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li class= "info" >{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
+
                             <form id="art_form" class="am-form am-form-horizontal" action="{{ url('/admin/admin/update') }}" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" value="{{$page}}" name="page">

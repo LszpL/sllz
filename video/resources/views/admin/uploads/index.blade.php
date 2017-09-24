@@ -94,7 +94,7 @@
                             <tr>
                                 <td><input type="checkbox"></td>
                                 <td>{{$item->upload_id}}</td>
-                                <td><a href="#">{{$item->user_name}}</a></td>
+                                <td><a href="#">{{$item->users_name}}</a></td>
                                 <td>{{$item->type_name}}</td>
                                 <td>{{$item->video_time}}</td>
                                 <td class="am-hide-sm-only">{{$item->title}}</td>

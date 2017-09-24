@@ -134,9 +134,9 @@
           </div>
           <div class="header-top__user">
             <div class="login-box">
-              <a href="#">登录</a>
+              <a href="{{url('/home/login')}}">登录</a>
               <span></span>
-              <a href="#">注册</a>
+              <a href="{{url('/home/zhuce')}}">注册</a>
             </div>
             <div class="user-post">
               <a href="#" class="link">投 稿</a>
@@ -319,12 +319,16 @@ var FancyForm=function(){
               <img src="{{ URL('/code/captcha/1') }}" id="127ddf0de5a04167a9e427d883690ff6" >  
               </a>
           </div>
+          <br>
+            <a href="{{url('/home/forget')}}" style="position:absolute;bottom:105px;right: 53px;">忘记密码?</a>
             <button type="submit" id="js-mobile_btn"  class="button btn-green">
             立即登录</button>
-
-            <a href="{{url('/home/zhuce')}}"><button type="button" class="button btn-white" style="position: absolute;bottom:77px;right: 35px;">
+            
+            <a href="{{url('/home/zhuce')}}"><button type="button" class="button btn-white" style="position: absolute;bottom:56px;right: 35px;">
 
             立即注册</button></a>
+
+          </div>
         </form>
         </div>
     </div>

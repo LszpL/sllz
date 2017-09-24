@@ -127,11 +127,20 @@
             </ul>
           </div>
           <div class="header-top__user">
+            @if(empty(session('user')->face))
             <div class="login-box">
               <a href="#">登录</a>
               <span></span>
               <a href="#">注册</a>
             </div>
+            @else
+              <div class="login-box">
+                <a href="{{url('home/user/add')}}">欢迎您 {{session('user')->pet_name}}</a>
+                <span></span>
+                <a href="{{url('home/user/home')}}"><img src="{{url('/uploads')}}/{{session('user')->face}}" style="width: 66px;"></a>
+                <a href="#">退出</a>
+              </div>
+            @endif
             <div class="user-post">
               <a href="#" class="link">投 稿</a>
               <div class="user-post__hover header-hover">
@@ -152,7 +161,7 @@
           <div class="search-rank">排行榜</div>
           <div class="search-box">
             <input type="text" class="text" placeholder="Search here...">
-            <a href="#" class="btn"><i></i></a>
+            <a href="{{url('home/search')}}" class="btn"><i></i></a>
             <div class="search-history">
               <div class="title">历史搜索</div>
               <div class="list">

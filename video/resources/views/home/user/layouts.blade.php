@@ -95,7 +95,7 @@
                 <ul>
 
                     <li class="home">
-                        <a class="i-link" href="//www.bilibili.com/index.html"><span>主站</span></a>
+                        <a class="i-link" href="{{url('home/index/index')}}"><span>主站</span></a>
                     </li>
                     <li class="hbili"><a class="i-link" href="http://h.bilibili.com/" title="画友">画友</a></li>
 
@@ -119,42 +119,41 @@
             </div>
             <div class="uns_box">
                 <ul class="menu">
-                    <li class="u-i i_user" id="i_menu" guest="no" i_menu="#i_menu_profile" style="display: block;"><a class="i-link" href="//space.bilibili.com/" target="_blank"><img class="i_face" src='' />
-
-                            <div class=" legalize-icon" style="top: 65px; right: -16px; position: absolute; z-index: 30; display: block;"></div></a>
-                    </li>
 
 
                     <li id="i_menu_become_vip" guest="no" i_menu="become_vip" class="u-i">
-                        <a class="i-link" href="//big.bilibili.com/site/big.html" target="_blank">成为大会员</a>
+                        <a class="i-link" href="#" target="_blank">成为大会员</a>
                     </li>
                     <li id="i_menu_community_msg_btn" guest="no" i_menu="community_msg" class="u-i">
-                        <a class="i-link" href="//message.bilibili.com" target="_blank">消息</a>
+                        <a class="i-link" href="#" target="_blank">消息</a>
                     </li>
                     <li id="i_menu_msg_btn" guest="no" i_menu="#dyn_wnd" class="u-i">
                         <div class="num" id="dynamic_num_total"></div>
-                        <a class="i-link" href="//www.bilibili.com/account/dynamic" target="_blank">动态</a>
+                        <a class="i-link" href="#" target="_blank">动态</a>
                     </li>
                     <li id="i_menu_watchLater_btn" guest="no" class="u-i" style="display:none">
-                        <a class="i-link" href="//www.bilibili.com/watchlater/#/list" target="_blank">稍后再看</a>
+                        <a class="i-link" href="#" target="_blank">稍后再看</a>
                     </li>
                     <li id="i_menu_fav_btn" guest="no" i_menu="#i_menu_fav" class="u-i">
-                        <a class="i-link" href="//space.bilibili.com/#!/favlist" target="_blank">收藏夹</a>
+                        <a class="i-link" href="#" target="_blank">收藏夹</a>
                     </li>
+                    {{--头像昵称--}}
                     <li id="i_menu_login_reg" guest="yes" class="u-i">
-                        <a id="i_menu_login_btn" class="i-link login" href="https://account.bilibili.com/login"><span>登录</span></a><i class="s-line"></i><a id="i_menu_register_btn" class="i-link reg" href="https://www.bilibili.com/register"><span>注册</span></a>
+                        <a id="i_menu_login_btn" class="i-link login" href="#"><span>欢迎您 {{session('user')->pet_name}}</span></a><i class="s-line"></i>
+                        <span><img src="{{url('/uploads')}}/{{session('user')->face}}" style="width: 66px;"></span>
+                        <a id="i_menu_register_btn" class="i-link reg" href="https://www.bilibili.com/register"><span>退出</span></a>
                     </li>
                     <li id="i_menu_history_btn" class="u-i">
-                        <a class="i-link" href="//www.bilibili.com/account/history">历史</a>
+                        <a class="i-link" href="#">历史</a>
                     </li>
                     <li class="u-i b-post">
-                        <a class="i-link" href="//member.bilibili.com/v/video/submit.html" target="_blank">投 稿</a>
+                        <a class="i-link" href="#" target="_blank">投 稿</a>
                         <ul class="s-menu">
-                            <li class="article"><a href="//member.bilibili.com/v/#/text-apply" target="_blank"><i class="b-icon b-icon-art"></i><em>专栏投稿</em></a></li>
-                            <li class="music-up"><a href="//www.bilibili.com/audio/submit/" target="_blank"><i class="b-icon b-icon-music"></i><em>音频投稿</em></a></li>
-                            <li><a href="//member.bilibili.com/v/video/submit.html" target="_blank"><i class="b-icon b-icon-vp"></i><em>视频投稿</em></a></li>
-                            <li><a href="//member.bilibili.com/v/#/article" target="_blank"><i class="b-icon b-icon-vm"></i><em>投稿管理</em></a></li>
-                            <li><a href="//member.bilibili.com/v/" target="_blank"><i class="b-icon b-icon-vc"></i><em>创作中心</em></a></li>
+                            <li class="article"><a href="#" target="_blank"><i class="b-icon b-icon-art"></i><em>专栏投稿</em></a></li>
+                            <li class="music-up"><a href="#" target="_blank"><i class="b-icon b-icon-music"></i><em>音频投稿</em></a></li>
+                            <li><a href="#" target="_blank"><i class="b-icon b-icon-vp"></i><em>视频投稿</em></a></li>
+                            <li><a href="#" target="_blank"><i class="b-icon b-icon-vm"></i><em>投稿管理</em></a></li>
+                            <li><a href="#" target="_blank"><i class="b-icon b-icon-vc"></i><em>创作中心</em></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -211,7 +210,7 @@
                     </li>
 
                     <li>
-                        <a href="#" id="concerned">
+                        <a href="{{url('home/user/set')}}" id="concerned">
                             <i class="al-gz"></i>
                             <span>上传管理</span>
                         </a>

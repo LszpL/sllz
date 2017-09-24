@@ -39,46 +39,46 @@
 
                         <div class="face-g-item" data-id="113" data-point-price="250" data-bcoin-price="5" data-coin-price="0" data-name="FFF团" data-img="//i1.hdslb.com/bfs/face/6b8ac176f96ce8fa151d9a44a6ed0c296c9be1bd.png" data-expire="0">
                             <img src="{{url("uploads/15058247031794437.jpg")}}" class="face-g-avatar">
-                            <img src="{{url("uploads/15058247031794437.jpg")}}" href="javascript:;"  onclick="jpg1(this)"  value="15058247031794437.jpg"   class="face-g-g">
+                            <img src="{{url("uploads/15058247031794437.jpg")}}"   value="15058247031794437.jpg"   class="face-g-g">
                             <p class="face-g-name">二次元</p>
                         </div>
-
+                        {{--href="javascript:;"  onclick="jpg1(this)"--}}
                         <div class="face-g-item" data-id="115" data-point-price="250" data-bcoin-price="5" data-coin-price="0" data-name="幕后交易" data-img="//i1.hdslb.com/bfs/face/7c5eead6c95bfd83ce6d4e8609def46b46c14c91.png" data-expire="0">
                             <img src="{{url("uploads/15057435054762689.jpg")}}" class="face-g-avatar">
-                            <img src="{{url("uploads/15057435054762689.jpg")}}"   href="javascript:;"  onclick="jpg2(this)"     value="15057435054762689.jpg" class="face-g-g">
+                            <img src="{{url("uploads/15057435054762689.jpg")}}"        value="15057435054762689.jpg" class="face-g-g">
                             <p class="face-g-name">美女</p>
                         </div>
 
                         <div class="face-g-item" data-id="114" data-point-price="250" data-bcoin-price="5" data-coin-price="0" data-name="美术馆女神" data-img="//i1.hdslb.com/bfs/face/60cd1b77a6f1851b847c215615caabf586546f60.png" data-expire="0">
                             <img src="{{url("uploads/201704255898.png")}}" class="face-g-avatar">
-                            <img src="{{url("uploads/201704255898.png")}}"   href="javascript:;"  onclick="jpg3(this)"  value="201704255898.png" class="face-g-g">
+                            <img src="{{url("uploads/201704255898.png")}}"     value="201704255898.png" class="face-g-g">
                             <p class="face-g-name">帅哥</p>
                         </div>
                         <div class="face-g-item" data-id="114" data-point-price="250" data-bcoin-price="5" data-coin-price="0" data-name="美术馆女神" data-img="//i1.hdslb.com/bfs/face/60cd1b77a6f1851b847c215615caabf586546f60.png" data-expire="0">
                             <img src="{{url("uploads/201709171231284548.jpg")}}" class="face-g-avatar">
-                            <img src="{{url("uploads/201709171231284548.jpg")}}"   href="javascript:;"  onclick="jpg4(this)"   value="201709171231284548.jpg"   class="face-g-g">
+                            <img src="{{url("uploads/201709171231284548.jpg")}}"      value="201709171231284548.jpg"   class="face-g-g">
                             <p class="face-g-name">动漫</p>
                         </div>
                         <div class="face-g-item" data-id="114" data-point-price="250" data-bcoin-price="5" data-coin-price="0" data-name="美术馆女神" data-img="//i1.hdslb.com/bfs/face/60cd1b77a6f1851b847c215615caabf586546f60.png" data-expire="0">
                             <img src="{{url("uploads/201709182247042469.jpg")}}" class="face-g-avatar">
-                            <img src="{{url("uploads/201709182247042469.jpg")}}"    href="javascript:;"  onclick="jpg5(this)"  value="201709182247042469.jpg" class="face-g-g">
+                            <img src="{{url("uploads/201709182247042469.jpg")}}"      value="201709182247042469.jpg" class="face-g-g">
                             <p class="face-g-name">影视</p>
                         </div>
                         <div class="face-g-item" data-id="114" data-point-price="250" data-bcoin-price="5" data-coin-price="0" data-name="美术馆女神" data-img="//i1.hdslb.com/bfs/face/60cd1b77a6f1851b847c215615caabf586546f60.png" data-expire="0">
                             <img src="{{url("uploads/15057934827706908.jpg")}}" class="face-g-avatar">
-                            <img src="{{url("uploads/15057934827706908.jpg")}}"   href="javascript:;"  onclick="jpg6(this)"    value="15057934827706908.jpg"  class="face-g-g">
+                            <img src="{{url("uploads/15057934827706908.jpg")}}"       value="15057934827706908.jpg"  class="face-g-g">
                             <p class="face-g-name">小清新</p>
                         </div>
 
                         <div class="face-g-item" data-id="114" data-point-price="250" data-bcoin-price="5" data-coin-price="0" data-name="美术馆女神" data-img="//i1.hdslb.com/bfs/face/60cd1b77a6f1851b847c215615caabf586546f60.png" data-expire="0">
                             <img src="{{url("uploads/15059846044474.jpg")}}"     class="face-g-avatar">
-                            <img src="{{url("uploads/15059846044474.jpg")}}"    href="javascript:;"  onclick="jpg7(this)"    value='15059846044474.jpg'   class="face-g-g">
+                            <img src="{{url("uploads/15059846044474.jpg")}}"       value='15059846044474.jpg'   class="face-g-g">
                             <p class="face-g-name">体育</p>
                         </div>
 
                         <div class="face-g-item" data-id="114" data-point-price="250" data-bcoin-price="5" data-coin-price="0" data-name="美术馆女神" data-img="//i1.hdslb.com/bfs/face/60cd1b77a6f1851b847c215615caabf586546f60.png" data-expire="0">
                             <img src="{{url("uploads/201709158888.jpg")}}      " class="face-g-avatar">
-                            <img src="{{url("uploads/201709158888.jpg")}}"    href="javascript:;"  onclick="jpg8(this)"     value='201709158888.jpg'  class="face-g-g">
+                            <img src="{{url("uploads/201709158888.jpg")}}"         value='201709158888.jpg'  class="face-g-g">
                             <p class="face-g-name">山水</p>
                         </div>
                     </div>
@@ -91,69 +91,67 @@
         if(typeof($('#session').html()) == 'string' &&  $('#session').html()  )
         {
             layer.alert($('#session').html(), {icon: 8});
+
+
         }
+
 //图片1-8js特效
-        function jpg1(img1){
+//        function jpg1(img1){
+            {{--//询问框--}}
+{{--//            layer.confirm('您确定要更换会员头像吗？', {--}}
+{{--//                btn: ['确定','取消'] //按钮--}}
+            {{--}, function(){--}}
+{{--//        $.post(url,data,function(){});--}}
+                {{--$.post("{{url('home/user/imgs')}}",{'img':"$(img1).attr('value')",'_method':'post','_token':"{{csrf_token()}}"},function(da){--}}
+                    {{--// console.log(data.status);--}}
+                    {{--if(da.status == 0){--}}
 
-            $.ajax({
-                        type: "post",
-                        url: "/home/user/imgs",
-                        data: { img1: $(img1).attr('value')},
-                success:function (jsondata) {
-                    if(jsondata.success==true)
-                    {
-                        alert("success");
-                    }else{
+                        {{--layer.msg(da.msg, {icon: 5});--}}
+                        {{--location.href = location.href;--}}
+                        {{--location.href = location.href;--}}
+                    {{--}else{--}}
+                        {{--layer.msg(da.msg, {icon: 6});--}}
+                        {{--location.href = location.href;--}}
+                    {{--}--}}
+                {{--});--}}
+            {{--}, function(){--}}
+            {{--});--}}
 
-                     alert('failed');
-                     return false;
-                    }},
-                error:function (err){
+        {{--}--}}
 
-                            alert("提交失败");
-                }
-            });
+        {{--function jpg2(img2){--}}
 
-        }
+            {{--console.log( $(img2).attr('value'));--}}
+        {{--}--}}
 
-        function jpg2(img2){
+        {{--function jpg3(img3){--}}
 
-            console.log( $(img2).attr('value'));
-        }
+            {{--console.log( $(img3).attr('value'));--}}
+        {{--}--}}
 
-        function jpg3(img3){
+        {{--function jpg4(img4){--}}
 
-            console.log( $(img3).attr('value'));
-        }
+            {{--console.log( $(img4).attr('value'));--}}
+        {{--}--}}
 
-        function jpg4(img4){
+        {{--function jpg5(img5){--}}
 
-            console.log( $(img4).attr('value'));
-        }
+            {{--console.log( $(img5).attr('value'));--}}
+        {{--}--}}
 
-        function jpg5(img5){
+        {{--function jpg6(img6){--}}
 
-            console.log( $(img5).attr('value'));
-        }
+            {{--console.log( $(img6).attr('value'));--}}
+        {{--}--}}
 
-        function jpg6(img6){
+        {{--function jpg7(img7){--}}
 
-            console.log( $(img6).attr('value'));
-        }
+            {{--console.log( $(img7).attr('value'));--}}
+        {{--}--}}
 
-        function jpg7(img7){
+        {{--function jpg8(img8){--}}
 
-            console.log( $(img7).attr('value'));
-        }
-
-        function jpg8(img8){
-
-            console.log( $(img8).attr('value'));
-        }
-
-
-
-
-
+            {{--console.log( $(img8).attr('value'));--}}
+        {{--}--}}
     </script>
 @endsection

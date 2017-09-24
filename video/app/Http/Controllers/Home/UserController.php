@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $data = session('user');
         $id= $data->login_id;
-        $res=\DB::table('users_message')->where('user_id',$id)->get();
+        $res=\DB::table('users_message')->where('users_id',$id)->get();
         return view('home.user.home',compact('res'));
 
     }
@@ -26,7 +26,7 @@ class UserController extends Controller
         $data = session('user');
         $res[] = $data->login_id;
         $res[] = $data->login_name;
-        $message = $users = \DB::table('users_message')->where('user_id', '=', $res[0])->get();
+        $message = $users = \DB::table('users_message')->where('users_id', '=', $res[0])->get();
 
         return view('home.user.message', compact('message', 'res'));
 
@@ -43,7 +43,10 @@ class UserController extends Controller
         $time = date('Y-m-d H:i:s', time());
         $data['update_time'] = $time;
 //                //插入数据库
+//        更新后重新插入session中
+        session('user')->pet_name= $data['pet_name'];
         $res = \DB::table('users_message')->where('message_id', $id)->update($data);
+
         if ($res) {
             return back()->with(['info' => '修改成功']);
         } else {
@@ -79,7 +82,7 @@ class UserController extends Controller
         $fc = session('user');
         $id=$fc->login_id;
 // 查询数据库,如果有头像获取头像
-        $faceimg = $users = \DB::table('users_message')->where('user_id', '=', $id)->get();
+        $faceimg = $users = \DB::table('users_message')->where('users_id', '=', $id)->get();
         return view('home.user.face',compact('faceimg'));
 
     }
@@ -123,7 +126,8 @@ class UserController extends Controller
         $uid = session('user');
         $id= $uid->login_id;
         //插入数据库
-        $res = \DB::table('users_message')->where('user_id', $id)->update($data);
+        session('user')->face= $data['face'];
+        $res = \DB::table('users_message')->where('users_id', $id)->update($data);
         if ($res) {
             return back()->with(['info' => '修改成功']);
         } else {
@@ -133,6 +137,55 @@ class UserController extends Controller
     }
 
     public function  imgs(Request $request){
+        $uid = session('user');
+        $id= $uid->login_id;
+        $data['face'] = $img;
+        $res = \DB::table('users_message')->where('users_id', $id)->update($data);
+        if($res){
+            $da=[
+                'status'=>0,
+                'msg'=>"更新成功"
+
+            ];
+       }else{
+
+            $da=[
+               'status'=>1,
+               'msg'=>"更新失败"
+            ];
+        }
+        return  $da;
+
+
+    }
+
+
+    public function set(){
+        $uid = session('user');
+        $id= $uid->login_id;
+//        $data=\DB::table('users_upload')->leftJoin('videos_data', 'users_upload.content', '=', 'videos_data.video_desc')->where('users_id',$id)->where('users_upload.video_status','审核完成')->get();
+        $res = \DB::table('users_upload')->where('users_id',$id)->where('status', '审核完成')->get();
+        return view('home.user.set',compact('res'));
+
+    }
+    //执行操作
+    public  function  setedit($id){
+
+            $res=\DB::table('users_upload')->where('upload_id',$id)->delete();
+            if($res){
+                $data=[
+                    'status'=>0,
+                   'msg'=>"删除成功"
+
+                ];
+            }else{
+
+              $data=[
+                  'status'=>1,
+                  'msg'=>"删除失败"
+              ];
+            }
+            return  $data;
 
     }
 
@@ -147,9 +200,27 @@ class UserController extends Controller
     public function history()
     {
 
-        return view('home.user.history')->with('title', '观看历史');
+        $data = \DB::table('watchs_history')->leftJoin('videos_data', 'watchs_history.videos_id', '=', 'videos_data.video_id')->where('users_id','1')->paginate(10);
+//        dd($data);
+        return view('home.user.history')->with(['title'=>'观看历史','data'=>$data]);
     }
 
+    public function delhistory(Request $request)
+    {
+        $id = $request->only('id');
+        $res = \DB::table('watchs_history')->where('watchs_id',$id)->delete();
+        if($res)
+        {
+            $data = [
+                'state'=>1
+            ];
+        }else{
+            $data = [
+                'state'=>0
+            ];
+        }
+        return $data;
+    }
 
 }
 

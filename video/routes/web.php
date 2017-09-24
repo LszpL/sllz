@@ -183,6 +183,7 @@ Route::get('home/tuichu','home\LoginController@tuichu');
 
 // Route::get('xsearch','Home\LoginController@xsearch');
 //前台首页
+
 Route::get('/home/index/index','home\IndexController@index');
  // Route::get('/home/index/more','home\IndexController@more');
  
@@ -190,6 +191,18 @@ Route::get('/home/index/onelist/{name}/{id}','home\OneListController@onelist');
 Route::get('/home/index/twolist/{name}/{id}','home\TwoListController@twolist');
 Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@labelTwolist');
 
+
+Route::get('home/search','home\LoginController@search');
+
+
+// Route::get('xsearch','Home\LoginController@xsearch');
+
+Route::get('/home/index/index','home\IndexController@index');
+ // Route::get('/home/index/more','home\IndexController@more');
+ 
+Route::get('/home/index/onelist/{name}/{id}','home\OneListController@onelist');
+Route::get('/home/index/twolist/{name}/{id}','home\TwoListController@twolist');
+Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@labelTwolist');
 
 Route::get('home/search','home\LoginController@search');
 
@@ -206,9 +219,11 @@ Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@lab
 
 
 
+
 // 前台
 
-Route::get('/home/play/index','Home\PlayController@index');
+Route::get('/home/play/index/{id}','Home\PlayController@index');
+Route::post('home/play/reply','Home\PlayController@reply');
 Route::post('/home/play/comment','Home\PlayController@comment');
 
 //
@@ -216,6 +231,8 @@ Route::post('/home/play/comment','Home\PlayController@comment');
 Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>['User']],function(){
 	Route::get('user/history','UserController@history');
 	Route::post('user/history/delhistory','UserController@delhistory');
+	Route::get('user/vip','UserController@vip');
+	Route::get('user/ds','UserController@ds');
 	//前台用户个人中心
 	//前台个人首页
 	Route::get('user/home','UserController@home');
@@ -236,5 +253,11 @@ Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>['User']],funct
 	Route::get('user/set','UserController@set');
 	Route::post('user/setedit/{id}','UserController@setedit');
 });
+
+
+
+
+
+
 
 

@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Demo</title>
+
   <link rel="shortcut icon" href="{{asset('home_temp/favicons/favicon.ico')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
   
+
 </head>
 <body>
   <!-- 头部 -->
@@ -137,7 +139,6 @@
             </div>
             @else
               <div class="login-box">
-<<<<<<< HEAD
                 <a href="{{url('home/user/home')}}">欢迎您 {{session('user')->pet_name}}</a>
                 <span></span>
                 <a href="{{url('home/user/home')}}"><img  src="{{url('/uploads')}}/{{session('user')->face}}" style="border-radius: 50%;width: 40px;height: 40px;"></a>
@@ -272,6 +273,7 @@
   
   <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
   <script src="{{asset('home_temp/js/script.js')}}"></script>
+
   <script type="text/javascript" src="{{asset('home/layer/layer.js')}}"></script>
   <script type="text/javascript">
 
@@ -281,6 +283,7 @@
             layer.msg($('#sessions').html());
       }
   </script>
+
  @yield('js') 
 </body>
 </html>

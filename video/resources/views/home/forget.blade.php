@@ -5,7 +5,9 @@
 <title>{{$title}}</title>
 
 
+
   <link rel="shortcut icon" href="{{asset('home_temp/favicons/favicon.ico')}}">
+
   <link rel="stylesheet" href="{{asset('home_temp/css/reset.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/common.css')}}">
   <link rel="stylesheet" href="{{asset('home_temp/css/index.css')}}">

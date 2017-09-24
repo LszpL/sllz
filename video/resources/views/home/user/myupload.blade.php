@@ -29,6 +29,7 @@
                     <td><div>{{$item->status}}</div></td>
                 </tr>
                 </form>
+
             </tbody>
              @endforeach
         </table>

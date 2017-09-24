@@ -121,6 +121,7 @@
                 <ul class="menu">
 
 
+
                     <li id="i_menu_become_vip" guest="no" i_menu="become_vip" class="u-i">
                         <a class="i-link" href="#" target="_blank">成为大会员</a>
                     </li>
@@ -132,7 +133,9 @@
                         <a class="i-link" href="#" target="_blank">动态</a>
                     </li>
                     <li id="i_menu_watchLater_btn" guest="no" class="u-i" style="display:none">
+
                         <a class="i-link" href="#" target="_blank">稍后再看</a>
+
                     </li>
                     <li id="i_menu_fav_btn" guest="no" i_menu="#i_menu_fav" class="u-i">
                         <a class="i-link" href="#" target="_blank">收藏夹</a>

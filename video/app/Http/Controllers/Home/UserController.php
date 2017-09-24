@@ -31,6 +31,7 @@ class UserController extends Controller
         return view('home.user.message', compact('message', 'res'));
 
 
+
     }
 
 //用户个人信息插入
@@ -51,6 +52,7 @@ class UserController extends Controller
         if ($res) {
             return back()->with(['info' => '修改成功']);
         } else {
+
 
             return back()->with(['info' => '修改失败']);
         }
@@ -79,6 +81,7 @@ class UserController extends Controller
 
 //用户头像插入
     public function face()
+
     {
         $fc = session('user');
         $id=$fc->login_id;
@@ -188,12 +191,65 @@ class UserController extends Controller
             }
             return  $data;
 
+
+    }
+//头像执行插入
+    public function myface(Request $request)
+    {
+
+
+        //图片上传验证
+        $data = $request->except('_token');
+        $rule = [
+
+             'face' => 'required',
+        ];
+        $msg = [
+            'file_name.required' => '请上传图片格式',
+
+        ];
+        $validator = Validator::make($data, $rule, $msg);
+        if ($validator->fails()) {
+            return redirect('home/user/face')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        //判断是否有上传
+        //获取上传的文件对象
+        $file = Input::file('face');
+        if ($request->hasFile("face")) {
+            //确认上传的文件是否成功
+            if ($request->file('face')->isValid()) {
+                $ext = $request->file('face')->getClientOriginalExtension();
+                //执行移动上传文件
+                $filename = time() . rand(1000, 9999) . "." . $ext;
+                $request->file('face')->move("./uploads", $filename);
+                //\Storage::disk('qiniu')->writeStream('uploads/'.$filename, fopen($file->getRealPath(), 'r'));
+                //修改文件数据
+                $data['face'] = $filename;
+            }
+        }
+
+    //更新插入数据库
+        $uid = session('user');
+        $id= $uid->login_id;
+        //插入数据库
+        $res = \DB::table('users_message')->where('users_id', $id)->update($data);
+        if ($res) {
+            return back()->with(['info' => '修改成功']);
+        } else {
+
+            return back()->with(['info' => '修改失败']);
+        }
+    }
+
+    public function  imgs(Request $request){
+
     }
 
 
 
-
-
+        // 历史记录
 
     public function history()
     {
@@ -203,6 +259,16 @@ class UserController extends Controller
         return view('home.user.history')->with(['title'=>'观看历史','data'=>$data]);
     }
 
+
+    // 开通会员
+    public function vip()
+    {
+        return view('home.404');
+    }
+    public function ds()
+    {
+        return view('home.ds');
+    }
     public function delhistory(Request $request)
     {
         $id = $request->only('id');

@@ -143,10 +143,12 @@ class LoginController extends Controller
             'code.required'=>'验证码必须输入',
             'code.between'=>'验证码必须是6位',
             ]);
+
         $user = \DB::table('users_login')->where('login_name',$request->input('login_name'))->first();
         if($user){
             return back()->with(['info'=>'用户名已存在'])->withInput();
         }
+
         if(session('codep') != $request->input('code')){
             return back()->with(['info'=>'验证码错误'])->withInput();
         }else{

@@ -64,7 +64,7 @@
                                             <th class="table-id">视频ID</th>
                                             <th class="table-title">视频名称</th>
                                             <th class="table-set">视频封面</th>
-                                            <th class="table-title">视频链接</th>
+                                            
                                             <th class="table-title">视频发布人</th>
                                             <th class="table-date am-hide-sm-only">发布时间</th>
                                             <th class="table-title">浏览量</th>
@@ -78,10 +78,10 @@
                                         <tr class="parent">
                                             <td>{{$item->video_id}}</td>
                                             <td class="name">{{$item->video_name}}</td>
-                                            <td> <img src="/{{$item->video_img}}" style="width:50px;" > </td>
-                                            <td>{{$item->video_url}}</td>
+                                            <td> <img src="/{{$item->video_img}}" style="height:40px;width:50px;" > </td>
+                                           
                                             <td>{{$item->admin_name}}</td>
-                                            <td>{{$item->video_time}}</td>
+                                            <td>{{$item->created_at}}</td>
                                             <td>{{$item->video_count}}</td>
                                             <td>
                                                 <div class="am-btn-toolbar">

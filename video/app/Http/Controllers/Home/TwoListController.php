@@ -72,6 +72,7 @@ class TwoListController extends Controller
       	if(empty($brr['0']['labels'])){
       		return;
       	}
+
        	$crr=[];
         foreach($brr as $k=>$v){
 
@@ -80,6 +81,7 @@ class TwoListController extends Controller
 
 		$label=[];
 
+		
 		foreach($crr as $k=>$v){
 
 			 foreach($v as $m)
@@ -104,14 +106,15 @@ class TwoListController extends Controller
 
 		
 		//最新动态一周较火
-		$new_video=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('videos_data.created_at','>',$day_7)->orderBy('video_count','desc')->limit(4)->get();
+		$new_video=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('videos_data.created_at','>',$day_7)->where('video_status','上线')->orderBy('video_count','desc')->limit(4)->get();
 		//全部视频
-		$all_video=\DB::table('videos_data')->where('type_id',$id)->orderBy('created_at','desc')->paginate(10);
+		$all_video=\DB::table('videos_data')->where('type_id',$id)->where('video_status','上线')->orderBy('created_at','desc')->paginate(10);
 		
 		//全部视频排行前三
-		$up_video1=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->orderBy('video_count','desc')->limit(3)->get();
+		$up_video1=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('video_status','上线')->orderBy('video_count','desc')->limit(3)->get();
 		//全部视频三到七
-		$up_video2=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->orderBy('video_count','desc')->offset(3)->limit(7)->get();
+		$up_video2=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('video_status','上线')->orderBy('video_count','desc')->offset(3)->limit(7)->get();
+		 
 		 return view('home.index.twolist')->with(['title'=>$name,'id'=>$id,'type'=>$type,'type_1'=>$type_1,'type_2'=>$type_2,'label'=>$label,'new_video'=>$new_video,'all_video'=>$all_video,'up_video1'=>$up_video1,'up_video2'=>$up_video2]);
 
 
@@ -208,14 +211,14 @@ class TwoListController extends Controller
 
 		
 		//最新动态
-		$new_video=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('videos_data.created_at','>',$day_7)->where('video_labels','like','%'.$labelv.'%')->orderBy('video_count','desc')->limit(4)->get();
+		$new_video=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('videos_data.created_at','>',$day_7)->where('video_labels','like','%'.$labelv.'%')->orderBy('video_count','desc')->where('video_status','上线')->limit(4)->get();
 		
 		//全部视频
-		$all_video=\DB::table('videos_data')->where('type_id',$id)->orderBy('created_at','desc')->paginate(10);
+		$all_video=\DB::table('videos_data')->where('type_id',$id)->where('video_status','上线')->orderBy('created_at','desc')->paginate(10);
 		//全部视频排行前三
-		$up_video1=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('video_labels','like','%'.$labelv.'%')->orderBy('video_count','desc')->limit(3)->get();
+		$up_video1=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('video_labels','like','%'.$labelv.'%')->where('video_status','上线')->orderBy('video_count','desc')->limit(3)->get();
 		//全部视频排行三到七
-		$up_video2=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('video_labels','like','%'.$labelv.'%')->orderBy('video_count','desc')->offset(3)->limit(7)->get();	
+		$up_video2=\DB::table('videos_data')->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')->where('videos_data.type_id',$id)->where('video_labels','like','%'.$labelv.'%')->where('video_status','上线')->orderBy('video_count','desc')->offset(3)->limit(7)->get();	
 
 		 return view('home.index.twolist')->with(['title'=>'芭拉芭拉-'.$name,'id'=>$id,'type'=>$type,'type_1'=>$type_1,'type_2'=>$type_2,'label'=>$label,'new_video'=>$new_video,'all_video'=>$all_video,'up_video1'=>$up_video1,'up_video2'=>$up_video2]);
 

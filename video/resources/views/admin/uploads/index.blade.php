@@ -79,7 +79,6 @@
                                 <th class="table-author am-hide-sm-only">标题</th>
                                 <th class="table-date am-hide-sm-only">标签</th>
                                 <th class="table-set">内容</th>
-                                <th class="table-set">图片上传路径</th>
                                 <th class="table-set">视频上传路径</th>
 
                                 <th class="table-set">状态</th>
@@ -100,7 +99,6 @@
                                 <td class="am-hide-sm-only">{{$item->title}}</td>
                                 <td class="am-hide-sm-only">{{$item->label}}</td>
                                 <td>{{$item->content}}</td>
-                                <td>{{$item->video_img}}</td>
                                 <td>{{$item->upload_address}}</td>
                                 <td>{{$item->status}}</td>
                                 <td>{{$item->upload_time}}</td>

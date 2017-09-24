@@ -21,7 +21,7 @@
                 <tr>
                     <td><div>{{$item->title}}</div></td>
                     <td><div>{{$item->content}}</div></td>
-                    <td><div><a href=""><img  src="{{url("$item->video_img")}}"   style="width:60px; height:40px;"></a></div></td>
+                    <td><div><a href="{{url('/home/play/index')}}/{{$item->video_id}}"><img  src="{{url("$item->video_img")}}"   style="width:60px; height:40px;"></a></div></td>
                     <td><div>{{$item->status}}</div></td>
                     <td><a href="javascript:;" onclick="del({{$item->upload_id}})"><div>删除</div></a></td>
                 </tr>

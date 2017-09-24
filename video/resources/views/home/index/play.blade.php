@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{{asset('home_temp/css/jquery.allofthelights.css')}}">
     <link rel="stylesheet" href="{{asset('home_temp/css/jsmodern-1.1.1.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('home_temp/css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('toast/css/toast.css')}}">
 
        
         <script type="text/javascript" src="{{asset('home_temp/js/js.js')}}" ></script>
@@ -43,7 +42,7 @@
         <div class="viewbox report-scroll-module report-wrap-module" id="viewbox_report">
             <div class="info">
                 <div class="v-title">
-                    <h1 title="【{{$video->type_name}}】{{$video->video_name}}">【{{$video->type_name}}】{{$video->video_name}}</h1>
+                    <h1 title="【{{$video->type_name}}】{{$video->video_name}}">{{$video->video_name}}</h1>
                 </div>
                 <div class="arcrank"></div>
                 <div class="tminfo" xmlns:v="//rdf.data-vocabulary.org/#">
@@ -72,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            @if(!isset($video->file_name))
+            @if(!isset($up->pet_name))
             <div class="upinfo">
                 <div class="u-face" id="r-info-rank">
                     
@@ -103,16 +102,16 @@
             </div>
             @endif
 
-            @if(isset($video->file_name))
+            @if(isset($up->pet_name))
             <div class="upinfo">
                 <div class="u-face" id="r-info-rank">
 
                     
-                    <a href="#" card="二次元萝莉守护者" mid="34160092" title="二次元萝莉守护者" target="_blank"> <img src="{{asset('home_temp/play/images/d405bcf24592e2d080fdc575fa09959434abf0d5.jpg_68x68.jpg')}}" alt="二次元萝莉守护者" /> </a>
+                    <a href="#" card="二次元萝莉守护者" mid="34160092" title="二次元萝莉守护者" target="_blank"> <img src="/uploads/{{$up->face}}" alt="二次元萝莉守护者" /> </a>
                 </div>
                 <div class="r-info">
                     <div class="usname">
-                        <a class="name" href="https://space.bilibili.com/34160092" mid="34160092" card="二次元萝莉守护者" title="二次元萝莉守护者" target="_blank">up主:{{$video->admin_name}}</a>
+                        <a class="name" href="https://space.bilibili.com/34160092" mid="34160092" card="二次元萝莉守护者" title="二次元萝莉守护者" target="_blank">up主:{{$up->pet_name}}</a>
                         <a mid="34160092" href="https://message.bilibili.com/#whisper/mid34160092" target="_blank" class="message">私信</a>
 
                     </div>
@@ -180,9 +179,13 @@
 
             <!-- Allofthelights.js switch & iframe video -->
 
-            <div id="switch"></div>
-
+           
+            @if(!stripos($video->video_url,".jpg"))
             <iframe id="video" width="860" height="524" style="margin-left:250px;" src="{{$video->video_url}}" frameborder="0" allowfullscreen></iframe>
+            @else
+                <img src="{{asset('/home_temp/images/TV.jpg')}}" style="margin-left: 200px;">
+
+            @endif
 
         </div>  
        
@@ -428,7 +431,7 @@
                             </div>
                         </div>
                         <div class="comment-list">
-                            @if($one !== 1)
+                            @if($one)
                             @foreach($one as $item)
                             <div class="list-item reply-wrap " data-id="274921321" data-index="{{$item->comments_id}}">
                                 <div class="user-face" data-usercard-mid="2658385">
@@ -468,7 +471,24 @@
                             </div>
                             @endforeach
                             @else
-                                <div class="no-more-reply">没有更多信息</div>
+                                <div class="comment-list" style="display: none;">
+                                    <div class="list-item reply-wrap " data-id="274921321" data-index="">
+                                        
+                                        <div class="con ">
+                                            <div class="user">
+                                                <a data-usercard-mid="2658385" href="javascrypt:;"  class="name"></a>
+                                            </div>
+                                            <p class="text"></p>
+                                            <div class="info">
+                                                <span class="floor"></span>
+                                                <span class="plad"><a href="" >&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+                                                <span class="time"></span>
+                                                <span class="reply btn-hover btn-highlight"></span>
+                                            </div>
+                                            <div class="paging-box"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             @endif
                         </div>
                     </div>
@@ -548,12 +568,12 @@
             </div>
             <div class="con ">
                 <div class="user">
-                    <a data-usercard-mid="2658385" href="javascrypt:;"  class="name"></a>
+                    <a data-usercard-mid="2658385" href="javascrypt:;"  class="name">{{session('user')->pet_name}}</a>
                 </div>
                 <p class="text"></p>
                 <div class="info">
                     <span class="floor"></span>
-                    <span class="plad"><a href="" >&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+                    <span class="plad">&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span class="time"></span>
                     <span class="reply btn-hover btn-highlight"></span>
                 </div>
@@ -606,8 +626,6 @@
            
 
 
-
-
             function collect(id){
 
                 $.ajax({
@@ -615,7 +633,7 @@
                         data:{id:id,_token:'{{csrf_token()}}' },
                         url:'/home/play/collect',
                         success:function(data){
-                        alert(data);
+                        layer.msg(data);
                         },
                         dateType:'json'
                     });  
@@ -642,7 +660,7 @@
             var rel = 1;
             // 表情框弹出与收起
             $(".comment-emoji").on('click',function () {
-                alert(11);
+        
                 if(flag == 1){
                     $(".emoji-box").css('display','block');
                     flag = 0;
@@ -673,13 +691,12 @@
                             data:{comment:msg,video_id:id,_token:'{{csrf_token()}}'},
                             success:function(data){
 //                            alert($(".ipt-txt").val());
-//                        console.log(data);
+                       // console.log(data);
                                 if(data !== 1){
                                     var str = $("#comment").clone();
                                     str.css('display','block');
                                     $(".comment-list").children().first().before(str);
                                     str.children("div.list-item").attr('data-index',data.comments_id);
-                                    str.children("div.user").children().first("a").html(data.users_name);
 //                                str.children("p.text").html($(".ipt-txt").val());
                                     str.children("div.list-item").children("div.con").children("p.text").html($(".ipt-txt").val());
                                     str.children("div.list-item").children("div.con").children("div.info").children("span.time").html(data.comment_time);

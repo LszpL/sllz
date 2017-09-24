@@ -21,13 +21,15 @@ class PlayController extends Controller
         ->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')
         ->leftJoin('users_upload', 'videos_data.video_desc', '=', 'users_upload.content')
         ->where('video_id',$video_id)->first();
+
+
         $video_vip=$video->video_vip;
         
         $play = 1;
 
         if( empty($user_vip) && $video_vip =='付费'){
 
-            $play=1;
+            $play=2;
         }
 
         //播放加1
@@ -39,7 +41,6 @@ class PlayController extends Controller
             'videos_id'=>$video_id,
             'last_time'=>date('Y-m-d H:i:s')
             ]);  
-        
         //标签组
         $label=unserialize($video->video_labels);
 
@@ -51,10 +52,11 @@ class PlayController extends Controller
         }
         
         //发布人信息
-        // $up =\DB::table('users_upload')->leftJoin('users_message', 'users_upload.users_id', '=', 'users_message.users_id')->where('pet_name',$video->admin_name)->get();
         
-        // dd($up);
-        // 
+        $up =\DB::table('users_upload')->leftJoin('users_message', 'users_upload.users_id', '=', 'users_message.users_id')->where('upload_id',$video->upload_id)->first();
+        
+        
+        
         
 
         
@@ -80,7 +82,7 @@ class PlayController extends Controller
         $num = count($one);
         $num = $num + count($two);
 
-        return view('home.index.play')->with(['title'=>'芭拉芭拉-播放页','one'=>$one,'two'=>$two,'num'=>$num,'play'=>$play,'video'=>$video,'label'=>$label,'videos'=>$videos]);
+        return view('home.index.play')->with(['title'=>'芭拉芭拉-播放页','one'=>$one,'two'=>$two,'num'=>$num,'play'=>$play,'video'=>$video,'label'=>$label,'videos'=>$videos,'video_id'=>$video_id,'up'=>$up]);
 
     }
 
@@ -94,6 +96,7 @@ class PlayController extends Controller
         $id=$request->input('id');
 
         $res=\DB::table('videos_data')->where('video_id',$id)->increment('video_collect');
+        
         if($res){
             echo '收藏成功';
         }else{
@@ -112,7 +115,7 @@ class PlayController extends Controller
 
 
         $datas = [];
-        $datas['users_name'] =  session('user')->users_name;
+        $datas['users_name'] =  session('user')->pet_name;
         $datas['users_face'] =  session('user')->face;
         $datas['videos_id']  =  $msg['video_id'];
         $datas['comment']    =  $msg['comment'];
@@ -133,7 +136,7 @@ class PlayController extends Controller
         $msg = $request->except('_token');
 
         $datas = [];
-        $datas['users_name'] =  session('user')->users_name;
+        $datas['users_name'] =  session('user')->pet_name;
         $datas['users_face'] =  session('user')->face;
         $datas['videos_id']  =  $msg['video_id'];
         $datas['comment']    =  $msg['comment'];

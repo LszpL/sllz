@@ -28,21 +28,19 @@ class UploadController extends Controller
         
             $upload=\DB::table('users_upload')->where('upload_id',$id)->first();
 
-            $data['type_id']=$upload->type_name;
-            $data['video_name']=$upload->title;
-            $data['video_url'] =$upload->file_name;
+          
 
 
         $res=\DB::table('users_upload')->where('upload_id', $id) ->update(['status' => '审核完成','audit_time'=>date('Y-m-d H:i:s')]);
 
         if($res){
 
-            $upload=\DB::table('users_upload')->where('upload_id',$id)->first();
+             
             $data['type_id']=$upload->type_name;
             $data['video_name']=$upload->title;
             $data['video_url'] =$upload->file_name;
-//            $pet_name=\DB::table('users_message')->where('users_name',$upload->users_name);
-            $pet_name=$upload->users_name;
+
+            $pet_name=\DB::table('users_message')->where('users_name',$upload->users_name)->first()->pet_name;
             $data['admin_name']=$pet_name;
             $data['video_time']=$upload->video_time;
             $data['video_labels']=$upload->label;
@@ -57,8 +55,9 @@ class UploadController extends Controller
             $data['video_count'] = 0;
             $data['video_comments'] = 0;
 
+           
       \DB::table('videos_data')->insert($data);
-//      dd($data);
+     
             return redirect('/admin/upload/index?page='.$request->input('page'))->with(['info'=>'该用户已成功通过审核','page'=>$request->input('page')]);
         }
 

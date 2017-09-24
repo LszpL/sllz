@@ -163,8 +163,11 @@ class UserController extends Controller
     public function set(){
         $uid = session('user');
         $id= $uid->login_id;
-//        $data=\DB::table('users_upload')->leftJoin('videos_data', 'users_upload.content', '=', 'videos_data.video_desc')->where('users_id',$id)->where('users_upload.video_status','审核完成')->get();
-        $res = \DB::table('users_upload')->where('users_id',$id)->where('status', '审核完成')->get();
+        $res=\DB::table('users_upload')->leftJoin('videos_data', 'users_upload.content', '=', 'videos_data.video_desc')->where('users_id',$id)->where('users_upload.status','审核完成')->get();
+       
+        // $res = \DB::table('users_upload')->where('users_id',$id)->where('status', '审核完成')->get();
+
+        
         return view('home.user.set',compact('res'));
 
     }
@@ -200,8 +203,8 @@ class UserController extends Controller
     public function history()
     {
 
-        $data = \DB::table('watchs_history')->leftJoin('videos_data', 'watchs_history.videos_id', '=', 'videos_data.video_id')->where('users_id','1')->paginate(10);
-//        dd($data);
+        $data = \DB::table('watchs_history')->leftJoin('videos_data', 'watchs_history.videos_id', '=', 'videos_data.video_id')->where('users_id',session('user')->users_id)->get();
+       // dd(session('user')->users_id);
         return view('home.user.history')->with(['title'=>'观看历史','data'=>$data]);
     }
 

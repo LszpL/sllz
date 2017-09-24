@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            @if(empty($data['0']))
+            @if(empty(session('user')))
                 <div class="nodata-contain">
                     <img src="//s1.hdslb.com/bfs/static/history-record/./img/nodata.png" alt="" class="nodata">
                     <div class="txt">
@@ -49,6 +49,7 @@
                 </div>
 
                 <ul class="history-list" id="history_list">
+                    @if(session('user'))
                     @foreach($data as $item)
                     <li class="history-record todayitem">
                         <div class="l-info">
@@ -87,6 +88,7 @@
                         </div>
                     </li>
                     @endforeach
+                    @endif
                 </ul>
 
             </div>

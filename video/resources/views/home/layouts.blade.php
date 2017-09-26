@@ -165,24 +165,25 @@
       <div class="page-width">
         <a href="#" id="header_logo"></a>
         <p id="header_title"></p>
-        <div id="search" class="clearfix">
-          <div class="search-rank">排行榜</div>
-          <div class="search-box">
-            <input type="text" class="text" placeholder="Search here...">
-            <a href="{{url('home/search')}}" class="btn"><i></i></a>
-
-            <div class="search-history">
-              <div class="title">历史搜索</div>
-              <div class="list">
-                <a href="#">努巴尼欢乐秀<i></i></a>
-                <a href="#">主播真会玩守望篇<i></i></a>
-                <a href="#">主播真会玩女神篇<i></i></a>
-                <a href="#">暴暴勺暴暴<i></i></a>
-                <a href="#">OverWatch<i></i></a>
+        <form action="{{url('home/search')}}" method="get">
+          <div id="search" class="clearfix">
+            <div class="search-rank">排行榜</div>
+            <div class="search-box">
+              <input type="text" class="text" name="keywords" placeholder="Search here...">
+              <button class="btn"><i></i></button>
+              <div class="search-history">
+                <div class="title">历史搜索</div>
+                <div class="list">
+                  <a href="#">努巴尼欢乐秀<i></i></a>
+                  <a href="#">主播真会玩守望篇<i></i></a>
+                  <a href="#">主播真会玩女神篇<i></i></a>
+                  <a href="#">暴暴勺暴暴<i></i></a>
+                  <a href="#">OverWatch<i></i></a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </form>
         <div class="header-title">哔哩哔哩 (゜-゜)つロ 干杯~</div>
       </div>
     </div>

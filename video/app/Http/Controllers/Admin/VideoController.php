@@ -136,7 +136,17 @@ class VideoController extends Controller
 
     	$first = \DB::table('videos_data')->where('video_id',$id)->first();
     	//排行 video
+    	// $x=$first->video_count; 
     	
+    	// $dayu =\DB::table('videos_data')->where('video_count','>',$x)->get()->count();
+
+    	// $all = \DB::table('videos_data')->get()->count();
+    	// $a = $dayu/$all;
+    	
+    	
+
+    	// $pa= substr($a,2,2).'%';
+
     	$video_labels= unserialize($first->video_labels);
     	$str='';
     	foreach($video_labels as $k=>$v)
@@ -153,7 +163,7 @@ class VideoController extends Controller
             $type[$key]->type_name = str_repeat('|| - ', $num).$value->type_name;
         }
     	
-    	return view('admin.video.detail',['title'=>'视频详情','first'=>$first,'type'=>$type]);
+    	return view('admin.video.detail',['title'=>'视频详情','first'=>$first,'type'=>$type,'']);
 
 
 

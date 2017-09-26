@@ -81,7 +81,7 @@ class UploadController extends Controller
                 \Storage::disk('qiniu')->writeStream('uploads/'.$filename, fopen($file->getRealPath(), 'r'));
                 //修改文件数据
                 $data['file_name'] = $filename;
-                $data['upload_address'] = 'http://ow44tz416.bkt.clouddn.com/uploads/' . $filename;
+                $data['upload_address'] = 'http://ow7yr11kj.bkt.clouddn.com/uploads/' . $filename;
                 //$filepath = 'uploads/'.$filename;
 //                //返回文件的路径
                 //return  $filepath;

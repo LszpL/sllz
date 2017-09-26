@@ -184,8 +184,8 @@
                                                                 <i class="am-icon-comments-o"></i>
                                                             </div>
                                                             <div class="details">
-                                                                <div class="number"> 1349 </div>
-                                                                <div class="desc"> 视频评论数 </div>
+                                                                <div class="number"> {{$first->video_count}} </div>
+                                                                <div class="desc"> 视频播放数 </div>
                                                             </div>
                                                             <a class="more" href="#"> 查看更多
                                                                 <i class="m-icon-swapright m-icon-white"></i>

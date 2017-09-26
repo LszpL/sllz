@@ -2,6 +2,7 @@
 @extends('admin.layouts');
 @section('content')
 
+
     <div class="tpl-portlet-components">
         <div class="portlet-title">
             <div class="caption font-green bold">
@@ -9,7 +10,6 @@
             </div>
             <div class="tpl-portlet-input tpl-fz-ml">
             </div>
-
 
         </div>
         <div class="tpl-block">
@@ -24,7 +24,6 @@
             <form action="{{url('/admin/upload/index')}}" method="GET">
                 <input type="hidden"  name="page" value="{{$page}}" >
             <div class="am-g">
-
                 <div class="am-u-sm-12 am-u-md-6">
                     <div class="am-btn-toolbar">
                         <div class="am-btn-group am-btn-group-xs">
@@ -65,17 +64,14 @@
             </form>
             <div class="am-g">
                 <div class="am-u-sm-12">
-
                     <form class="am-form">
 
                         <table class="am-table am-table-striped am-table-hover table-main">
                             <thead>
                             <tr>
-                                <th class="table-check"><input type="checkbox" class="tpl-table-fz-check"></th>
                                 <th class="table-id">ID</th>
                                 <th class="table-title">用户名</th>
-                                <th class="table-type">分类</th>
-                                <th class="table-type">时长</th>
+                                
                                 <th class="table-author am-hide-sm-only">标题</th>
                                 <th class="table-date am-hide-sm-only">标签</th>
                                 <th class="table-set">内容</th>
@@ -91,37 +87,47 @@
                             <tbody>
                             @foreach($users as $item)
                             <tr>
-                                <td><input type="checkbox"></td>
                                 <td>{{$item->upload_id}}</td>
                                 <td><a href="#">{{$item->users_name}}</a></td>
-                                <td>{{$item->type_name}}</td>
-                                <td>{{$item->video_time}}</td>
                                 <td class="am-hide-sm-only">{{$item->title}}</td>
                                 <td class="am-hide-sm-only">{{$item->label}}</td>
                                 <td>{{$item->content}}</td>
-                                <td>{{$item->upload_address}}</td>
+                                <td id="huan" >{{$item->upload_address}}</td>
                                 <td>{{$item->status}}</td>
                                 <td>{{$item->upload_time}}</td>
                                 <td>{{$item->audit_time}}</td>
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
+                                            @if($item->users_name=='管理员' )
+                                                    @if($item->status=='审核中' )
+                                                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only" ><span class="am-icon-copy"></span><a href="#">管理员上传无需审核</a></button>
+                                                    @endif
+                                            @else
+
+
                                             @if(($item->status=='审核中'))
                                                 <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only" ><span class="am-icon-copy"></span><a href="javascript:;" onclick="FinishUser({{$item->upload_id}})"> 审核完成</a></button>
-{{--                                                {{url('admin/upload/finish')}}/{{$item->upload_id}}?page={{$page}}--}}
+
                                                 <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-copy"></span><a href="javascript:;" onclick="DefeatedUser({{$item->upload_id}})">审核失败</a></button>
-{{--                                                {{url('admin/upload/defeated')}}/{{$item->upload_id}}?page={{ $page }}                                                                   --}}
                                             @endif
 
                                             @if($item->status=='审核失败')
                                             <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span><a href="javascript:;" onclick="delUser({{$item->upload_id}})">删除</a></button>
                                                                 {{--{{url('admin/upload/delete')}}/{{$item->upload_id}}?page={{ $page }}--}}
                                             @endif
-                                            @if($item->status=='审核完成')
-                                                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only" ><span class="am-icon-copy"></span><a href="#">已审核完成,待上线</a></button>
-                                            @endif
 
+                                            @if($item->status=='审核完成')
+                                                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only" ><span class="am-icon-copy"></span><a href="#">审核完成待上线</a></button>
+                                            @endif
+                                            
+
+
+
+                                        @endif
+                                            
                                         </div>
+
                                     </div>
                                 </td>
 

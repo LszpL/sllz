@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'home\IndexController@index');
 // ====================================================后台==============================================
 Route::get('admin/auth',function(){
     return view('admin.auth',['title'=>'权限限制']);
@@ -192,28 +190,13 @@ Route::get('/home/index/twolist/{name}/{id}','home\TwoListController@twolist');
 Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@labelTwolist');
 
 
-Route::get('home/search','home\LoginController@search');
 
 
-// Route::get('xsearch','Home\LoginController@xsearch');
-
-Route::get('/home/index/index','home\IndexController@index');
- // Route::get('/home/index/more','home\IndexController@more');
- 
-Route::get('/home/index/onelist/{name}/{id}','home\OneListController@onelist');
-Route::get('/home/index/twolist/{name}/{id}','home\TwoListController@twolist');
-Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@labelTwolist');
-
-Route::get('home/search','home\LoginController@search');
 
 // Route::get('xsearch','Home\LoginController@xsearch');
 
-Route::get('/home/index/index','home\IndexController@index');
  // Route::get('/home/index/more','home\IndexController@more');
- 
-Route::get('/home/index/onelist/{name}/{id}','home\OneListController@onelist');
-Route::get('/home/index/twolist/{name}/{id}','home\TwoListController@twolist');
-Route::get('/home/index/twolist/{name}/{id}/{label}','home\TwoListController@labelTwolist');
+
 //播放页
 Route::get('/home/play/index/{id}','Home\PlayController@index');
 Route::get('/home/play/gun','Home\PlayController@gun');

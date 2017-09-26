@@ -11,11 +11,22 @@ class PlayController extends Controller
 
     {   
        
+        if(!empty(session('user'))){
+
+            $user_id=session('user')->login_id;
+
+            $user_vip=\DB::table('users_vip')->where('vip_id',$user_id)->first();
+
+              //历史记录
+             $history=\DB::table('watchs_history')->insert([
+            'users_id'=>session('user')->users_id,
+            'videos_id'=>$video_id,
+            'last_time'=>date('Y-m-d H:i:s')
+            ]);  
         
-        $user_id=session('user')->login_id;
+        }
 
-        $user_vip=\DB::table('users_vip')->where('vip_id',$user_id)->first();
-
+       
         //视频详细信息
         $video=\DB::table('videos_data')
         ->leftJoin('videos_type', 'videos_data.type_id', '=', 'videos_type.type_id')
@@ -35,12 +46,7 @@ class PlayController extends Controller
         //播放加1
         $count=\DB::table('videos_data')->where('video_id',$video_id)->increment('video_count');
 
-        //历史记录
-        $history=\DB::table('watchs_history')->insert([
-            'users_id'=>session('user')->users_id,
-            'videos_id'=>$video_id,
-            'last_time'=>date('Y-m-d H:i:s')
-            ]);  
+      
         //标签组
         $label=unserialize($video->video_labels);
 
@@ -96,13 +102,17 @@ class PlayController extends Controller
         $id=$request->input('id');
 
         $res=\DB::table('videos_data')->where('video_id',$id)->increment('video_collect');
+
+        $row=\DB::table('videos_data')->where('video_id',$id)->first()->video_collect;
         
         if($res){
-            echo '收藏成功';
-        }else{
-            echo '收仓失败';
-        }
 
+             echo $row;
+        }else{
+            
+             echo $row;
+        }
+        
     }
     public function comment(Request $request)
     {

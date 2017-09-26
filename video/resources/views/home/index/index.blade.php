@@ -134,7 +134,7 @@
       </div>
       <div class="banner-list fr">
         <ul>
-          @foreach($video_2 as $k=>$V)
+          @foreach($video_2 as $k=>$v)
           <li>
             <a href="{{url('home/play/index')}}/{{$v->video_id}}">
               <img src="/{{$v->video_img}}" alt="#" style="height:100px;width:160px;">

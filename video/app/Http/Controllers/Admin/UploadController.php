@@ -30,34 +30,35 @@ class UploadController extends Controller
 
           
 
-
         $res=\DB::table('users_upload')->where('upload_id', $id) ->update(['status' => '审核完成','audit_time'=>date('Y-m-d H:i:s')]);
 
         if($res){
 
              
-            $data['type_id']=$upload->type_name;
-            $data['video_name']=$upload->title;
-            $data['video_url'] =$upload->file_name;
 
-            $pet_name=\DB::table('users_message')->where('users_name',$upload->users_name)->first()->pet_name;
-            $data['admin_name']=$pet_name;
-            $data['video_time']=$upload->video_time;
-            $data['video_labels']=$upload->label;
-            $data['video_status']='上线';
-            $data['video_vip']='免费';
-            $data['video_img']=$upload->video_img;
-            $data["video_desc"]=$upload->content;
-            $data['created_at']=$upload->upload_time;
-            $data['video_like'] = 0;
-            $data['video_trample'] = 0;
-            $data['video_collect'] = 0;
-            $data['video_count'] = 0;
-            $data['video_comments'] = 0;
 
-           
-      \DB::table('videos_data')->insert($data);
-     
+                $data['type_id']=$upload->type_name;
+                $data['video_name']=$upload->title;
+                $data['video_url'] =$upload->upload_address;
+
+                $pet_name=\DB::table('users_message')->where('users_name',$upload->users_name)->first()->pet_name;
+                $data['admin_name']=$pet_name;
+                $data['video_time']=$upload->video_time;
+                $data['video_labels']=$upload->label;
+                $data['video_status']='上线';
+                $data['video_vip']='免费';
+                $data['video_img']=$upload->video_img;
+                $data["video_desc"]=$upload->content;
+                $data['created_at']=$upload->upload_time;
+                $data['video_like'] = 0;
+                $data['video_trample'] = 0;
+                $data['video_collect'] = 0;
+                $data['video_count'] = 0;
+                $data['video_comments'] = 0;
+
+            
+                \DB::table('videos_data')->insert($data);
+                
             return redirect('/admin/upload/index?page='.$request->input('page'))->with(['info'=>'该用户已成功通过审核','page'=>$request->input('page')]);
         }
 
@@ -128,7 +129,10 @@ class UploadController extends Controller
                 $data[$key]->type_name = str_repeat('|| - ', $num) . $value->type_name;
 
             }
-            return view('admin.uploads.add', ['title' => '用户视频添加'], compact('data')
+
+            //引入标签分类
+            $label = \DB::table('videos_label')->get();
+            return view('admin.uploads.add', ['title' => '用户视频添加'], compact('data','label')
             );
 
 
@@ -178,15 +182,20 @@ class UploadController extends Controller
               $ext = $request->file('file_name')->getClientOriginalExtension();
                //执行移动上传文件
                 $filename = time().rand(1000,9999).".".$ext;
-                $request->file('file_name')->move("./uploads",$filename);
-             //\Storage::disk('qiniu')->writeStream('uploads/'.$filename, fopen($file->getRealPath(), 'r'));
+                //$request->file('file_name')->move("./uploads",$filename);
+             \Storage::disk('qiniu')->writeStream('uploads/'.$filename, fopen($file->getRealPath(), 'r'));
                 //修改文件数据
             $data['file_name'] = $filename;
-            $data['upload_address'] = 'http://ow44tz416.bkt.clouddn.com/uploads/' . $filename;
+            $data['upload_address'] = 'http://ow7yr11kj.bkt.clouddn.com/uploads/' . $filename;
 
            }
         }
 
+
+
+
+
+        //图片上传
             //判断图片是否有上传
             //获取上传的文件对象
             $file = Input::file('video_img');
@@ -205,6 +214,8 @@ class UploadController extends Controller
             }
             $time = date('Y-m-d H:i:s', time());
             $data['upload_time'] = $time;
+//反序列化标签
+            $data['label']= serialize($data['label']);
 //                //插入数据库
             $res = \DB::table('users_upload')->insert($data);
             if ($res) {

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('home_temp/play/css/page-core.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{asset('home_temp/play/css/tag-index2.0.css')}}" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{asset('home_temp/play/css/comment.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('home_temp/play/css/appeal.css')}}" />
     <link rel="stylesheet" href="{{asset('home_temp/css/jquery.allofthelights.css')}}">
     <link rel="stylesheet" href="{{asset('home_temp/css/jsmodern-1.1.1.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('home_temp/css/style.css')}}">
@@ -67,7 +68,7 @@
                     <div class="v-title-line v-stow fav_btn" title="收藏人数" >  
                         <i class="b-icon b-icon-a b-icon-stow" style="display: block; background-image: url({{asset('home_temp/play/images/anim-collect.png')}}); width: 60px; height: 60px; background-position: 0px 0px;"></i>
                         <span class="stow-status">收藏</span>
-                        <span id="stow_count">{{$video->video_comments}}</span>
+                        <span id="stow_count">{{$video->video_collect}}</span>
                     </div>
                 </div>
             </div>
@@ -236,14 +237,14 @@
                 <span class="t fav_btn" href="//www.bilibili.com/m/stow?aid=10945180" title="收藏人数5654"> <i class="b-icon b-icon-a b-icon-anim-fav" style="display: block; background-image: url({{asset('home_temp/play/images/anim-fav.png')}}); width: 80px; height: 80px; background-position: 0px 0px; " onclick="collect({{$video->video_id}})" ></i>
                     <div class="t-right" title="收藏人数5654">
                         <span class="t-right-top">收藏</span>
-                        <span class="t-right-bottom stow_count">5654</span>
+                        <span id="zou" class="t-right-bottom stow_count"> {{$video->video_collect}}</span>
                     </div> </span>
             </div>
             <div class="block coin" arctype="Copy" style="display: block;">
                 <span class="t" title="投硬币枚数1086">
                     <div class="t-right" title="投硬币枚数1086">
-                        <span class="t-right-top">硬币</span>
-                        <span class="t-right-bottom v_ctimes">1086</span>
+                        <span class="t-right-top">评论</span>
+                        <span class="t-right-bottom v_ctimes">{{ $video->video_comments }}</span>
                     </div> </span>
             </div>
             <div class="block watch-later" aid="10945180" title="稍后看">
@@ -406,30 +407,30 @@
                             </div>
 
                         </div>
-                        @if(empty(session('user')))
-                            <div class="comment-send no_login">
-                        @else
+                        @if(session('user'))
                             <div class="comment-send">
-                        @endif
-                            <div class="user-face">
-                                @if(empty(session('user')))
-                                    <img class="user-head" src="/uploads/default.jpg" />
                                 @else
-                                    <img class="user-head" src="/uploads/{{session('user')->face}}" />
-                                @endif
+                                    <div class="comment-send no-login">
+                                        @endif
+                                        <div class="user-face">
+                                            @if(empty(session('user')))
+                                                <img class="user-head" src="/uploads/default.jpg" />
+                                            @else
+                                                <img class="user-head" src="/uploads/{{session('user')->face}}" />
+                                            @endif
 
-                            </div>
-                            <div class="textarea-container">
-                                <div class="baffle">请先<a class="b-btn btn-open-mini-Login">登录</a>后发表评论 (・ω・)</div>
-                                <i class="ipt-arrow"></i>
-                                <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt"></textarea>
-                                <button class="comment-submit">发表评论</button>
-                            </div>
-                            <div class="comment-emoji">
-                                <i class="face"></i>
-                                <span class="text">表情</span>
-                            </div>
-                        </div>
+                                        </div>
+                                        <div class="textarea-container">
+                                            <div class="baffle"><a href="{{url('home/login')}}" class="b-btn btn-open-mini-Login">请先登录后发表评论 (・ω・)</a></div>
+                                            <i class="ipt-arrow"></i>
+                                            <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt"></textarea>
+                                            <button class="comment-submit">发表评论</button>
+                                        </div>
+                                        <div class="comment-emoji">
+                                            <i class="face"></i>
+                                            <span class="text">表情</span>
+                                        </div>
+                                    </div>
                         <div class="comment-list">
                             @if($one)
                             @foreach($one as $item)
@@ -568,7 +569,10 @@
             </div>
             <div class="con ">
                 <div class="user">
-                    <a data-usercard-mid="2658385" href="javascrypt:;"  class="name">{{session('user')->pet_name}}</a>
+                    @if(session('user'))
+                    <a data-usercard-mid="2658385" href="javascrypt:;"  class="name">
+                    {{session('user')->pet_name}}</a>
+                    @endif
                 </div>
                 <p class="text"></p>
                 <div class="info">
@@ -610,7 +614,9 @@
             </div>
         </div>
     </div>
-
+    @if(session('user') )
+    <div id="yes" value="{{session('user')->login_id}}" ></div>
+    @endif
 @endsection
 
 
@@ -622,24 +628,7 @@
 
         <script src="{{asset('home_temp/js/jquery.allofthelights.js')}}"></script>    
         <script>
-            //收藏
-           
-
-
-            function collect(id){
-
-                $.ajax({
-                        type:'post',
-                        data:{id:id,_token:'{{csrf_token()}}' },
-                        url:'/home/play/collect',
-                        success:function(data){
-                        layer.msg(data);
-                        },
-                        dateType:'json'
-                    });  
-                  
-                // stow_count
-             }    
+            
 
             //分享
             jsModern.share({
@@ -767,7 +756,33 @@
 
                 });
 
+                // 收藏
+           
 
+
+             if($('#yes').attr('value'))
+             {
+
+                function collect(id){
+
+                    $.ajax({
+                            type:'post',
+                            data:{id:id,_token:'{{csrf_token()}}' },
+                            url:'/home/play/collect',
+                            success:function(data){
+                              layer.msg('收藏成功');
+                              $('#stow_count').html(data);
+                              $('#zou').html(data);
+                            },
+                            error:function(){
+                              later.msg('收藏失败'); 
+                            },
+                            dateType:'json'
+                        });  
+                      
+                    // stow_count
+                 }    
+              }
 
         </script>
 

@@ -28,7 +28,7 @@
           <div class="header-top__nav">
             <ul>
               <li class="item item-home">
-                <a href="#">主站</a>
+                <a href="{{url('/home/index/index')}}">主站</a>
               </li>
               <li class="item"><a href="#">画友</a></li>
               <li class="item">

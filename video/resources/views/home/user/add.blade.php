@@ -147,14 +147,14 @@
 //  判断是否有选择上传文件
         var imgPath = $("#file_name").val();
         if (imgPath == "") {
-            alert("请选择上传图片！");
+            alert("请选择上传视频文件！");
             return;
         }
 ////        //判断上传文件的后缀名
         var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
         if (strExtension != 'mp4' && strExtension != 'avi'
-            && strExtension != 'wmv' && strExtension != 'jpg') {
-            alert("请选择图片文件");
+            && strExtension != 'wmv' && strExtension != 'rmvb') {
+            alert("请选择视频文件");
             return;
         }
         var formData = new FormData($('#art_form')[0]);

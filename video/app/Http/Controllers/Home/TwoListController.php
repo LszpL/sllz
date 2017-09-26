@@ -57,22 +57,25 @@ class TwoListController extends Controller
 		  ->leftJoin('videos_data','videos_type.type_id','=','videos_data.type_id')
 		  ->where('parent_id',$type_1->parent_id)->get();
 		
-		$brr=[]; 
+		// dd($label_video);
+	    $brr=[]; 
        foreach($label_video as $k=>$v){
-       	$brr[$k]=
-       	[ 	
-       		
-	       	// 'pid'=>$v->parent_id,
-	       	// 'type_id'=>$v->type_id,
-	       	// 'type_name'=>$v->type_name
-	       	'labels'=>$v->video_labels
-       	];	
+       	if(!empty($v->video_id)){
+	       	$brr[$k]=
+	       	[ 	
+	       		
+		       	// 'pid'=>$v->parent_id,
+		       	// 'type_id'=>$v->type_id,
+		       	// 'type_name'=>$v->type_name
+		       	'labels'=>$v->video_labels
+	       	];	
+       	  }
        }
 
       	if(empty($brr['0']['labels'])){
       		return;
       	}
-
+      	
        	$crr=[];
         foreach($brr as $k=>$v){
 
@@ -170,14 +173,16 @@ class TwoListController extends Controller
 		
 		$brr=[]; 
        foreach($label_video as $k=>$v){
-       	$brr[$k]=
-       	[ 	
-       		
-	       	// 'pid'=>$v->parent_id,
-	       	// 'type_id'=>$v->type_id,
-	       	// 'type_name'=>$v->type_name
-	       	'labels'=>$v->video_labels
-       	];	
+       		if(!empty($v->video_id)){
+	       	$brr[$k]=
+	       	[ 	
+	       		
+		       	// 'pid'=>$v->parent_id,
+		       	// 'type_id'=>$v->type_id,
+		       	// 'type_name'=>$v->type_name
+		       	'labels'=>$v->video_labels
+	       	];	
+       	  }
        }
        	$crr=[];
         foreach($brr as $k=>$v){

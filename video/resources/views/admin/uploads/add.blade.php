@@ -31,21 +31,21 @@
                                     <label for="user-weibo" class="am-u-sm-3 am-form-label">上传视频</label>
 
                                     <div class="am-u-sm-9">
-                                        {{--<input type="text" size="50" name="art_thumb" id="art_thumb">--}}
-                                        <input id="file_name" name="file_name" type="file" multiple="true">
+                                       
+                                    <input id="file_name" name="file_name" type="file" multiple="true">
 
-                                        {{--<p><img id="img1" alt="上传后显示图片"  style="max-width:350px ;max-height:100px;" /></p>--}}
+                                        
                                     </div>
                                 </div>
                                 <div class="am-form-group">
                                     <label for="user-weibo" class="am-u-sm-3 am-form-label">上传图片</label>
 
                                     <div class="am-u-sm-9">
-                                        {{--<input type="file" id="user-weibo" name="file_name">--}}
-                                        <input type="text" size="50" name="art_thumb" id="art_thumb">
+                                        <!-- <input type="file" id="user-weibo" name="file_name"> -->
+                                        <!-- <input type="text" size="50" name="art_thumb" id="art_thumb"> -->
                                         <input id="file_name" name="video_img" type="file" multiple="true">
 
-                                        <p><img id="img1" alt="上传后显示图片"  style="max-width:350px ;max-height:100px;" /></p>
+                                       <!--  <p><img id="img1" alt="上传后显示图片"  style="max-width:350px ;max-height:100px;" /></p> -->
                                     </div>
                                 </div>
                                 <div class="am-form-group">
@@ -78,8 +78,11 @@
                                 </div>
                                 <div class="am-form-group">
                                     <label for="user-phone" class="am-u-sm-3 am-form-label">标签</label>
+
                                     <div class="am-u-sm-9">
-                                        <input type="tel"  name="label"  id="user-phone" placeholder="选择一下标签 ">
+                                    @foreach($label as $item)
+                                        <input type="checkbox"  name="label[]"  id="user-phone" placeholder="选择一下标签 "  value="{{$item->label_name}}">{{$item->label_name}}
+                                        @endforeach
                                     </div>
                                 </div>
 

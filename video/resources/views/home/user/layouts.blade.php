@@ -245,14 +245,7 @@
                             <i class="al-jl"></i>
                             <span>观看历史</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="{{url('home/user/comment')}}" id="record">
-                            <i class="al-jl"></i>
-                            <span>我的评论</span>
-                        </a>
-                    </li>
-
+                    </li>                   
                 </ul>
             </li>
 
